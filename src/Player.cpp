@@ -38,6 +38,26 @@ std::array<float,2> Player::getPosition(){
     return std::array<float, 2>{position[0], position[1]};
 }
 
+void Player::border_jump(){
+    //window size
+    int width = window->getSize().x;
+    int height = window->getSize().y;
+    //OX
+    if(x < 0){
+        position[0] = width * scaler;
+    }
+    else if(x > width){
+        position[0] = 0;
+    }
+    //OY
+    if(y < 0){
+        position[1] = height * scaler;
+    }
+    else if(y > height){
+        position[1] = 0;
+    }
+}
+
 void Player::accelerate(float acceleration){
     this->acceleration[0] = acceleration * sin(rotation * M_PI/ 180.0);
     this->acceleration[1] = -1 * acceleration * cos(rotation * M_PI/ 180.0);
@@ -71,6 +91,9 @@ void Player::draw(){
     //update position of player on window
     updatePositionOnWindow();
 
+    //eventually border jump
+    border_jump();
+
     //factors
     float body_len_factor = 7.0/8.0;
     float body_width_factor = 2.0/3.0;
@@ -78,12 +101,11 @@ void Player::draw(){
     float engine_width_factor_1 = 1.0/6.0;
     float engine_width_factor_2 = 1.0/2.0;
     //real lengths
-    float full_len = 170.0;
-    float body_len = body_len_factor * full_len;
-    float body_width = body_width_factor * full_len;
-    float engine_len = engine_len_factor * full_len;
-    float engine_width_1 = engine_width_factor_1 * full_len;
-    float engine_width_2 = engine_width_factor_2 * full_len;
+    float body_len = body_len_factor * playerLen;
+    float body_width = body_width_factor * playerLen;
+    float engine_len = engine_len_factor * playerLen;
+    float engine_width_1 = engine_width_factor_1 * playerLen;
+    float engine_width_2 = engine_width_factor_2 * playerLen;
     //creating player shape
     sf::ConvexShape shape;
     shape.setPointCount(7);

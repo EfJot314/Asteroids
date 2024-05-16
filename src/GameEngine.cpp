@@ -10,6 +10,7 @@ GameEngine::GameEngine(Player* player){
 GameEngine::~GameEngine(){};
 
 void GameEngine::moveAll(){
+    //move
     player->updateKinematicProperties();
 };
 

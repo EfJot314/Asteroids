@@ -24,6 +24,7 @@ class Player{
         Player(float positon[], float velocity[], sf::RenderWindow* window, sf::Color color);
         ~Player();
         std::array<float, 2> getPosition();
+        void border_jump();
         void accelerate(float acceleration);
         void updateKinematicProperties();
         void rotate(int direction);
