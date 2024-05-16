@@ -1,5 +1,5 @@
 main:
-	g++ -c main.cpp Game.cpp Player.cpp GameEngine.cpp
+	g++ -c ./src/main.cpp ./src/Game.cpp ./src/Player.cpp ./src/GameEngine.cpp
 	g++ Player.o -o Player GameEngine.o -o GameEngine Game.o -o Game main.o -o main -lsfml-graphics -lsfml-window -lsfml-system
 
 
