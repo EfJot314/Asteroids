@@ -47,6 +47,10 @@ void Game::drawAll(){
 
 void Game::run(){
 
+    //player controll variables
+    bool rotateLeft = false;
+    bool rotateRight = false;
+
     //main loop
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
     while(gameFlag){
@@ -60,6 +64,16 @@ void Game::run(){
 
         //moving all objects
         ge.moveAll();
+
+        //rotating
+        if(rotateRight){
+            Player* player = ge.getPlayer();
+            player->rotate(1);
+        }
+        if(rotateLeft){
+            Player* player = ge.getPlayer();
+            player->rotate(-1);
+        }
         
         //handle events
         sf::Event event;
@@ -72,14 +86,18 @@ void Game::run(){
             //player controll
             if (event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::D){
-                    //rotate right
-                    Player* player = ge.getPlayer();
-                    player->rotate(1);
+                    rotateRight = true;
                 }
                 if(event.key.code == sf::Keyboard::A){
-                    //rotate left
-                    Player* player = ge.getPlayer();
-                    player->rotate(-1);
+                    rotateLeft = true;
+                }
+            }
+            if (event.type == sf::Event::KeyReleased){
+                if(event.key.code == sf::Keyboard::D){
+                    rotateRight = false;
+                }
+                if(event.key.code == sf::Keyboard::A){
+                    rotateLeft = false;
                 }
             }
         }
