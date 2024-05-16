@@ -19,6 +19,8 @@ Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf:
     this->position[1] = position[1];
     this->velocity[0] = velocity[0];
     this->velocity[1] = velocity[1];
+    this->acceleration[0] = 0;
+    this->acceleration[1] = 0;
 };
 
 Player::~Player(){};
@@ -36,10 +38,21 @@ std::array<float,2> Player::getPosition(){
     return std::array<float, 2>{position[0], position[1]};
 }
 
+void Player::accelerate(float acceleration){
+    this->acceleration[0] = acceleration * sin(rotation * M_PI/ 180.0);
+    this->acceleration[1] = -1 * acceleration * cos(rotation * M_PI/ 180.0);
+}
+
 void Player::updateKinematicProperties(){
     //update position
+    velocity[0] += acceleration[0] * deltaTime;
+    velocity[1] += acceleration[1] * deltaTime;
     position[0] += velocity[0] * deltaTime;
     position[1] += velocity[1] * deltaTime;
+
+    //reset acceleration
+    this->acceleration[0] = 0;
+    this->acceleration[1] = 0;
 }
 
 void Player::rotate(int direction){

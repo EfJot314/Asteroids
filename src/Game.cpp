@@ -48,6 +48,7 @@ void Game::drawAll(){
 void Game::run(){
 
     //player controll variables
+    bool accelearate = false;
     bool rotateLeft = false;
     bool rotateRight = false;
 
@@ -74,8 +75,13 @@ void Game::run(){
             Player* player = ge.getPlayer();
             player->rotate(-1);
         }
+        //acceleration
+        if(accelearate){
+            Player* player = ge.getPlayer();
+            player->accelerate(playerAcceleration);
+        }
         
-        //handle events
+        //handle events  
         sf::Event event;
         while (window->pollEvent(event)) {
             //closing window
@@ -85,6 +91,9 @@ void Game::run(){
             }
             //player controll
             if (event.type == sf::Event::KeyPressed){
+                if(event.key.code == sf::Keyboard::W){
+                    accelearate = true;
+                }
                 if(event.key.code == sf::Keyboard::D){
                     rotateRight = true;
                 }
@@ -93,6 +102,9 @@ void Game::run(){
                 }
             }
             if (event.type == sf::Event::KeyReleased){
+                if(event.key.code == sf::Keyboard::W){
+                    accelearate = false;
+                }
                 if(event.key.code == sf::Keyboard::D){
                     rotateRight = false;
                 }

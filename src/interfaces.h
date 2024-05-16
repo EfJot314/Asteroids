@@ -3,7 +3,7 @@
 #include <array>
 #include <unistd.h>
 #include <cstdlib>
-#include <math.h>
+#include <cmath>
 #include "constants.h"
 
 
@@ -13,6 +13,7 @@ class Player{
         int y;
         float position[2];
         float velocity[2];
+        float acceleration[2];
         float rotation = 0;
         sf::Color color;
         sf::RenderWindow* window;
@@ -23,6 +24,7 @@ class Player{
         Player(float positon[], float velocity[], sf::RenderWindow* window, sf::Color color);
         ~Player();
         std::array<float, 2> getPosition();
+        void accelerate(float acceleration);
         void updateKinematicProperties();
         void rotate(int direction);
         void draw();
