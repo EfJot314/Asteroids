@@ -51,7 +51,9 @@ void Game::run(){
     bool rotateLeft = false;
     bool rotateRight = false;
 
+
     //main loop
+    int counter = 0;
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
     while(gameFlag){
 
@@ -64,6 +66,14 @@ void Game::run(){
 
         //moving all objects
         ge.moveAll();
+
+        //generate new asteroid every 3 sec
+        counter++;
+        if(counter >= 3.0f * FPS){
+            Asteroid* asteroid = new Asteroid(window, sf::Color::Blue);
+            ge.addAsteroid(asteroid);
+            counter = 0;
+        }
 
         //rotating
         if(rotateRight){
