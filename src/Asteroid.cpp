@@ -1,31 +1,60 @@
 #include "interfaces.h"
 
 
-Player::Player(){};
+Asteroid::Asteroid(){};
 
-Player::Player(sf::RenderWindow* window, sf::Color color){
+Asteroid::Asteroid(sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
-    this->position[0] = window->getSize().x/2 * scaler;
-    this->position[1] = window->getSize().y/2 * scaler;
-    this->velocity[0] = 0;
-    this->velocity[1] = 0;
+    randomPlacement();
 };
 
-Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf::Color color){
+Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
     this->position[0] = position[0];
     this->position[1] = position[1];
     this->velocity[0] = velocity[0];
     this->velocity[1] = velocity[1];
-    this->acceleration[0] = 0;
-    this->acceleration[1] = 0;
+    this->rotationSpeed = rotationSpeed;
 };
 
-Player::~Player(){};
+Asteroid::~Asteroid(){};
 
-void Player::updatePositionOnWindow(){
+void Asteroid::randomPlacement(){
+    //window size
+    int width = window->getSize().x;
+    int height = window->getSize().y;
+    //position on window
+    //1 -> up
+    //2 -> right
+    //3 -> down
+    //4 -> left
+    int side = rand() % 4;
+    if(side == 0){
+        this->position[0] = (rand() % width) * scaler;
+        this->position[1] = -1 * (rand() % asteroidMargin) * scaler;
+    }
+    else if(side == 1){
+        this->position[0] = ((rand() % asteroidMargin) + width) * scaler;
+        this->position[1] = (rand() % height) * scaler;
+    }
+    else if(side == 2){
+        this->position[0] = (rand() % width) * scaler;
+        this->position[1] = ((rand() % asteroidMargin) + height) * scaler;
+    }
+    else if(side == 3){
+        this->position[0] = -1 * (rand() % asteroidMargin) * scaler;
+        this->position[1] = (rand() % height) * scaler;
+    }
+    //velocity
+    float v = (rand() % (int)(asteroidVelocityMax - asteroidVelocityMin)) + asteroidVelocityMin;
+    float angle = (float)(rand() % 1000) / 1000.0f * 2 * M_PI;
+    this->velocity[0] = v * cos(angle);
+    this->velocity[1] = v * sin(angle);
+}
+
+void Asteroid::updatePositionOnWindow(){
     //in the future here will be setting x,y connected with actual width, height and zoom of the window
     int width = window->getSize().x;
     int height = window->getSize().y;
@@ -34,11 +63,11 @@ void Player::updatePositionOnWindow(){
 };
 
 
-std::array<float,2> Player::getPosition(){
+std::array<float,2> Asteroid::getPosition(){
     return std::array<float, 2>{position[0], position[1]};
 }
 
-void Player::borderJump(){
+void Asteroid::borderJump(){
     //window size
     int width = window->getSize().x;
     int height = window->getSize().y;
@@ -58,36 +87,15 @@ void Player::borderJump(){
     }
 }
 
-void Player::accelerate(float acceleration){
-    this->acceleration[0] = acceleration * sin(rotation * M_PI/ 180.0);
-    this->acceleration[1] = -1 * acceleration * cos(rotation * M_PI/ 180.0);
-}
 
-void Player::updateKinematicProperties(){
+void Asteroid::updateKinematicProperties(){
     //update position
-    velocity[0] += acceleration[0] * deltaTime;
-    velocity[1] += acceleration[1] * deltaTime;
     position[0] += velocity[0] * deltaTime;
     position[1] += velocity[1] * deltaTime;
-
-    //reset acceleration
-    this->acceleration[0] = 0;
-    this->acceleration[1] = 0;
 }
 
-void Player::rotate(int direction){
-    float rotation_speed = 7.0;
-    //right
-    if(direction > 0){
-        rotation += rotation_speed;
-    }
-    //left
-    else{
-        rotation -= rotation_speed;
-    }
-}
 
-void Player::draw(){
+void Asteroid::draw(){
     //update position of player on window
     updatePositionOnWindow();
 

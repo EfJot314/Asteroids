@@ -35,9 +35,8 @@ void Game::drawAll(){
     //draw background
     window->draw(background);
 
-    //draw player
-    Player* player = ge.getPlayer();
-    player->draw();
+    //draw all
+    ge.drawAll();
 
     //display results on window
     window->display();
