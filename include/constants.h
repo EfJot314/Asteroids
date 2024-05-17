@@ -3,13 +3,23 @@
 //time between two frames
 #define deltaTime 0.5f
 //acceleration of a player
-#define playerAcceleration 0.15f
+#define playerAcceleration 0.30f
 //length of a player
-#define playerLen 150.0f
+#define playerLen 130.0f
 //margin for generating asteroids
 #define asteroidMargin 200
 //min asteroid velocity
 #define asteroidVelocityMin 5.0f
 //max asteroid velocity
 #define asteroidVelocityMax 30.0f
+//number of points in asteroid shape
+#define asteroidShapeN 10
+//asteroid basic radius
+#define asteroidRadius 130
+//max asteroid shape delta
+#define asteroidMaxFactor 0.3f
+//max asteroid rotation speed
+#define asteroidMaxRotationSpeed 15
+//line thickness
+#define lineThickness 5.0f
 

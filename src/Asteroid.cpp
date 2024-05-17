@@ -7,6 +7,7 @@ Asteroid::Asteroid(sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
     randomPlacement();
+    shapeFormation();
 };
 
 Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color){
@@ -17,9 +18,27 @@ Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::
     this->velocity[0] = velocity[0];
     this->velocity[1] = velocity[1];
     this->rotationSpeed = rotationSpeed;
+    shapeFormation();
 };
 
 Asteroid::~Asteroid(){};
+
+void Asteroid::shapeFormation(){
+    float alpha = 0;
+    float deltaAlpha = 2 * M_PI / (float)asteroidShapeN;
+    shape.setPointCount(asteroidShapeN);
+    for(int i=0;i<asteroidShapeN;i++){
+        float r = asteroidRadius;
+        float deltaRFactor = (float)(rand() % 1000) / 1000.0f * 2 * asteroidMaxFactor - asteroidMaxFactor; 
+        r += r * deltaRFactor;
+        shape.setPoint(i, sf::Vector2f(r * cos(alpha), r * sin(alpha)));
+        alpha += deltaAlpha;
+    }
+    shape.setFillColor(sf::Color::Transparent);
+    shape.setOutlineThickness(lineThickness);
+    shape.setOutlineColor(color);
+    shape.scale(1/scaler, 1/scaler);
+}
 
 void Asteroid::randomPlacement(){
     //window size
@@ -52,6 +71,8 @@ void Asteroid::randomPlacement(){
     float angle = (float)(rand() % 1000) / 1000.0f * 2 * M_PI;
     this->velocity[0] = v * cos(angle);
     this->velocity[1] = v * sin(angle);
+    //rotation
+    this->rotationSpeed = (rand() % asteroidMaxRotationSpeed);
 }
 
 void Asteroid::updatePositionOnWindow(){
@@ -102,34 +123,9 @@ void Asteroid::draw(){
     //eventually border jump
     borderJump();
 
-    //factors
-    float body_len_factor = 7.0/8.0;
-    float body_width_factor = 2.0/3.0;
-    float engine_len_factor = 1.0/8.0;
-    float engine_width_factor_1 = 1.0/6.0;
-    float engine_width_factor_2 = 1.0/2.0;
-    //real lengths
-    float body_len = body_len_factor * playerLen;
-    float body_width = body_width_factor * playerLen;
-    float engine_len = engine_len_factor * playerLen;
-    float engine_width_1 = engine_width_factor_1 * playerLen;
-    float engine_width_2 = engine_width_factor_2 * playerLen;
-    //creating player shape
-    sf::ConvexShape shape;
-    shape.setPointCount(7);
-    shape.setPoint(0, sf::Vector2f(0, -body_len*2/3));    
-    shape.setPoint(1, sf::Vector2f(body_width/2, body_len*1/3));
-    shape.setPoint(2, sf::Vector2f(engine_width_1/2, body_len*1/3));
-    shape.setPoint(3, sf::Vector2f(engine_width_2/2, body_len*1/3 + engine_len));
-    shape.setPoint(4, sf::Vector2f(-engine_width_2/2, body_len*1/3 + engine_len));
-    shape.setPoint(5, sf::Vector2f(-engine_width_1/2, body_len*1/3));
-    shape.setPoint(6, sf::Vector2f(-body_width/2, body_len*1/3));
-
     //shape properties
-    shape.setFillColor(color);
-    shape.scale(1/scaler, 1/scaler);
     shape.setPosition((int)(x), (int)(y));
-    shape.rotate(rotation);
+    shape.rotate(rotationSpeed * deltaTime);
 
     //drawing on the window
     window->draw(shape);

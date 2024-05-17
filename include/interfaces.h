@@ -13,6 +13,7 @@ class Asteroid{
         int y;
         float position[2];
         float velocity[2];
+        sf::ConvexShape shape;
         float rotation = 0;
         float rotationSpeed;
         sf::Color color;
@@ -20,6 +21,7 @@ class Asteroid{
         void updatePositionOnWindow();
         void borderJump();
         void randomPlacement();
+        void shapeFormation();
     public:
         Asteroid();
         Asteroid(sf::RenderWindow* window, sf::Color color);
