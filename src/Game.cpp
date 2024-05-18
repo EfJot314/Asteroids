@@ -50,10 +50,12 @@ void Game::run(){
     bool accelearate = false;
     bool rotateLeft = false;
     bool rotateRight = false;
+    bool shoot = false;
 
 
     //main loop
-    int counter = 0;
+    int asteroidCounter = 0;
+    int bulletCounter = 0;
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
     while(gameFlag){
 
@@ -67,12 +69,15 @@ void Game::run(){
         //moving all objects
         ge.moveAll();
 
+        //increment counters
+        asteroidCounter++;
+        bulletCounter++;
+
         //generate new asteroid every 3 sec
-        counter++;
-        if(counter >= 3.0f * FPS){
+        if(asteroidCounter >= 3.0f * FPS){
             Asteroid* asteroid = new Asteroid(window, sf::Color::Blue);
             ge.addAsteroid(asteroid);
-            counter = 0;
+            asteroidCounter = 0;
         }
 
         //rotating
@@ -88,6 +93,12 @@ void Game::run(){
         if(accelearate){
             Player* player = ge.getPlayer();
             player->accelerate(playerAcceleration);
+        }
+        //shooting
+        if(shoot && bulletCounter >= bulletDelay * FPS){
+            Player* player = ge.getPlayer();
+            ge.addBullet(player->shoot());
+            bulletCounter = 0;
         }
         
         //handle events  
@@ -109,6 +120,9 @@ void Game::run(){
                 if(event.key.code == sf::Keyboard::A){
                     rotateLeft = true;
                 }
+                if(event.key.code == sf::Keyboard::Space){
+                    shoot = true;
+                }
             }
             if (event.type == sf::Event::KeyReleased){
                 if(event.key.code == sf::Keyboard::W){
@@ -119,6 +133,9 @@ void Game::run(){
                 }
                 if(event.key.code == sf::Keyboard::A){
                     rotateLeft = false;
+                }
+                if(event.key.code == sf::Keyboard::Space){
+                    shoot = false;
                 }
             }
         }

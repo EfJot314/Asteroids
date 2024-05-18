@@ -16,6 +16,10 @@ void GameEngine::moveAll(){
     for(int i=0;i<this->asteroids.size();i++){
         asteroids[i]->updateKinematicProperties();
     }
+    //bullets
+    for(int i=0;i<this->bullets.size();i++){
+        bullets[i]->updateKinematicProperties();
+    }
 };
 
 void GameEngine::drawAll(){
@@ -24,6 +28,10 @@ void GameEngine::drawAll(){
     //asteroids
     for(int i=0;i<this->asteroids.size();i++){
         asteroids[i]->draw();
+    }
+    //bullets
+    for(int i=0;i<this->bullets.size();i++){
+        bullets[i]->draw();
     }
 };
 
@@ -37,5 +45,9 @@ Player* GameEngine::getPlayer(){
 
 void GameEngine::addAsteroid(Asteroid* asteroid){
     this->asteroids.push_back(asteroid);
+}
+
+void GameEngine::addBullet(Bullet* bullet){
+    this->bullets.push_back(bullet);
 }
 

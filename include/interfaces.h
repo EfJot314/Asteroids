@@ -6,6 +6,15 @@
 #include <cmath>
 #include "constants.h"
 
+//declare classes
+class Asteroid;
+class Bullet;
+class Game;
+class GameEngine;
+class Player;
+
+
+
 
 class Asteroid{
     private:
@@ -33,6 +42,8 @@ class Asteroid{
         void draw();
 };
 
+
+
 class Player{
     private:
         int x;
@@ -55,7 +66,9 @@ class Player{
         void updateKinematicProperties();
         void rotate(int direction);
         void draw();
+        Bullet* shoot();
 };
+
 
 
 class Bullet{
@@ -73,7 +86,7 @@ class Bullet{
         void borderJump();
     public:
         Bullet();
-        Bullet(Player* player, sf::RenderWindow* window, sf::Color color);
+        Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
         ~Bullet();
         std::array<float, 2> getPosition();
         void updateKinematicProperties();
@@ -86,6 +99,7 @@ class GameEngine{
     private:
         Player* player;
         std::vector<Asteroid*> asteroids;
+        std::vector<Bullet*> bullets;
     public:
         GameEngine();
         GameEngine(Player* player);
@@ -95,6 +109,7 @@ class GameEngine{
         void moveAll();
         void drawAll();
         void addAsteroid(Asteroid* asteroid);
+        void addBullet(Bullet* bullet);
 };
 
 

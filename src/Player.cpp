@@ -128,4 +128,8 @@ void Player::draw(){
 
 }
 
+Bullet* Player::shoot(){
+    return new Bullet(this, this->rotation, this->window, this->color);
+}
+
 

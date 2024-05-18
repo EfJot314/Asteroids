@@ -22,4 +22,12 @@
 #define asteroidMaxRotationSpeed 15
 //line thickness
 #define lineThickness 5.0f
+//bullet velocity
+#define bulletVelocity 60.0f
+//bullet size
+#define bulletSize 50.0f
+//bullet width factor
+#define bulletWidthFactor 0.15f
+//time between shoots (in seconds)
+#define bulletDelay 0.2f
 
