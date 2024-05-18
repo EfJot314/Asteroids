@@ -11,6 +11,7 @@ class Asteroid{
     private:
         int x;
         int y;
+        int hp = 3;
         float position[2];
         float velocity[2];
         sf::ConvexShape shape;
@@ -53,6 +54,29 @@ class Player{
         void accelerate(float acceleration);
         void updateKinematicProperties();
         void rotate(int direction);
+        void draw();
+};
+
+
+class Bullet{
+    private:
+        int x;
+        int y;
+        float position[2];
+        float velocity[2];
+        float distance = 0.0f;
+        sf::ConvexShape shape;
+        sf::Color color;
+        sf::RenderWindow* window;
+        Player* player;
+        void updatePositionOnWindow();
+        void borderJump();
+    public:
+        Bullet();
+        Bullet(Player* player, sf::RenderWindow* window, sf::Color color);
+        ~Bullet();
+        std::array<float, 2> getPosition();
+        void updateKinematicProperties();
         void draw();
 };
 
