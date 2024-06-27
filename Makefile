@@ -225,6 +225,30 @@ src/GameEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Asteroids.dir/build.make CMakeFiles/Asteroids.dir/src/GameEngine.cpp.s
 .PHONY : src/GameEngine.cpp.s
 
+src/GameObject.o: src/GameObject.cpp.o
+.PHONY : src/GameObject.o
+
+# target to build an object file
+src/GameObject.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Asteroids.dir/build.make CMakeFiles/Asteroids.dir/src/GameObject.cpp.o
+.PHONY : src/GameObject.cpp.o
+
+src/GameObject.i: src/GameObject.cpp.i
+.PHONY : src/GameObject.i
+
+# target to preprocess a source file
+src/GameObject.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Asteroids.dir/build.make CMakeFiles/Asteroids.dir/src/GameObject.cpp.i
+.PHONY : src/GameObject.cpp.i
+
+src/GameObject.s: src/GameObject.cpp.s
+.PHONY : src/GameObject.s
+
+# target to generate assembly for a file
+src/GameObject.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Asteroids.dir/build.make CMakeFiles/Asteroids.dir/src/GameObject.cpp.s
+.PHONY : src/GameObject.cpp.s
+
 src/Player.o: src/Player.cpp.o
 .PHONY : src/Player.o
 
@@ -294,6 +318,9 @@ help:
 	@echo "... src/GameEngine.o"
 	@echo "... src/GameEngine.i"
 	@echo "... src/GameEngine.s"
+	@echo "... src/GameObject.o"
+	@echo "... src/GameObject.i"
+	@echo "... src/GameObject.s"
 	@echo "... src/Player.o"
 	@echo "... src/Player.i"
 	@echo "... src/Player.s"

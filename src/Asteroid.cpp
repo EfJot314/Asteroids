@@ -24,6 +24,7 @@ Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::
 Asteroid::~Asteroid(){};
 
 void Asteroid::shapeFormation(){
+    boundR = 0;
     float alpha = 0;
     float deltaAlpha = 2 * M_PI / (float)asteroidShapeN;
     shape.setPointCount(asteroidShapeN);
@@ -33,6 +34,11 @@ void Asteroid::shapeFormation(){
         r += r * deltaRFactor;
         shape.setPoint(i, sf::Vector2f(r * cos(alpha), r * sin(alpha)));
         alpha += deltaAlpha;
+
+        //check bound radius
+        if(r > boundR){
+            boundR = r;
+        }
     }
     shape.setFillColor(sf::Color::Transparent);
     shape.setOutlineThickness(lineThickness);
@@ -74,47 +80,6 @@ void Asteroid::randomPlacement(){
     //rotation
     this->rotationSpeed = (rand() % asteroidMaxRotationSpeed);
 }
-
-void Asteroid::updatePositionOnWindow(){
-    //in the future here will be setting x,y connected with actual width, height and zoom of the window
-    int width = window->getSize().x;
-    int height = window->getSize().y;
-    x = (int)position[0]/scaler;
-    y = (int)position[1]/scaler;
-};
-
-
-std::array<float,2> Asteroid::getPosition(){
-    return std::array<float, 2>{position[0], position[1]};
-}
-
-void Asteroid::borderJump(){
-    //window size
-    int width = window->getSize().x;
-    int height = window->getSize().y;
-    //OX
-    if(x < 0 && velocity[0] < 0){
-        position[0] = width * scaler;
-    }
-    else if(x > width && velocity[0] > 0){
-        position[0] = 0;
-    }
-    //OY
-    if(y < 0 && velocity[1] < 0){
-        position[1] = height * scaler;
-    }
-    else if(y > height && velocity[1] > 0){
-        position[1] = 0;
-    }
-}
-
-
-void Asteroid::updateKinematicProperties(){
-    //update position
-    position[0] += velocity[0] * deltaTime;
-    position[1] += velocity[1] * deltaTime;
-}
-
 
 void Asteroid::draw(){
     //update position of player on window

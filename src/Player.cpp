@@ -10,6 +10,7 @@ Player::Player(sf::RenderWindow* window, sf::Color color){
     this->position[1] = window->getSize().y/2 * scaler;
     this->velocity[0] = 0;
     this->velocity[1] = 0;
+    shapeFormation();
 };
 
 Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf::Color color){
@@ -21,42 +22,11 @@ Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf:
     this->velocity[1] = velocity[1];
     this->acceleration[0] = 0;
     this->acceleration[1] = 0;
+    shapeFormation();
 };
 
 Player::~Player(){};
 
-void Player::updatePositionOnWindow(){
-    //in the future here will be setting x,y connected with actual width, height and zoom of the window
-    int width = window->getSize().x;
-    int height = window->getSize().y;
-    x = (int)position[0]/scaler;
-    y = (int)position[1]/scaler;
-};
-
-
-std::array<float,2> Player::getPosition(){
-    return std::array<float, 2>{position[0], position[1]};
-}
-
-void Player::borderJump(){
-    //window size
-    int width = window->getSize().x;
-    int height = window->getSize().y;
-    //OX
-    if(x < 0 && velocity[0] < 0){
-        position[0] = width * scaler;
-    }
-    else if(x > width && velocity[0] > 0){
-        position[0] = 0;
-    }
-    //OY
-    if(y < 0 && velocity[1] < 0){
-        position[1] = height * scaler;
-    }
-    else if(y > height && velocity[1] > 0){
-        position[1] = 0;
-    }
-}
 
 void Player::accelerate(float acceleration){
     this->acceleration[0] = acceleration * sin(rotation * M_PI/ 180.0);
@@ -80,20 +50,16 @@ void Player::rotate(int direction){
     //right
     if(direction > 0){
         rotation += rotation_speed;
+        shape.rotate(rotation_speed);
     }
     //left
     else{
         rotation -= rotation_speed;
+        shape.rotate(-rotation_speed);
     }
 }
 
-void Player::draw(){
-    //update position of player on window
-    updatePositionOnWindow();
-
-    //eventually border jump
-    borderJump();
-
+void Player::shapeFormation(){
     //factors
     float body_len_factor = 7.0/8.0;
     float body_width_factor = 2.0/3.0;
@@ -107,7 +73,6 @@ void Player::draw(){
     float engine_width_1 = engine_width_factor_1 * playerLen;
     float engine_width_2 = engine_width_factor_2 * playerLen;
     //creating player shape
-    sf::ConvexShape shape;
     shape.setPointCount(7);
     shape.setPoint(0, sf::Vector2f(0, -body_len*2/3));    
     shape.setPoint(1, sf::Vector2f(body_width/2, body_len*1/3));
@@ -120,13 +85,11 @@ void Player::draw(){
     //shape properties
     shape.setFillColor(color);
     shape.scale(1/scaler, 1/scaler);
-    shape.setPosition((int)(x), (int)(y));
-    shape.rotate(rotation);
 
-    //drawing on the window
-    window->draw(shape);
-
+    //bound radius
+    boundR = sqrt(playerLen*playerLen + body_width*body_width) / 2;
 }
+
 
 Bullet* Player::shoot(){
     return new Bullet(this, this->rotation, this->window, this->color);

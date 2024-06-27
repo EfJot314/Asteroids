@@ -15,21 +15,31 @@ class Player;
 
 
 
-
-class Asteroid{
-    private:
+class GameObject{
+    protected:
         int x;
         int y;
-        int hp = 3;
         float position[2];
         float velocity[2];
+        float boundR = 0;
         sf::ConvexShape shape;
-        float rotation = 0;
-        float rotationSpeed;
         sf::Color color;
         sf::RenderWindow* window;
         void updatePositionOnWindow();
         void borderJump();
+    public:
+        std::array<float, 2> getPosition();
+        float getBoundRadius();
+        void updateKinematicProperties();
+        void draw();
+};
+
+
+class Asteroid : public GameObject{
+    private:
+        int hp = 3;
+        float rotation = 0;
+        float rotationSpeed;
         void randomPlacement();
         void shapeFormation();
     public:
@@ -37,61 +47,43 @@ class Asteroid{
         Asteroid(sf::RenderWindow* window, sf::Color color);
         Asteroid(float positon[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color);
         ~Asteroid();
-        std::array<float, 2> getPosition();
-        void updateKinematicProperties();
         void draw();
 };
 
 
 
-class Player{
+class Player : public GameObject{
     private:
-        int x;
-        int y;
-        float position[2];
-        float velocity[2];
         float acceleration[2];
         float rotation = 0;
-        sf::Color color;
-        sf::RenderWindow* window;
-        void updatePositionOnWindow();
-        void borderJump();
+        void shapeFormation();
+
     public:
         Player();
         Player(sf::RenderWindow* window, sf::Color color);
         Player(float positon[], float velocity[], sf::RenderWindow* window, sf::Color color);
         ~Player();
-        std::array<float, 2> getPosition();
         void accelerate(float acceleration);
         void updateKinematicProperties();
         void rotate(int direction);
-        void draw();
         Bullet* shoot();
 };
 
 
 
-class Bullet{
+class Bullet : public GameObject{
     private:
-        int x;
-        int y;
-        float position[2];
-        float velocity[2];
         float distance = 0.0f;
-        sf::ConvexShape shape;
-        sf::Color color;
-        sf::RenderWindow* window;
         Player* player;
-        void updatePositionOnWindow();
-        void borderJump();
+        void shapeFormation();
     public:
         Bullet();
         Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
         ~Bullet();
-        std::array<float, 2> getPosition();
-        void updateKinematicProperties();
-        void draw();
 };
+
+
+
 
 
 
