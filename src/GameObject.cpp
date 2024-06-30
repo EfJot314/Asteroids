@@ -61,3 +61,19 @@ void GameObject::draw(){
 float GameObject::getBoundRadius(){
     return boundR;
 }
+
+int GameObject::getDamage(){
+    return damage;
+}
+
+int GameObject::getHp(){
+    return this->hp;
+}
+
+bool GameObject::isDead(){
+    return (this->hp <= 0);
+}
+
+void GameObject::hit(int dmg){
+    this->hp -= dmg;
+}

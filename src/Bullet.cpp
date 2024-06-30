@@ -46,7 +46,7 @@ bool Bullet::detectCollisions(std::vector<Asteroid*> asteroids){
         float radius_sum_sq = (asteroids[i]->getBoundRadius() + this->boundR) * (asteroids[i]->getBoundRadius() + this->boundR);
         //if they are close enough, then check collision
         if(distance_sq < radius_sum_sq){
-            //TODO
+            asteroids[i]->hit(this->damage);
             collided = true;
         }
     }

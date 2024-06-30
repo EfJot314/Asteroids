@@ -7,12 +7,15 @@ Player::Player(sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
 
-    this->hp = 100; //TODO
+    this->hp = 100;
 
     this->position[0] = window->getSize().x/2 * scaler;
     this->position[1] = window->getSize().y/2 * scaler;
     this->velocity[0] = 0;
     this->velocity[1] = 0;
+    this->acceleration[0] = 0;
+    this->acceleration[1] = 0;
+
     shapeFormation();
 };
 
@@ -20,7 +23,7 @@ Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf:
     this->window = window;
     this->color = color;
 
-    this->hp = 100; //TODO
+    this->hp = 100;
 
     this->position[0] = position[0];
     this->position[1] = position[1];
@@ -28,6 +31,7 @@ Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf:
     this->velocity[1] = velocity[1];
     this->acceleration[0] = 0;
     this->acceleration[1] = 0;
+
     shapeFormation();
 };
 

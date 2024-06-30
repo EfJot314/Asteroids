@@ -7,6 +7,7 @@
 #include "constants.h"
 
 //declare classes
+class GameObject;
 class Asteroid;
 class Bullet;
 class Game;
@@ -18,6 +19,7 @@ class Player;
 class GameObject{
     protected:
         int hp = 1;
+        int damage = 1;
         int x;
         int y;
         float position[2];
@@ -31,9 +33,14 @@ class GameObject{
     public:
         std::array<float, 2> getPosition();
         float getBoundRadius();
+        int getDamage();
+        int getHp();
+        bool isDead();
         void updateKinematicProperties();
         void draw();
+        void hit(int dmg);
 };
+
 
 
 class Asteroid : public GameObject{
@@ -86,14 +93,13 @@ class Bullet : public GameObject{
 
 
 
-
-
-
 class GameEngine{
     private:
         Player* player;
         std::vector<Asteroid*> asteroids;
         std::vector<Bullet*> bullets;
+        void checkAndRemoveAsteroids();
+        void checkAndRemoveBullets();
     public:
         GameEngine();
         GameEngine(Player* player);
