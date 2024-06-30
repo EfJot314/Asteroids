@@ -97,5 +97,17 @@ Bullet* Player::shoot(){
 
 
 bool Player::detectCollisions(std::vector<Asteroid*> asteroids){
-    return false;
+    bool collided = false;
+    for(int i=0;i<asteroids.size();i++){
+        //check if objects are close enough to each other
+        std::array<float, 2> asteroid_position = asteroids[i]->getPosition();
+        float distance_sq = (asteroid_position[0] - this->position[0])*(asteroid_position[0] - this->position[0]) + (asteroid_position[1] - this->position[1])*(asteroid_position[1] - this->position[1]);
+        float radius_sum_sq = (asteroids[i]->getBoundRadius() + this->boundR) * (asteroids[i]->getBoundRadius() + this->boundR);
+        //if they are close enough, then check collision
+        if(distance_sq < radius_sum_sq){
+            //TODO
+            collided = true;
+        }
+    }
+    return collided;
 }
