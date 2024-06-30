@@ -18,11 +18,11 @@ bool isDeadBullet(Bullet* b){
 }
 
 void GameEngine::checkAndRemoveAsteroids(){
-    std::remove_if(this->asteroids.begin(), this->asteroids.end(), isDeadAsteroid);
+    asteroids.erase(std::remove_if(this->asteroids.begin(), this->asteroids.end(), isDeadAsteroid));
 };
 
 void GameEngine::checkAndRemoveBullets(){
-    std::remove_if(this->bullets.begin(), this->bullets.end(), isDeadBullet);
+    bullets.erase(std::remove_if(this->bullets.begin(), this->bullets.end(), isDeadBullet));
 }
 
 void GameEngine::moveAll(){
@@ -70,13 +70,13 @@ void GameEngine::addBullet(Bullet* bullet){
 void GameEngine::checkCollisions(){
     //player collisions
     if(this->player->detectCollisions(this->asteroids)){
-        std::cout<<"Player collision"<<std::endl;
+        // std::cout<<"Player collision"<<std::endl;
         checkAndRemoveAsteroids();
     }
     //bullet collisions
     for(int i=0;i<this->bullets.size();i++){
         if(bullets[i]->detectCollisions(this->asteroids)){
-            std::cout<<"Bullet collision"<<std::endl;
+            // std::cout<<"Bullet collision"<<std::endl;
             checkAndRemoveAsteroids();
             checkAndRemoveBullets();
         }
