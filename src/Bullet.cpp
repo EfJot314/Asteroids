@@ -34,4 +34,9 @@ void Bullet::shapeFormation(){
 }
 
 
+bool Bullet::detectCollisions(std::vector<Asteroid*> asteroids){
+    return false;
+}
+
+
 

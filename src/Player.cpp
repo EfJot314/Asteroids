@@ -96,3 +96,6 @@ Bullet* Player::shoot(){
 }
 
 
+bool Player::detectCollisions(std::vector<Asteroid*> asteroids){
+    return false;
+}
