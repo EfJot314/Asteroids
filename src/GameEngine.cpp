@@ -51,3 +51,15 @@ void GameEngine::addBullet(Bullet* bullet){
     this->bullets.push_back(bullet);
 }
 
+void GameEngine::checkCollisions(){
+    //player collisions
+    if(this->player->detectCollisions(this->asteroids)){
+        std::cout<<"Player collision"<<std::endl;
+    }
+    //bullet collisions
+    for(int i=0;i<this->bullets.size();i++){
+        if(bullets[i]->detectCollisions(this->asteroids)){
+            std::cout<<"Bullet collision"<<std::endl;
+        }
+    }
+}

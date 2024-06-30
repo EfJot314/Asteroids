@@ -69,6 +69,9 @@ void Game::run(){
         //moving all objects
         ge.moveAll();
 
+        //collisions
+        ge.checkCollisions();
+
         //increment counters
         asteroidCounter++;
         bulletCounter++;
