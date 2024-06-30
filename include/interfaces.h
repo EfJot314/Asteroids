@@ -17,6 +17,7 @@ class Player;
 
 class GameObject{
     protected:
+        int hp = 1;
         int x;
         int y;
         float position[2];
@@ -37,7 +38,6 @@ class GameObject{
 
 class Asteroid : public GameObject{
     private:
-        int hp = 3;
         float rotation = 0;
         float rotationSpeed;
         void randomPlacement();

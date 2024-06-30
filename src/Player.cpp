@@ -6,6 +6,9 @@ Player::Player(){};
 Player::Player(sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
+
+    this->hp = 100; //TODO
+
     this->position[0] = window->getSize().x/2 * scaler;
     this->position[1] = window->getSize().y/2 * scaler;
     this->velocity[0] = 0;
@@ -16,6 +19,9 @@ Player::Player(sf::RenderWindow* window, sf::Color color){
 Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
+
+    this->hp = 100; //TODO
+
     this->position[0] = position[0];
     this->position[1] = position[1];
     this->velocity[0] = velocity[0];

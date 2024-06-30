@@ -6,6 +6,9 @@ Asteroid::Asteroid(){};
 Asteroid::Asteroid(sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
+
+    this->hp = 3;
+
     randomPlacement();
     shapeFormation();
 };
@@ -13,6 +16,9 @@ Asteroid::Asteroid(sf::RenderWindow* window, sf::Color color){
 Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
+
+    this->hp = 3;
+
     this->position[0] = position[0];
     this->position[1] = position[1];
     this->velocity[0] = velocity[0];
