@@ -33,4 +33,9 @@ void FireObject::shapeFormation(){
 
 void FireObject::updateKinematicProperties(){
     GameObject::updateKinematicProperties();
+    this->distance += std::sqrt(std::pow(this->velocity[0] * deltaTime , 2) + std::pow(this->velocity[1] * deltaTime , 2));
+    //destroy fire object after max distance
+    if(this->distance > fireMaxDistance){
+        this->hp = 0;
+    }
 }

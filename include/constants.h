@@ -33,9 +33,11 @@
 //max bullet distance
 #define bulletMaxDistance 1600.0f
 //max fire angle
-#define fireMaxAngleDeg 10
+#define fireMaxAngleDeg 30
 //fire size
-#define fireSize 20.0f
+#define fireSize 30.0f
 //fire velocity
-#define fireVelocity 30.0f
+#define fireVelocity 5.0f
+//max fire distance
+#define fireMaxDistance 50.0f
 

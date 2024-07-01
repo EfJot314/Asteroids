@@ -39,10 +39,10 @@ void GameEngine::moveAll(){
 };
 
 void GameEngine::drawAll(){
-    //player
-    player->draw();
     //fire
     player->drawFire();
+    //player
+    player->draw();
     //asteroids
     for(int i=0;i<this->asteroids.size();i++){
         asteroids[i]->draw();
