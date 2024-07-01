@@ -42,10 +42,10 @@ bool Bullet::detectCollisions(std::vector<Asteroid*> asteroids){
     for(int i=0;i<asteroids.size();i++){
         //check if objects are close enough to each other
         std::array<float, 2> asteroid_position = asteroids[i]->getPosition();
-        float distance_sq = (asteroid_position[0] - this->position[0])*(asteroid_position[0] - this->position[0]) + (asteroid_position[1] - this->position[1])*(asteroid_position[1] - this->position[1]);
-        float radius_sum_sq = (asteroids[i]->getBoundRadius() + this->boundR) * (asteroids[i]->getBoundRadius() + this->boundR);
+        float center_distance = std::pow(asteroid_position[0] - this->position[0], 2) + std::pow(asteroid_position[1] - this->position[1], 2);
+        float radius_sum = std::pow(asteroids[i]->getBoundRadius() + this->boundR, 2);
         //if they are close enough, then check collision
-        if(distance_sq < radius_sum_sq){
+        if(center_distance < radius_sum){
             asteroids[i]->hit(this->damage);
             this->hit(1);
             collided = true;

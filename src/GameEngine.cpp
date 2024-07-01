@@ -77,7 +77,4 @@ void GameEngine::checkCollisions(){
             checkAndRemoveBullets();
         }
     }
-
-    checkAndRemoveAsteroids();
-    checkAndRemoveBullets();
 }
