@@ -31,5 +31,5 @@
 //time between shoots (in seconds)
 #define bulletDelay 0.2f
 //max bullet distance
-#define bulletMaxDistance 1500.0f
+#define bulletMaxDistance 1600.0f
 

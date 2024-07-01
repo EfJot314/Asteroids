@@ -13,6 +13,7 @@ class Bullet;
 class Game;
 class GameEngine;
 class Player;
+class FireObject;
 
 
 
@@ -90,6 +91,20 @@ class Bullet : public GameObject{
         ~Bullet();
         void updateKinematicProperties();
         bool detectCollisions(std::vector<Asteroid*> asteroids);
+};
+
+
+
+class FireObject : public GameObject{
+    private:
+        float distance = 0.0f;
+        Player* player;
+        void shapeFormation();
+    public:
+        FireObject();
+        FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
+        ~FireObject();
+        void updateKinematicProperties();
 };
 
 
