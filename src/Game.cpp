@@ -20,7 +20,7 @@ Game::Game(int width, int height){
     ge = GameEngine();
 
     //add player
-    ge.addPlayer(new Player(window, sf::Color(128,128,128)));
+    ge.addPlayer(new Player(window, GRAY));
 };
 
 Game::~Game(){};
@@ -80,7 +80,7 @@ void Game::run(){
 
         //generate new asteroid every 3 sec
         if(asteroidCounter >= 3.0f * FPS){
-            Asteroid* asteroid = new Asteroid(window, sf::Color::Blue);
+            Asteroid* asteroid = new Asteroid(window, BLUE);
             ge.addAsteroid(asteroid);
             asteroidCounter = 0;
         }

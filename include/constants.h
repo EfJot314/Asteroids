@@ -1,3 +1,6 @@
+//colors
+#include "colors.h"
+
 //real_distance = pixel_distance * scaler
 #define scaler 5.0f
 //time between two frames
@@ -33,7 +36,7 @@
 //max bullet distance
 #define bulletMaxDistance 1600.0f
 //max fire angle
-#define fireMaxAngleDeg 90
+#define fireMaxAngleDeg 40
 //fire size
 #define fireSize 40.0f
 //fire velocity

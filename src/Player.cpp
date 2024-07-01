@@ -57,8 +57,8 @@ void Player::updateKinematicProperties(){
 }
 
 void Player::createFire(){
-    float fireRotation = this->rotation + ((float)((rand() % (2*fireMaxAngleDeg)) - fireMaxAngleDeg)) * M_PI / 180.0f;
-    FireObject* newFire = new FireObject(this, fireRotation, this->window, sf::Color::Red);
+    float fireRotation = this->rotation + (float)((rand() % (2*fireMaxAngleDeg)) - fireMaxAngleDeg);
+    FireObject* newFire = new FireObject(this, fireRotation, this->window, RED);
     addNewFire(newFire);
 }
 
