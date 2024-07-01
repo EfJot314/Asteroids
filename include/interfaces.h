@@ -73,13 +73,15 @@ class Player : public GameObject{
         Player(sf::RenderWindow* window, sf::Color color);
         Player(float positon[], float velocity[], sf::RenderWindow* window, sf::Color color);
         ~Player();
+        bool detectCollisions(std::vector<Asteroid*> asteroids);
         void accelerate(float acceleration);
+        void rotate(int direction);
         void updateKinematicProperties();
         void updateFireKinematicProperties();
         void drawFire();
-        void rotate(int direction);
+        void createFire();
         Bullet* shoot();
-        bool detectCollisions(std::vector<Asteroid*> asteroids);
+        std::array<float, 2> getEnginePosition();
 };
 
 

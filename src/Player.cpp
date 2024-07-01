@@ -54,8 +54,10 @@ void Player::updateKinematicProperties(){
     this->acceleration[0] = 0;
     this->acceleration[1] = 0;
 
-    //new fire
-    float fireRotation = ((float)((rand() % (2*fireMaxAngleDeg)) - fireMaxAngleDeg)) * M_PI / 180.0f;
+}
+
+void Player::createFire(){
+    float fireRotation = this->rotation + ((float)((rand() % (2*fireMaxAngleDeg)) - fireMaxAngleDeg)) * M_PI / 180.0f;
     FireObject* newFire = new FireObject(this, fireRotation, this->window, sf::Color::Red);
     addNewFire(newFire);
 }
@@ -150,4 +152,11 @@ bool Player::detectCollisions(std::vector<Asteroid*> asteroids){
         }
     }
     return collided;
+}
+
+
+std::array<float, 2> Player::getEnginePosition(){
+    float xp = position[0] + sin(this->rotation);
+    float yp = position[1] + cos(this->rotation);
+    return std::array<float, 2>{xp, yp};
 }

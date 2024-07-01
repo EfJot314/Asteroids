@@ -56,6 +56,7 @@ void Game::run(){
     //main loop
     int asteroidCounter = 0;
     int bulletCounter = 0;
+    int fireCounter = 0;
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
     while(gameFlag){
 
@@ -75,6 +76,7 @@ void Game::run(){
         //increment counters
         asteroidCounter++;
         bulletCounter++;
+        fireCounter++;
 
         //generate new asteroid every 3 sec
         if(asteroidCounter >= 3.0f * FPS){
@@ -102,6 +104,12 @@ void Game::run(){
             Player* player = ge.getPlayer();
             ge.addBullet(player->shoot());
             bulletCounter = 0;
+        }
+        //fire
+        if(fireCounter >= fireDelay * FPS){
+            Player* player = ge.getPlayer();
+            player->createFire();
+            fireCounter = 0;
         }
         
         //handle events  

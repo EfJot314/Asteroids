@@ -8,11 +8,11 @@ FireObject::FireObject(Player* player, float rotation, sf::RenderWindow* window,
 
     this->player = player;
 
-    this->position[0] = player->getPosition()[0];
-    this->position[1] = player->getPosition()[1];
+    this->position[0] = player->getEnginePosition()[0];
+    this->position[1] = player->getEnginePosition()[1];
     
     this->velocity[0] = -1 * fireVelocity * sin(rotation * M_PI / 180.0f);
-    this->velocity[1] = fireVelocity * cos(rotation * M_PI / 180.0f);
+    this->velocity[1] = 1 * fireVelocity * cos(rotation * M_PI / 180.0f);
 
     shapeFormation();
 
