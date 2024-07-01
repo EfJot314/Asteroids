@@ -24,6 +24,8 @@ void GameEngine::checkAndRemoveBullets(){
 void GameEngine::moveAll(){
     //player
     player->updateKinematicProperties();
+    //fire
+    player->updateFireKinematicProperties();
     //asteroids
     for(int i=0;i<this->asteroids.size();i++){
         asteroids[i]->updateKinematicProperties();
@@ -39,6 +41,8 @@ void GameEngine::moveAll(){
 void GameEngine::drawAll(){
     //player
     player->draw();
+    //fire
+    player->drawFire();
     //asteroids
     for(int i=0;i<this->asteroids.size();i++){
         asteroids[i]->draw();
