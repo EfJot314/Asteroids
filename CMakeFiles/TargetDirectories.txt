@@ -1,3 +1,0 @@
-/home/filipjedrzejewski/cpp/Asteroids/CMakeFiles/Asteroids.dir
-/home/filipjedrzejewski/cpp/Asteroids/CMakeFiles/edit_cache.dir
-/home/filipjedrzejewski/cpp/Asteroids/CMakeFiles/rebuild_cache.dir
