@@ -20,7 +20,7 @@ Game::Game(int width, int height){
     ge = GameEngine();
 
     //add player
-    ge.addPlayer(new Player(window, sf::Color::Red));
+    ge.addPlayer(new Player(window, sf::Color(128,128,128)));
 };
 
 Game::~Game(){};
