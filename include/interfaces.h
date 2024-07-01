@@ -64,8 +64,10 @@ class Player : public GameObject{
     private:
         float acceleration[2];
         float rotation = 0;
+        std::vector<FireObject*> fire;
         void shapeFormation();
-
+        void addNewFire(FireObject* fireObject);
+        void checkAndRemoveFire();
     public:
         Player();
         Player(sf::RenderWindow* window, sf::Color color);
@@ -73,6 +75,8 @@ class Player : public GameObject{
         ~Player();
         void accelerate(float acceleration);
         void updateKinematicProperties();
+        void updateFireKinematicProperties();
+        void drawFire();
         void rotate(int direction);
         Bullet* shoot();
         bool detectCollisions(std::vector<Asteroid*> asteroids);

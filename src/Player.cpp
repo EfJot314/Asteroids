@@ -53,6 +53,36 @@ void Player::updateKinematicProperties(){
     //reset acceleration
     this->acceleration[0] = 0;
     this->acceleration[1] = 0;
+
+    //new fire
+    float fireRotation = ((float)((rand() % (2*fireMaxAngleDeg)) - fireMaxAngleDeg)) * M_PI / 180.0f;
+    FireObject* newFire = new FireObject(this, fireRotation, this->window, sf::Color::Red);
+    addNewFire(newFire);
+}
+
+void Player::addNewFire(FireObject* fireObject){
+    this->fire.push_back(fireObject);
+}
+
+bool isDeadObject(GameObject* o){
+    return o->isDead();
+}
+
+void Player::checkAndRemoveFire(){
+    this->fire.erase(std::remove_if(this->fire.begin(), this->fire.end(), isDeadObject), this->fire.end());
+}
+
+void Player::updateFireKinematicProperties(){
+    for(int i=0;i<this->fire.size();i++){
+        fire[i]->updateKinematicProperties();
+    }
+    checkAndRemoveFire();
+}
+
+void Player::drawFire(){
+    for(int i=0;i<this->fire.size();i++){
+        fire[i]->draw();
+    }
 }
 
 void Player::rotate(int direction){
