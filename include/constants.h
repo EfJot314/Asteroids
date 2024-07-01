@@ -32,4 +32,8 @@
 #define bulletDelay 0.2f
 //max bullet distance
 #define bulletMaxDistance 1600.0f
+//fire size
+#define fireSize 20.0f
+//fire velocity
+#define fireVelocity 30.0f
 
