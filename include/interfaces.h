@@ -103,12 +103,13 @@ class Bullet : public GameObject{
 
 class FireObject : public GameObject{
     private:
+        sf::Color fillingColor;
         float distance = 0.0f;
         Player* player;
         void shapeFormation();
     public:
         FireObject();
-        FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
+        FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color1, sf::Color color2);
         ~FireObject();
         void updateKinematicProperties();
 };
