@@ -47,8 +47,8 @@ void Player::updateKinematicProperties(){
     //update position
     velocity[0] += acceleration[0] * deltaTime;
     velocity[1] += acceleration[1] * deltaTime;
-    position[0] += velocity[0] * deltaTime;
-    position[1] += velocity[1] * deltaTime;
+
+    GameObject::updateKinematicProperties();
 
     //reset acceleration
     this->acceleration[0] = 0;

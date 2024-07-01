@@ -88,6 +88,7 @@ class Bullet : public GameObject{
         Bullet();
         Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
         ~Bullet();
+        void updateKinematicProperties();
         bool detectCollisions(std::vector<Asteroid*> asteroids);
 };
 

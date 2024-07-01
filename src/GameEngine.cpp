@@ -32,6 +32,8 @@ void GameEngine::moveAll(){
     for(int i=0;i<this->bullets.size();i++){
         bullets[i]->updateKinematicProperties();
     }
+    //remove dead bullets
+    checkAndRemoveBullets();
 };
 
 void GameEngine::drawAll(){
