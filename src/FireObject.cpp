@@ -36,11 +36,12 @@ void FireObject::shapeFormation(){
     this->shape.setFillColor(this->color);
 };
 
-void FireObject::updateKinematicProperties(){
-    GameObject::updateKinematicProperties();
-    this->distance += std::sqrt(std::pow(this->velocity[0] * deltaTime , 2) + std::pow(this->velocity[1] * deltaTime , 2));
-    //destroy fire object after max distance
-    if(this->distance > fireMaxDistance){
+
+bool FireObject::incrementAndCheckDuration(int FPS){
+    this->durationCounter++;
+    if(this->durationCounter >= fireDuration * FPS){
         this->hp = 0;
+        return true;
     }
+    return false;
 }

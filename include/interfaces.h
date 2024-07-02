@@ -83,6 +83,7 @@ class Player : public GameObject{
         Bullet* shoot();
         std::array<float, 2> getEnginePosition();
         std::array<float, 2> getVelocity();
+        void updateFire(int FPS);
 };
 
 
@@ -104,15 +105,15 @@ class Bullet : public GameObject{
 
 class FireObject : public GameObject{
     private:
+        int durationCounter = 0;
         sf::Color fillingColor;
-        float distance = 0.0f;
         Player* player;
         void shapeFormation();
     public:
         FireObject();
         FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color1, sf::Color color2);
         ~FireObject();
-        void updateKinematicProperties();
+        bool incrementAndCheckDuration(int FPS);
 };
 
 

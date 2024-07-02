@@ -105,12 +105,16 @@ void Game::run(){
             ge.addBullet(player->shoot());
             bulletCounter = 0;
         }
-        //fire
+        //fire creation
         if(fireCounter >= fireDelay * FPS){
             Player* player = ge.getPlayer();
             player->createFire();
             fireCounter = 0;
         }
+        //fire update
+        Player* player = ge.getPlayer();
+        player->updateFire(FPS);
+        
         
         //handle events  
         sf::Event event;

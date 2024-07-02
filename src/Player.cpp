@@ -87,6 +87,18 @@ void Player::drawFire(){
     }
 }
 
+void Player::updateFire(int FPS){
+    bool checkAndRemove = false;
+    for(int i=0;i<this->fire.size();i++){
+        if(fire[i]->incrementAndCheckDuration(FPS)){
+            checkAndRemove = true;
+        }
+    }
+    if(checkAndRemove){
+        checkAndRemoveFire();
+    }
+}
+
 void Player::rotate(int direction){
     float rotation_speed = 7.0;
     //right
@@ -164,3 +176,4 @@ std::array<float, 2> Player::getEnginePosition(){
 std::array<float, 2> Player::getVelocity(){
     return std::array<float, 2>{velocity[0], velocity[1]};
 }
+
