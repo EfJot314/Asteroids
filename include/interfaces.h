@@ -82,6 +82,7 @@ class Player : public GameObject{
         void createFire();
         Bullet* shoot();
         std::array<float, 2> getEnginePosition();
+        std::array<float, 2> getVelocity();
 };
 
 

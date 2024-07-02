@@ -160,3 +160,7 @@ std::array<float, 2> Player::getEnginePosition(){
     float yp = position[1] + cos(this->rotation);
     return std::array<float, 2>{xp, yp};
 }
+
+std::array<float, 2> Player::getVelocity(){
+    return std::array<float, 2>{velocity[0], velocity[1]};
+}
