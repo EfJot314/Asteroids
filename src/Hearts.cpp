@@ -36,7 +36,7 @@ void Hearts::createHearts(){
 }
 
 void Hearts::draw(){
-    for(Heart heart : this->hearts){
-        heart.draw();
+    for(int i=0;i<this->hearts.size();i++){
+        this->hearts[i].draw();
     }
 }

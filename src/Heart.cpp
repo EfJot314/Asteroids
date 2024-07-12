@@ -9,6 +9,8 @@ Heart::Heart(sf::RenderWindow* window, int x, int y){
     this->color = RED;
 
     shapeFormation();
+
+    this->shape.setPosition(x, y);
 }
 
 Heart::~Heart(){}
@@ -18,9 +20,9 @@ void Heart::shapeFormation(){
 
     shape.setPointCount(4);
     shape.setPoint(0, sf::Vector2f(halfSize, -halfSize));
-    shape.setPoint(0, sf::Vector2f(halfSize, halfSize));
-    shape.setPoint(0, sf::Vector2f(-halfSize, halfSize));
-    shape.setPoint(0, sf::Vector2f(-halfSize, -halfSize));
+    shape.setPoint(1, sf::Vector2f(halfSize, halfSize));
+    shape.setPoint(2, sf::Vector2f(-halfSize, halfSize));
+    shape.setPoint(3, sf::Vector2f(-halfSize, -halfSize));
 
     shape.setFillColor(this->color);
     shape.scale(1/scaler, 1/scaler);

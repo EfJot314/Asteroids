@@ -16,6 +16,7 @@ class GameEngine;
 class Player;
 class FireObject;
 class Heart;
+class Hearts;
 
 
 
@@ -113,6 +114,7 @@ class Player : public KinematicObject{
         void rotate(int direction);
         void updateKinematicProperties();
         void updateFireKinematicProperties();
+        void draw();
         void drawFire();
         void createFire();
         Bullet* shoot();

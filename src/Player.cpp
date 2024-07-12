@@ -26,7 +26,7 @@ Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf:
     this->color = color;
 
     this->hp = 3;
-    
+
     this->hearts = Hearts(this->window, this->hp);
 
     this->position[0] = position[0];
@@ -83,6 +83,11 @@ void Player::updateFireKinematicProperties(){
         fire[i]->updateKinematicProperties();
     }
     checkAndRemoveFire();
+}
+
+void Player::draw(){
+    this->hearts.draw();
+    KinematicObject::draw();
 }
 
 void Player::drawFire(){
