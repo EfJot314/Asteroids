@@ -15,5 +15,12 @@ To start the game, run:
 ```
 ./Asteroids
 ```
+## How to play?
+### Rotating
+To rotate a rocket, use ```a``` and ```d``` keys.
+### Accelerating
+To accelerate, use ```w``` key.
+### Shooting
+To shoot, press ```SPACE``` key.
 
-# The application is not finished!
+# The application is not finished yet!
