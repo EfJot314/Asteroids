@@ -36,23 +36,20 @@ class Heart : public VisualObject{
         void shapeFormation();
     public:
         Heart();
-        Heart(sf::RenderWindow* window, int x, int y);
+        Heart(sf::RenderWindow* window, sf::Color color, int x, int y);
         ~Heart();
         void makeEmpty();
 };
 
-class Hearts{
+class Hearts : public VisualObject{
     private:
         int n;
-        int x;
-        int y;
-        sf::RenderWindow* window;
         std::vector<Heart> hearts;
         void createHearts();
     public:
         Hearts();
-        Hearts(sf::RenderWindow* window, int n);
-        Hearts(sf::RenderWindow* window, int n, int x, int y);
+        Hearts(sf::RenderWindow* window, sf::Color color, int n);
+        Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y);
         ~Hearts();
         void draw();
 };

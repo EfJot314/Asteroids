@@ -5,7 +5,7 @@ project(Asteroids)
 
 
 include_directories(./include)
-add_executable(Asteroids ./src/main.cpp ./src/Game.cpp ./src/GameEngine.cpp ./src/Player.cpp ./src/Asteroid.cpp ./src/Bullet.cpp ./src/KinematicObject.cpp ./src/VisualObject.cpp ./src/FireObject.cpp ./src/Heart.cpp ./src/Hearts.cpp)
+add_executable(Asteroids ./src/main.cpp ./src/logic/Game.cpp ./src/logic/GameEngine.cpp ./src/visual/kinematic/Player.cpp ./src/visual/kinematic/Asteroid.cpp ./src/visual/kinematic/Bullet.cpp ./src/abstract/KinematicObject.cpp ./src/abstract/VisualObject.cpp ./src/visual/kinematic/FireObject.cpp ./src/visual/Heart.cpp ./src/visual/Hearts.cpp)
 
 #SFML
 find_package(SFML COMPONENTS system window graphics) 
