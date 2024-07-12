@@ -7,7 +7,8 @@
 #include "constants.h"
 
 //declare classes
-class GameObject;
+class VisualObject;
+class KinematicObject;
 class Asteroid;
 class Bullet;
 class Game;
@@ -17,18 +18,24 @@ class FireObject;
 
 
 
-class GameObject{
+class VisualObject{
     protected:
-        int hp = 1;
-        int damage = 1;
         int x;
         int y;
-        float position[2];
-        float velocity[2];
-        float boundR = 0;
         sf::ConvexShape shape;
         sf::Color color;
         sf::RenderWindow* window;
+    public:
+        void draw();
+};
+
+class KinematicObject : public VisualObject{
+    protected:
+        int hp = 1;
+        int damage = 1;
+        float position[2];
+        float velocity[2];
+        float boundR = 0;
         void updatePositionOnWindow();
         void borderJump();
     public:
@@ -44,7 +51,7 @@ class GameObject{
 
 
 
-class Asteroid : public GameObject{
+class Asteroid : public KinematicObject{
     private:
         float rotation = 0;
         float rotationSpeed;
@@ -60,7 +67,7 @@ class Asteroid : public GameObject{
 
 
 
-class Player : public GameObject{
+class Player : public KinematicObject{
     private:
         float acceleration[2];
         float rotation = 0;
@@ -88,7 +95,7 @@ class Player : public GameObject{
 
 
 
-class Bullet : public GameObject{
+class Bullet : public KinematicObject{
     private:
         float distance = 0.0f;
         Player* player;
@@ -103,7 +110,7 @@ class Bullet : public GameObject{
 
 
 
-class FireObject : public GameObject{
+class FireObject : public KinematicObject{
     private:
         int durationCounter = 0;
         sf::Color fillingColor;

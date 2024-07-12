@@ -1,7 +1,7 @@
 #include "interfaces.h"
 
 
-void GameObject::updatePositionOnWindow(){
+void KinematicObject::updatePositionOnWindow(){
     //in the future here will be setting x,y connected with actual width, height and zoom of the window
     int width = window->getSize().x;
     int height = window->getSize().y;
@@ -10,11 +10,11 @@ void GameObject::updatePositionOnWindow(){
 };
 
 
-std::array<float,2> GameObject::getPosition(){
+std::array<float,2> KinematicObject::getPosition(){
     return std::array<float, 2>{position[0], position[1]};
 }
 
-void GameObject::borderJump(){
+void KinematicObject::borderJump(){
     //window size
     int width = window->getSize().x;
     int height = window->getSize().y;
@@ -35,14 +35,14 @@ void GameObject::borderJump(){
 }
 
 
-void GameObject::updateKinematicProperties(){
+void KinematicObject::updateKinematicProperties(){
     //update position
     position[0] += velocity[0] * deltaTime;
     position[1] += velocity[1] * deltaTime;
 }
 
 
-void GameObject::draw(){
+void KinematicObject::draw(){
     //update position of player on window
     updatePositionOnWindow();
 
@@ -53,27 +53,26 @@ void GameObject::draw(){
     shape.setPosition((int)(x), (int)(y));
 
     //drawing on the window
-    window->draw(shape);
-
+    VisualObject::draw();
 }
 
 
-float GameObject::getBoundRadius(){
+float KinematicObject::getBoundRadius(){
     return boundR;
 }
 
-int GameObject::getDamage(){
+int KinematicObject::getDamage(){
     return damage;
 }
 
-int GameObject::getHp(){
+int KinematicObject::getHp(){
     return this->hp;
 }
 
-bool GameObject::isDead(){
+bool KinematicObject::isDead(){
     return (this->hp <= 0);
 }
 
-void GameObject::hit(int dmg){
+void KinematicObject::hit(int dmg){
     this->hp -= dmg;
 }

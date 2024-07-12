@@ -37,7 +37,7 @@ void Bullet::shapeFormation(){
 }
 
 void Bullet::updateKinematicProperties(){
-    GameObject::updateKinematicProperties();
+    KinematicObject::updateKinematicProperties();
     this->distance += std::sqrt(std::pow(this->velocity[0] * deltaTime , 2) + std::pow(this->velocity[1] * deltaTime , 2));
     //destroy bullet after max distance
     if(this->distance > bulletMaxDistance){

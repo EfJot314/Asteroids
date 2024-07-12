@@ -9,7 +9,7 @@ GameEngine::GameEngine(Player* player){
 
 GameEngine::~GameEngine(){};
 
-bool isDead(GameObject* o){
+bool isDead(KinematicObject* o){
     return o->isDead();
 }
 

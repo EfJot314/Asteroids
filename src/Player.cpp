@@ -48,7 +48,7 @@ void Player::updateKinematicProperties(){
     velocity[0] += acceleration[0] * deltaTime;
     velocity[1] += acceleration[1] * deltaTime;
 
-    GameObject::updateKinematicProperties();
+    KinematicObject::updateKinematicProperties();
 
     //reset acceleration
     this->acceleration[0] = 0;
@@ -66,7 +66,7 @@ void Player::addNewFire(FireObject* fireObject){
     this->fire.push_back(fireObject);
 }
 
-bool isDeadObject(GameObject* o){
+bool isDeadObject(KinematicObject* o){
     return o->isDead();
 }
 
