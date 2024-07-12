@@ -29,7 +29,7 @@ void Hearts::createHearts(){
     float dx = -width / 2;
 
     for(int i=0;i<this->n;i++){
-        int hx = this->x + dx + i * (heartSize + heartsMargin);
+        int hx = this->x + dx + i * (heartSize + heartsMargin) + heartSize / 2;
         int hy = this->y;
         this->hearts.push_back(Heart(this->window, hx, hy));
     }
