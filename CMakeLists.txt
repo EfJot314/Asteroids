@@ -3,12 +3,33 @@ cmake_minimum_required(VERSION 3.10)
 project(Asteroids)
 
 
+#abstract files
+file(GLOB abstract_src
+    "./src/abstract/*.cpp"
+)
+
+#logic files
+file(GLOB logic_src
+    "./src/logic/*.cpp"
+)
+
+#visual files
+file(GLOB visual_src
+    "./src/visual/*.cpp"
+)
+
+#kinematic files
+file(GLOB kinematic_src
+    "./src/visual/kinematic/*.cpp"
+)
+
+
 #define includes
 include_directories(./include)
 
 #compile libraries
-add_library(LogicLib ./src/logic/Game.cpp ./src/logic/GameEngine.cpp)
-add_library(ObjectsLib ./src/abstract/VisualObject.cpp ./src/abstract/KinematicObject.cpp ./src/visual/Heart.cpp ./src/visual/Hearts.cpp ./src/visual/kinematic/Player.cpp ./src/visual/kinematic/Asteroid.cpp ./src/visual/kinematic/Bullet.cpp ./src/visual/kinematic/FireObject.cpp)
+add_library(LogicLib ${logic_src})
+add_library(ObjectsLib ${abstract_src} ${visual_src} ${kinematic_src})
 
 #create executable
 add_executable(Asteroids ./src/main.cpp)
