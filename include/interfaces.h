@@ -15,6 +15,7 @@ class Game;
 class GameEngine;
 class Player;
 class FireObject;
+class Heart;
 
 
 
@@ -26,6 +27,30 @@ class VisualObject{
         sf::Color color;
         sf::RenderWindow* window;
     public:
+        void draw();
+};
+
+class Heart : public VisualObject{
+    private:
+        void shapeFormation();
+    public:
+        Heart();
+        Heart(int x, int y);
+        ~Heart();
+        void makeEmpty();
+};
+
+class Hearts{
+    private:
+        int x;
+        int y;
+        Player* player;
+        Heart* hearts;
+    public:
+        Hearts();
+        Hearts(Player* player);
+        Hearts(Player* player, int x, int y);
+        ~Hearts();
         void draw();
 };
 

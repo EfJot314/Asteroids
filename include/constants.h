@@ -45,4 +45,6 @@
 #define fireDuration 1.0f
 //time between fire creations (in seconds)
 #define fireDelay 0.15f
+//size of heart
+#define heartSize 100.0f
 
