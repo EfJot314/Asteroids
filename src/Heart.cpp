@@ -2,7 +2,8 @@
 
 Heart::Heart(){}
 
-Heart::Heart(int x, int y){
+Heart::Heart(sf::RenderWindow* window, int x, int y){
+    this->window = window;
     this->x = x;
     this->y = y;
     this->color = RED;

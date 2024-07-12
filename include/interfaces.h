@@ -35,21 +35,23 @@ class Heart : public VisualObject{
         void shapeFormation();
     public:
         Heart();
-        Heart(int x, int y);
+        Heart(sf::RenderWindow* window, int x, int y);
         ~Heart();
         void makeEmpty();
 };
 
 class Hearts{
     private:
+        int n;
         int x;
         int y;
-        Player* player;
-        Heart* hearts;
+        sf::RenderWindow* window;
+        std::vector<Heart> hearts;
+        void createHearts();
     public:
         Hearts();
-        Hearts(Player* player);
-        Hearts(Player* player, int x, int y);
+        Hearts(sf::RenderWindow* window, int n);
+        Hearts(sf::RenderWindow* window, int n, int x, int y);
         ~Hearts();
         void draw();
 };
@@ -94,6 +96,7 @@ class Asteroid : public KinematicObject{
 
 class Player : public KinematicObject{
     private:
+        Hearts hearts;
         float acceleration[2];
         float rotation = 0;
         std::vector<FireObject*> fire;

@@ -7,7 +7,9 @@ Player::Player(sf::RenderWindow* window, sf::Color color){
     this->window = window;
     this->color = color;
 
-    this->hp = 100;
+    this->hp = 3;
+
+    this->hearts = Hearts(this->window, this->hp);
 
     this->position[0] = window->getSize().x/2 * scaler;
     this->position[1] = window->getSize().y/2 * scaler;
@@ -23,7 +25,9 @@ Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf:
     this->window = window;
     this->color = color;
 
-    this->hp = 100;
+    this->hp = 3;
+    
+    this->hearts = Hearts(this->window, this->hp);
 
     this->position[0] = position[0];
     this->position[1] = position[1];
