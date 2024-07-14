@@ -23,8 +23,8 @@
 #define asteroidMaxFactor 0.3f
 //max asteroid rotation speed
 #define asteroidMaxRotationSpeed 15
-//line thickness
-#define lineThickness 5.0f
+//asteroid line thickness
+#define asteroidLineThickness 5.0f
 //bullet velocity
 #define bulletVelocity 60.0f
 //bullet size
@@ -47,6 +47,8 @@
 #define fireDelay 0.15f
 //size of heart
 #define heartSize 30.0f
+//heart line thickness
+#define heartLineThickness 2.0f
 //default margin around heart(s)
 #define heartsMargin 15.0f
 

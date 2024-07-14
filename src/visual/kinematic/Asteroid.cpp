@@ -47,7 +47,7 @@ void Asteroid::shapeFormation(){
         }
     }
     shape.setFillColor(sf::Color::Transparent);
-    shape.setOutlineThickness(lineThickness);
+    shape.setOutlineThickness(asteroidLineThickness);
     shape.setOutlineColor(color);
     shape.scale(1/scaler, 1/scaler);
 }
