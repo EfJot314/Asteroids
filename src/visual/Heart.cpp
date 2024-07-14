@@ -23,10 +23,13 @@ void Heart::shapeFormation(){
     shape.setPoint(1, sf::Vector2f(halfSize, halfSize));
     shape.setPoint(2, sf::Vector2f(-halfSize, halfSize));
     shape.setPoint(3, sf::Vector2f(-halfSize, -halfSize));
-    shape.setFillColor(this->color);
-
+    makeFilled();
 }
 
 void Heart::makeEmpty(){
-    //TODO
+    shape.setFillColor(sf::Color::Transparent);
+}
+
+void Heart::makeFilled(){
+    shape.setFillColor(this->color);
 }

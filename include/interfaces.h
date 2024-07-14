@@ -39,6 +39,7 @@ class Heart : public VisualObject{
         Heart(sf::RenderWindow* window, sf::Color color, int x, int y);
         ~Heart();
         void makeEmpty();
+        void makeFilled();
 };
 
 class Hearts : public VisualObject{
@@ -52,6 +53,7 @@ class Hearts : public VisualObject{
         Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y);
         ~Hearts();
         void draw();
+        void setHealth(int hp);
 };
 
 class KinematicObject : public VisualObject{

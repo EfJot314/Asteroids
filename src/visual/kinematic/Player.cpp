@@ -168,7 +168,9 @@ bool Player::detectCollisions(std::vector<Asteroid*> asteroids){
         float radius_sum = std::pow(asteroids[i]->getBoundRadius() + this->boundR, 2);
         //if they are close enough, then check collision
         if(center_distance < radius_sum){
-            //TODO
+            // asteroids[i]->hit(this->damage);
+            this->hit(asteroids[i]->getDamage());
+            this->hearts.setHealth(this->hp);
             collided = true;
         }
     }

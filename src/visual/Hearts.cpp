@@ -42,3 +42,15 @@ void Hearts::draw(){
         this->hearts[i].draw();
     }
 }
+
+void Hearts::setHealth(int hp){
+    //hp validation
+    if(hp < 0) return;
+    if(hp > this->n) return;
+
+    //make last hearts empty
+    for(int i=this->n-1;i>=hp;i--){
+        this->hearts.at(i).makeEmpty();
+    }
+
+}

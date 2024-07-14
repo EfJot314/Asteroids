@@ -75,4 +75,7 @@ bool KinematicObject::isDead(){
 
 void KinematicObject::hit(int dmg){
     this->hp -= dmg;
+    if(this->hp < 0){
+        this->hp = 0;
+    }
 }
