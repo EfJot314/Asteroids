@@ -160,6 +160,9 @@ void Game::run(){
                     shoot = false;
                 }
             }
+            if (event.type == sf::Mouse::Button::Left){
+                //TODO -> rotating player using mouse position
+            }
         }
 
         //clock and FPS control
