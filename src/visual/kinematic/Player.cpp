@@ -87,6 +87,16 @@ void Player::updateFireKinematicProperties(){
 
 void Player::draw(){
     this->hearts.draw();
+    if(this->hitTimer < playerUntouchableTime){
+        int n = (int)(this->hitTimer / (playerUntouchableTime / (2.0f*(float)playerNoBlinks)));
+        if(n % 2 == 0)  
+            this->shape.setFillColor(TRANSPARENT);
+        else            
+            this->shape.setFillColor(this->color);
+    }
+    else{
+        this->shape.setFillColor(this->color);
+    }
     KinematicObject::draw();
 }
 

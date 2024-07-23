@@ -6,7 +6,9 @@
 //time between two frames
 #define deltaTime 0.5f
 //time, when player is untouchable after hit (in seconds)
-#define playerUntouchableTime 1.0f
+#define playerUntouchableTime 2.0f
+//number of blinks, when player is untouchable
+#define playerNoBlinks 6
 //acceleration of a player
 #define playerAcceleration 0.30f
 //length of a player

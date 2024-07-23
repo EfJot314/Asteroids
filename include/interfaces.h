@@ -96,7 +96,7 @@ class Asteroid : public KinematicObject{
 
 class Player : public KinematicObject{
     private:
-        float hitTimer = 0;
+        float hitTimer = playerUntouchableTime+1.0f;
         Hearts hearts;
         float acceleration[2];
         float rotation = 0;

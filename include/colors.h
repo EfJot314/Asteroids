@@ -1,3 +1,6 @@
+#define WHITE sf::Color::White
+#define BLACK sf::Color::Black
+#define TRANSPARENT sf::Color::Transparent
 #define RED sf::Color::Red
 #define GREEN sf::Color::Green
 #define BLUE sf::Color::Blue
