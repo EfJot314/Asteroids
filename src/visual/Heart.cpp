@@ -18,11 +18,18 @@ Heart::~Heart(){}
 void Heart::shapeFormation(){
     float halfSize = heartSize / 2;
 
-    shape.setPointCount(4);
-    shape.setPoint(0, sf::Vector2f(halfSize, -halfSize));
-    shape.setPoint(1, sf::Vector2f(halfSize, halfSize));
-    shape.setPoint(2, sf::Vector2f(-halfSize, halfSize));
-    shape.setPoint(3, sf::Vector2f(-halfSize, -halfSize));
+    shape.setPointCount(10);
+    shape.setPoint(0, sf::Vector2f(0, 2*heartSize));
+    shape.setPoint(1, sf::Vector2f(1.5f*heartSize, 0));
+    shape.setPoint(2, sf::Vector2f(1.5f*heartSize, -0.5f*heartSize));
+    shape.setPoint(3, sf::Vector2f(heartSize, -heartSize));
+    shape.setPoint(4, sf::Vector2f(0.5f*heartSize, -heartSize));
+    shape.setPoint(5, sf::Vector2f(0, -0.3f*heartSize));
+    shape.setPoint(6, sf::Vector2f(-0.5f*heartSize, -heartSize));
+    shape.setPoint(7, sf::Vector2f(-heartSize, -heartSize));
+    shape.setPoint(8, sf::Vector2f(-1.5f*heartSize, -0.5f*heartSize));
+    shape.setPoint(9, sf::Vector2f(-1.5f*heartSize, 0));
+
     shape.setOutlineThickness(heartLineThickness);
     shape.setOutlineColor(this->color);
 

@@ -46,9 +46,9 @@
 //time between fire creations (in seconds)
 #define fireDelay 0.15f
 //size of heart
-#define heartSize 30.0f
+#define heartSize 6.0f
 //heart line thickness
 #define heartLineThickness 2.0f
 //default margin around heart(s)
-#define heartsMargin 15.0f
+#define heartsMargin 25.0f
 
