@@ -116,6 +116,11 @@ void Game::run(){
         player->updateFire(FPS);
         //timers update
         player->updateTimer(FPS);
+
+        //game over
+        if(player->isDead()){
+            gameFlag = false;
+        }
         
         
         //handle events  
