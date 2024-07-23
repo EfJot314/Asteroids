@@ -160,6 +160,9 @@ Bullet* Player::shoot(){
 
 
 bool Player::detectCollisions(std::vector<Asteroid*> asteroids){
+    //check untouchability
+    if(hitTimer < playerUntouchableTime)    return false;
+    //check collisions
     bool collided = false;
     for(int i=0;i<asteroids.size();i++){
         //check if objects are close enough to each other
@@ -170,6 +173,7 @@ bool Player::detectCollisions(std::vector<Asteroid*> asteroids){
         if(center_distance < radius_sum){
             // asteroids[i]->hit(this->damage);
             this->hit(asteroids[i]->getDamage());
+            hitTimer = 0;
             this->hearts.setHealth(this->hp);
             collided = true;
         }
@@ -186,5 +190,9 @@ std::array<float, 2> Player::getEnginePosition(){
 
 std::array<float, 2> Player::getVelocity(){
     return std::array<float, 2>{velocity[0], velocity[1]};
+}
+
+void Player::updateTimer(int FPS){
+    hitTimer += 1.0f / (float)FPS;
 }
 

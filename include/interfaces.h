@@ -96,6 +96,7 @@ class Asteroid : public KinematicObject{
 
 class Player : public KinematicObject{
     private:
+        float hitTimer = 0;
         Hearts hearts;
         float acceleration[2];
         float rotation = 0;
@@ -120,6 +121,7 @@ class Player : public KinematicObject{
         std::array<float, 2> getEnginePosition();
         std::array<float, 2> getVelocity();
         void updateFire(int FPS);
+        void updateTimer(int FPS);
 };
 
 

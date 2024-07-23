@@ -114,6 +114,8 @@ void Game::run(){
         //fire update
         Player* player = ge.getPlayer();
         player->updateFire(FPS);
+        //timers update
+        player->updateTimer(FPS);
         
         
         //handle events  
