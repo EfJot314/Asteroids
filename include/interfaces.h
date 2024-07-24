@@ -6,6 +6,15 @@
 #include <cmath>
 #include "constants.h"
 
+//enums
+enum direction_e {
+    idle = 0,
+    left = -1,
+    right = 1,
+};
+
+
+
 //declare classes
 class VisualObject;
 class KinematicObject;
@@ -111,7 +120,7 @@ class Player : public KinematicObject{
         ~Player();
         bool detectCollisions(std::vector<Asteroid*> asteroids);
         void accelerate(float acceleration);
-        void rotate(int direction);
+        void rotate(direction_e direction);
         void updateKinematicProperties();
         void updateFireKinematicProperties();
         void draw();

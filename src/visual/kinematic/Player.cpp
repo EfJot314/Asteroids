@@ -118,7 +118,7 @@ void Player::updateFire(int FPS){
     }
 }
 
-void Player::rotate(int direction){
+void Player::rotate(direction_e direction){
     rotation += direction * playerRotationSpeed;
     shape.rotate(direction * playerRotationSpeed);
 }

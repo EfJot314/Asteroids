@@ -88,11 +88,11 @@ void Game::run(){
         //rotating
         if(rotateRight){
             Player* player = ge.getPlayer();
-            player->rotate(1);
+            player->rotate(right);
         }
         if(rotateLeft){
             Player* player = ge.getPlayer();
-            player->rotate(-1);
+            player->rotate(left);
         }
         //acceleration
         if(accelearate){
@@ -159,9 +159,6 @@ void Game::run(){
                 if(event.key.code == sf::Keyboard::Space){
                     shoot = false;
                 }
-            }
-            if (event.type == sf::Mouse::Button::Left){
-                //TODO -> rotating player using mouse position
             }
         }
 
