@@ -11,6 +11,8 @@
 #define playerNoBlinks 6
 //acceleration of a player
 #define playerAcceleration 0.30f
+//rotation speed of a player
+#define playerRotationSpeed 6.0f
 //length of a player
 #define playerLen 130.0f
 //margin for generating asteroids

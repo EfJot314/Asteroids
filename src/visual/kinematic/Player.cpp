@@ -119,17 +119,8 @@ void Player::updateFire(int FPS){
 }
 
 void Player::rotate(int direction){
-    float rotation_speed = 7.0;
-    //right
-    if(direction > 0){
-        rotation += rotation_speed;
-        shape.rotate(rotation_speed);
-    }
-    //left
-    else{
-        rotation -= rotation_speed;
-        shape.rotate(-rotation_speed);
-    }
+    rotation += direction * playerRotationSpeed;
+    shape.rotate(direction * playerRotationSpeed);
 }
 
 void Player::shapeFormation(){
