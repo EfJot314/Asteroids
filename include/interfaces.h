@@ -4,14 +4,10 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <cmath>
-#include "constants.h"
 
-//enums
-enum direction_e {
-    idle = 0,
-    left = -1,
-    right = 1,
-};
+#include "constants.h"
+#include "enums.h"
+
 
 
 
