@@ -182,15 +182,23 @@ class GameEngine{
 };
 
 
+class View{
+    protected:
+        int FPS;
+        sf::RenderWindow* window;
+        void drawAll();
+    public:
+        void run();
+};
 
-class Game{
+
+
+class Game : public View{
     private:
         GameEngine ge;
-        int FPS;
         int window_width;
         int window_height;
         bool gameFlag;
-        sf::RenderWindow* window;
         void drawAll();
     public:
         Game();
