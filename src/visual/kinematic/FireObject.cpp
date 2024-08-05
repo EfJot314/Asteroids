@@ -2,7 +2,7 @@
 
 FireObject::FireObject(){};
 
-FireObject::FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color1, sf::Color color2){
+FireObject::FireObject(Player* player, float rotation, sf::RenderWindow* window, const sf::Color color1, const sf::Color color2){
     this->window = window;
     this->color = color1;
     this->fillingColor = color2;

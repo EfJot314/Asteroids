@@ -170,4 +170,10 @@ void Game::run(){
 
     window->close();
 
+    this->clean_memory();
 };
+
+
+void Game::clean_memory(){
+    delete window;
+}

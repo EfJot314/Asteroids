@@ -2,7 +2,7 @@
 
 Hearts::Hearts(){}
 
-Hearts::Hearts(sf::RenderWindow* window, sf::Color color, int n){
+Hearts::Hearts(sf::RenderWindow* window, const sf::Color color, int n){
     this->n = n;
     this->window = window;
     this->color = color;
@@ -13,7 +13,7 @@ Hearts::Hearts(sf::RenderWindow* window, sf::Color color, int n){
     shapeFormation();
 }
 
-Hearts::Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y){
+Hearts::Hearts(sf::RenderWindow* window, const sf::Color color, int n, int x, int y){
     this->n = n;
     this->window = window;
     this->color = color;

@@ -16,7 +16,7 @@ class Heart : public VisualObject{
         void shapeFormation() override;
     public:
         Heart();
-        Heart(sf::RenderWindow* window, sf::Color color, int x, int y);
+        Heart(sf::RenderWindow* window, const sf::Color color, int x, int y);
         ~Heart();
         void makeEmpty();
         void makeFilled();
@@ -29,8 +29,8 @@ class Hearts : public VisualObject{
         void shapeFormation() override;
     public:
         Hearts();
-        Hearts(sf::RenderWindow* window, sf::Color color, int n);
-        Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y);
+        Hearts(sf::RenderWindow* window, const sf::Color color, int n);
+        Hearts(sf::RenderWindow* window, const sf::Color color, int n, int x, int y);
         ~Hearts();
         void draw() override;
         void setHealth(int hp);
@@ -66,8 +66,8 @@ class Asteroid : public KinematicObject{
         void shapeFormation() override;
     public:
         Asteroid();
-        Asteroid(sf::RenderWindow* window, sf::Color color);
-        Asteroid(float positon[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color);
+        Asteroid(sf::RenderWindow* window, const sf::Color color);
+        Asteroid(float positon[], float velocity[], float rotationSpeed, sf::RenderWindow* window, const sf::Color color);
         ~Asteroid();
         void draw() override;
 };
@@ -86,8 +86,8 @@ class Player : public KinematicObject{
         void checkAndRemoveFire();
     public:
         Player();
-        Player(sf::RenderWindow* window, sf::Color color);
-        Player(float positon[], float velocity[], sf::RenderWindow* window, sf::Color color);
+        Player(sf::RenderWindow* window, const sf::Color color);
+        Player(float positon[], float velocity[], sf::RenderWindow* window, const sf::Color color);
         ~Player();
         bool detectCollisions(std::vector<Asteroid>& asteroids);
         void accelerate(float acceleration);
@@ -113,7 +113,7 @@ class Bullet : public KinematicObject{
         void shapeFormation() override;
     public:
         Bullet();
-        Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
+        Bullet(Player* player, float rotation, sf::RenderWindow* window, const sf::Color color);
         ~Bullet();
         void updateKinematicProperties() override;
         bool detectCollisions(std::vector<Asteroid>& asteroids);
@@ -129,7 +129,7 @@ class FireObject : public KinematicObject{
         void shapeFormation() override;
     public:
         FireObject();
-        FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color1, sf::Color color2);
+        FireObject(Player* player, float rotation, sf::RenderWindow* window, const sf::Color color1, const sf::Color color2);
         ~FireObject();
         bool incrementAndCheckDuration(int FPS);
 };

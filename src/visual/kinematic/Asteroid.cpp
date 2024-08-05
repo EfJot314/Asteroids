@@ -3,7 +3,7 @@
 
 Asteroid::Asteroid(){};
 
-Asteroid::Asteroid(sf::RenderWindow* window, sf::Color color){
+Asteroid::Asteroid(sf::RenderWindow* window, const sf::Color color){
     this->window = window;
     this->color = color;
 
@@ -13,7 +13,7 @@ Asteroid::Asteroid(sf::RenderWindow* window, sf::Color color){
     shapeFormation();
 };
 
-Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color){
+Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::RenderWindow* window, const sf::Color color){
     this->window = window;
     this->color = color;
 

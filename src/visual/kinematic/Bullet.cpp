@@ -3,7 +3,7 @@
 
 Bullet::Bullet(){};
 
-Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color){
+Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, const sf::Color color){
     this->window = window;
     this->color = color;
 

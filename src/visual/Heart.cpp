@@ -2,7 +2,7 @@
 
 Heart::Heart(){}
 
-Heart::Heart(sf::RenderWindow* window, sf::Color color, int x, int y){
+Heart::Heart(sf::RenderWindow* window, const sf::Color color, int x, int y){
     this->window = window;
     this->x = x;
     this->y = y;

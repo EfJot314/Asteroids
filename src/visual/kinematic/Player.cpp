@@ -3,7 +3,7 @@
 
 Player::Player(){};
 
-Player::Player(sf::RenderWindow* window, sf::Color color){
+Player::Player(sf::RenderWindow* window, const sf::Color color){
     this->window = window;
     this->color = color;
 
@@ -21,7 +21,7 @@ Player::Player(sf::RenderWindow* window, sf::Color color){
     shapeFormation();
 };
 
-Player::Player(float position[], float velocity[], sf::RenderWindow* window, sf::Color color){
+Player::Player(float position[], float velocity[], sf::RenderWindow* window, const sf::Color color){
     this->window = window;
     this->color = color;
 
