@@ -1,3 +1,4 @@
+//libraries
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <array>
@@ -5,206 +6,17 @@
 #include <cstdlib>
 #include <cmath>
 
+//constants
 #include "constants.h"
+
+//list of classes - declarations
+#include "class_declarations.h"
+
+//definitions of enums
 #include "enums.h"
 
-
-
-
-//declare classes
-class VisualObject;
-class KinematicObject;
-class Asteroid;
-class Bullet;
-class Game;
-class GameEngine;
-class Player;
-class FireObject;
-class Heart;
-class Hearts;
-
-
-
-class VisualObject{
-    protected:
-        int x;
-        int y;
-        sf::ConvexShape shape;
-        sf::Color color;
-        sf::RenderWindow* window;
-        virtual void shapeFormation();
-    public:
-        virtual void draw();
-};
-
-class Heart : public VisualObject{
-    private:
-        void shapeFormation() override;
-    public:
-        Heart();
-        Heart(sf::RenderWindow* window, sf::Color color, int x, int y);
-        ~Heart();
-        void makeEmpty();
-        void makeFilled();
-};
-
-class Hearts : public VisualObject{
-    private:
-        int n;
-        std::vector<Heart> hearts;
-        void shapeFormation() override;
-    public:
-        Hearts();
-        Hearts(sf::RenderWindow* window, sf::Color color, int n);
-        Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y);
-        ~Hearts();
-        void draw() override;
-        void setHealth(int hp);
-};
-
-class KinematicObject : public VisualObject{
-    protected:
-        int hp = 1;
-        int damage = 1;
-        float position[2];
-        float velocity[2];
-        float boundR = 0;
-        void updatePositionOnWindow();
-        void borderJump();
-    public:
-        std::array<float, 2> getPosition();
-        float getBoundRadius();
-        int getDamage();
-        int getHp();
-        bool isDead();
-        virtual void updateKinematicProperties();
-        void draw() override;
-        void hit(int dmg);
-};
-
-
-
-class Asteroid : public KinematicObject{
-    private:
-        float rotation = 0;
-        float rotationSpeed;
-        void randomPlacement();
-        void shapeFormation() override;
-    public:
-        Asteroid();
-        Asteroid(sf::RenderWindow* window, sf::Color color);
-        Asteroid(float positon[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color);
-        ~Asteroid();
-        void draw() override;
-};
-
-
-
-class Player : public KinematicObject{
-    private:
-        float hitTimer = playerUntouchableTime+1.0f;
-        Hearts hearts;
-        float acceleration[2];
-        float rotation = 0;
-        std::vector<FireObject*> fire;
-        void shapeFormation() override;
-        void addNewFire(FireObject* fireObject);
-        void checkAndRemoveFire();
-    public:
-        Player();
-        Player(sf::RenderWindow* window, sf::Color color);
-        Player(float positon[], float velocity[], sf::RenderWindow* window, sf::Color color);
-        ~Player();
-        bool detectCollisions(std::vector<Asteroid*> asteroids);
-        void accelerate(float acceleration);
-        void rotate(direction_e direction);
-        void updateKinematicProperties() override;
-        void updateFireKinematicProperties();
-        void draw() override;
-        void drawFire();
-        void createFire();
-        Bullet* shoot();
-        std::array<float, 2> getEnginePosition();
-        std::array<float, 2> getVelocity();
-        void updateFire(int FPS);
-        void updateTimer(int FPS);
-};
-
-
-
-class Bullet : public KinematicObject{
-    private:
-        float distance = 0.0f;
-        Player* player;
-        void shapeFormation() override;
-    public:
-        Bullet();
-        Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
-        ~Bullet();
-        void updateKinematicProperties() override;
-        bool detectCollisions(std::vector<Asteroid*> asteroids);
-};
-
-
-
-class FireObject : public KinematicObject{
-    private:
-        int durationCounter = 0;
-        sf::Color fillingColor;
-        Player* player;
-        void shapeFormation() override;
-    public:
-        FireObject();
-        FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color1, sf::Color color2);
-        ~FireObject();
-        bool incrementAndCheckDuration(int FPS);
-};
-
-
-
-class GameEngine{
-    private:
-        Player* player;
-        std::vector<Asteroid*> asteroids;
-        std::vector<Bullet*> bullets;
-        void checkAndRemoveAsteroids();
-        void checkAndRemoveBullets();
-    public:
-        GameEngine();
-        GameEngine(Player* player);
-        ~GameEngine();
-        void addPlayer(Player* player);
-        Player* getPlayer();
-        void moveAll();
-        void checkCollisions();
-        void drawAll();
-        void addAsteroid(Asteroid* asteroid);
-        void addBullet(Bullet* bullet);
-};
-
-
-class View{
-    protected:
-        int FPS;
-        sf::RenderWindow* window;
-        virtual void drawAll() {};
-    public:
-        virtual void run() {};
-};
-
-
-
-class Game : public View{
-    private:
-        GameEngine ge;
-        int window_width;
-        int window_height;
-        bool gameFlag;
-        void drawAll() override;
-    public:
-        Game();
-        Game(int width, int height);
-        ~Game();
-        void run() override;
-};
+//definitions of classes
+#include "objects_interfaces.h"
+#include "logic_interfaces.h"
+#include "views_interfaces.h"
 
