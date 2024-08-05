@@ -20,7 +20,8 @@ Game::Game(int width, int height){
     ge = GameEngine();
 
     //add player
-    ge.addPlayer(new Player(window, GRAY));
+    Player player(window, GRAY);
+    ge.addPlayer(player);
 };
 
 Game::~Game(){};
@@ -80,45 +81,45 @@ void Game::run(){
 
         //generate new asteroid every 3 sec
         if(asteroidCounter >= 3.0f * FPS){
-            Asteroid* asteroid = new Asteroid(window, BLUE);
+            Asteroid asteroid(window, BLUE);
             ge.addAsteroid(asteroid);
             asteroidCounter = 0;
         }
 
         //rotating
         if(rotateRight){
-            Player* player = ge.getPlayer();
-            player->rotate(right);
+            Player& player = ge.getPlayer();
+            player.rotate(right);
         }
         if(rotateLeft){
-            Player* player = ge.getPlayer();
-            player->rotate(left);
+            Player& player = ge.getPlayer();
+            player.rotate(left);
         }
         //acceleration
         if(accelearate){
-            Player* player = ge.getPlayer();
-            player->accelerate(playerAcceleration);
+            Player& player = ge.getPlayer();
+            player.accelerate(playerAcceleration);
         }
         //shooting
         if(shoot && bulletCounter >= bulletDelay * FPS){
-            Player* player = ge.getPlayer();
-            ge.addBullet(player->shoot());
+            Player& player = ge.getPlayer();
+            ge.addBullet(player.shoot());
             bulletCounter = 0;
         }
         //fire creation
         if(fireCounter >= fireDelay * FPS){
-            Player* player = ge.getPlayer();
-            player->createFire();
+            Player& player = ge.getPlayer();
+            player.createFire();
             fireCounter = 0;
         }
         //fire update
-        Player* player = ge.getPlayer();
-        player->updateFire(FPS);
+        Player& player = ge.getPlayer();
+        player.updateFire(FPS);
         //timers update
-        player->updateTimer(FPS);
+        player.updateTimer(FPS);
 
         //game over
-        if(player->isDead()){
+        if(player.isDead()){
             gameFlag = false;
         }
         

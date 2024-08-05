@@ -3,14 +3,14 @@
 
 GameEngine::GameEngine(){};
 
-GameEngine::GameEngine(Player* player){
+GameEngine::GameEngine(Player& player){
     this->addPlayer(player);
 };
 
 GameEngine::~GameEngine(){};
 
-bool isDead(KinematicObject* o){
-    return o->isDead();
+bool isDead(KinematicObject& o){
+    return o.isDead();
 }
 
 void GameEngine::checkAndRemoveAsteroids(){
@@ -23,16 +23,16 @@ void GameEngine::checkAndRemoveBullets(){
 
 void GameEngine::moveAll(){
     //player
-    player->updateKinematicProperties();
+    player.updateKinematicProperties();
     //fire
-    player->updateFireKinematicProperties();
+    player.updateFireKinematicProperties();
     //asteroids
     for(int i=0;i<this->asteroids.size();i++){
-        asteroids[i]->updateKinematicProperties();
+        asteroids[i].updateKinematicProperties();
     }
     //bullets
     for(int i=0;i<this->bullets.size();i++){
-        bullets[i]->updateKinematicProperties();
+        bullets[i].updateKinematicProperties();
     }
     //remove dead bullets
     checkAndRemoveBullets();
@@ -40,44 +40,44 @@ void GameEngine::moveAll(){
 
 void GameEngine::drawAll(){
     //fire
-    player->drawFire();
+    player.drawFire();
     //player
-    player->draw();
+    player.draw();
     //asteroids
     for(int i=0;i<this->asteroids.size();i++){
-        asteroids[i]->draw();
+        asteroids[i].draw();
     }
     //bullets
     for(int i=0;i<this->bullets.size();i++){
-        bullets[i]->draw();
+        bullets[i].draw();
     }
 };
 
-void GameEngine::addPlayer(Player* player){
+void GameEngine::addPlayer(Player& player){
     this->player = player;
 }
 
-Player* GameEngine::getPlayer(){
+Player& GameEngine::getPlayer(){
     return player;
 }
 
-void GameEngine::addAsteroid(Asteroid* asteroid){
+void GameEngine::addAsteroid(Asteroid& asteroid){
     this->asteroids.push_back(asteroid);
 }
 
-void GameEngine::addBullet(Bullet* bullet){
+void GameEngine::addBullet(Bullet& bullet){
     this->bullets.push_back(bullet);
 }
 
 void GameEngine::checkCollisions(){
     //player collisions
-    if(this->player->detectCollisions(this->asteroids)){
+    if(this->player.detectCollisions(this->asteroids)){
         // std::cout<<"Player collision"<<std::endl;
         checkAndRemoveAsteroids();
     }
     //bullet collisions
     for(int i=0;i<this->bullets.size();i++){
-        if(bullets[i]->detectCollisions(this->asteroids)){
+        if(bullets[i].detectCollisions(this->asteroids)){
             // std::cout<<"Bullet collision"<<std::endl;
             checkAndRemoveAsteroids();
             checkAndRemoveBullets();

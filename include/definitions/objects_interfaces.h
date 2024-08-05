@@ -80,16 +80,16 @@ class Player : public KinematicObject{
         Hearts hearts;
         float acceleration[2];
         float rotation = 0;
-        std::vector<FireObject*> fire;
+        std::vector<FireObject> fire;
         void shapeFormation() override;
-        void addNewFire(FireObject* fireObject);
+        void addNewFire(FireObject& fireObject);
         void checkAndRemoveFire();
     public:
         Player();
         Player(sf::RenderWindow* window, sf::Color color);
         Player(float positon[], float velocity[], sf::RenderWindow* window, sf::Color color);
         ~Player();
-        bool detectCollisions(std::vector<Asteroid*> asteroids);
+        bool detectCollisions(std::vector<Asteroid>& asteroids);
         void accelerate(float acceleration);
         void rotate(direction_e direction);
         void updateKinematicProperties() override;
@@ -97,7 +97,7 @@ class Player : public KinematicObject{
         void draw() override;
         void drawFire();
         void createFire();
-        Bullet* shoot();
+        Bullet& shoot();
         std::array<float, 2> getEnginePosition();
         std::array<float, 2> getVelocity();
         void updateFire(int FPS);
@@ -116,7 +116,7 @@ class Bullet : public KinematicObject{
         Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
         ~Bullet();
         void updateKinematicProperties() override;
-        bool detectCollisions(std::vector<Asteroid*> asteroids);
+        bool detectCollisions(std::vector<Asteroid>& asteroids);
 };
 
 
