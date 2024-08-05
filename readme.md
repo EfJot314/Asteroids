@@ -1,7 +1,13 @@
 # Asteroids
 ## Description
 The ```Asteroids``` application is modeled on the Atari retro computer game of the same name. 
-## How to run?
+## Running
+### Requirements
+To run the application, you have to have the specified dependencies installed:
+- ```cmake```
+- ```g++``` GNU compiler for ```c++``` language
+- ```SFML``` library
+### How to run?
 To run the game, type the following command in the application directory:
 ```
 cmake .
