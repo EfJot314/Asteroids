@@ -10,7 +10,7 @@ Hearts::Hearts(sf::RenderWindow* window, sf::Color color, int n){
     this->x = this->window->getSize().x / 2;
     this->y = heartsMargin + heartSize/2;
 
-    createHearts();
+    shapeFormation();
 }
 
 Hearts::Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y){
@@ -21,12 +21,12 @@ Hearts::Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y){
     this->x = x;
     this->y = y;
 
-    createHearts();
+    shapeFormation();
 }
 
 Hearts::~Hearts(){}
 
-void Hearts::createHearts(){
+void Hearts::shapeFormation(){
     float width = this->n * heartSize + (this->n - 1) * heartsMargin;
     float dx = -width / 2;
 

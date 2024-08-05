@@ -13,6 +13,11 @@ file(GLOB logic_src
     "./src/logic/*.cpp"
 )
 
+#views files
+file(GLOB views_src
+    "./src/views/*.cpp"
+)
+
 #visual files
 file(GLOB visual_src
     "./src/visual/*.cpp"
@@ -28,6 +33,7 @@ file(GLOB kinematic_src
 include_directories(./include)
 
 #compile libraries
+add_library(ViewsLib ${views_src})
 add_library(LogicLib ${logic_src})
 add_library(ObjectsLib ${abstract_src} ${visual_src} ${kinematic_src})
 
@@ -35,7 +41,7 @@ add_library(ObjectsLib ${abstract_src} ${visual_src} ${kinematic_src})
 add_executable(Asteroids ./src/main.cpp)
 
 #libraries
-target_link_libraries(Asteroids PRIVATE LogicLib ObjectsLib) 
+target_link_libraries(Asteroids PRIVATE ViewsLib LogicLib ObjectsLib) 
 
 #SFML
 find_package(SFML COMPONENTS system window graphics) 

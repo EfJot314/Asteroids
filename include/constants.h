@@ -5,6 +5,8 @@
 #define scaler 5.0f
 //time between two frames
 #define deltaTime 0.5f
+//size of default objects
+#define defaultSize 50.0f
 //time, when player is untouchable after hit (in seconds)
 #define playerUntouchableTime 2.0f
 //number of blinks, when player is untouchable

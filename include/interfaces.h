@@ -32,13 +32,14 @@ class VisualObject{
         sf::ConvexShape shape;
         sf::Color color;
         sf::RenderWindow* window;
+        virtual void shapeFormation();
     public:
-        void draw();
+        virtual void draw();
 };
 
 class Heart : public VisualObject{
     private:
-        void shapeFormation();
+        void shapeFormation() override;
     public:
         Heart();
         Heart(sf::RenderWindow* window, sf::Color color, int x, int y);
@@ -51,13 +52,13 @@ class Hearts : public VisualObject{
     private:
         int n;
         std::vector<Heart> hearts;
-        void createHearts();
+        void shapeFormation() override;
     public:
         Hearts();
         Hearts(sf::RenderWindow* window, sf::Color color, int n);
         Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y);
         ~Hearts();
-        void draw();
+        void draw() override;
         void setHealth(int hp);
 };
 
@@ -76,8 +77,8 @@ class KinematicObject : public VisualObject{
         int getDamage();
         int getHp();
         bool isDead();
-        void updateKinematicProperties();
-        void draw();
+        virtual void updateKinematicProperties();
+        void draw() override;
         void hit(int dmg);
 };
 
@@ -88,13 +89,13 @@ class Asteroid : public KinematicObject{
         float rotation = 0;
         float rotationSpeed;
         void randomPlacement();
-        void shapeFormation();
+        void shapeFormation() override;
     public:
         Asteroid();
         Asteroid(sf::RenderWindow* window, sf::Color color);
         Asteroid(float positon[], float velocity[], float rotationSpeed, sf::RenderWindow* window, sf::Color color);
         ~Asteroid();
-        void draw();
+        void draw() override;
 };
 
 
@@ -106,7 +107,7 @@ class Player : public KinematicObject{
         float acceleration[2];
         float rotation = 0;
         std::vector<FireObject*> fire;
-        void shapeFormation();
+        void shapeFormation() override;
         void addNewFire(FireObject* fireObject);
         void checkAndRemoveFire();
     public:
@@ -117,9 +118,9 @@ class Player : public KinematicObject{
         bool detectCollisions(std::vector<Asteroid*> asteroids);
         void accelerate(float acceleration);
         void rotate(direction_e direction);
-        void updateKinematicProperties();
+        void updateKinematicProperties() override;
         void updateFireKinematicProperties();
-        void draw();
+        void draw() override;
         void drawFire();
         void createFire();
         Bullet* shoot();
@@ -135,12 +136,12 @@ class Bullet : public KinematicObject{
     private:
         float distance = 0.0f;
         Player* player;
-        void shapeFormation();
+        void shapeFormation() override;
     public:
         Bullet();
         Bullet(Player* player, float rotation, sf::RenderWindow* window, sf::Color color);
         ~Bullet();
-        void updateKinematicProperties();
+        void updateKinematicProperties() override;
         bool detectCollisions(std::vector<Asteroid*> asteroids);
 };
 
@@ -151,7 +152,7 @@ class FireObject : public KinematicObject{
         int durationCounter = 0;
         sf::Color fillingColor;
         Player* player;
-        void shapeFormation();
+        void shapeFormation() override;
     public:
         FireObject();
         FireObject(Player* player, float rotation, sf::RenderWindow* window, sf::Color color1, sf::Color color2);
@@ -186,9 +187,9 @@ class View{
     protected:
         int FPS;
         sf::RenderWindow* window;
-        void drawAll();
+        virtual void drawAll() {};
     public:
-        void run();
+        virtual void run() {};
 };
 
 
@@ -199,11 +200,11 @@ class Game : public View{
         int window_width;
         int window_height;
         bool gameFlag;
-        void drawAll();
+        void drawAll() override;
     public:
         Game();
         Game(int width, int height);
         ~Game();
-        void run();
+        void run() override;
 };
 
