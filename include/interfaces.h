@@ -16,7 +16,7 @@
 #include "enums.h"
 
 //definitions of classes
-#include "objects_interfaces.h"
-#include "logic_interfaces.h"
-#include "views_interfaces.h"
+#include "definitions/objects_interfaces.h"
+#include "definitions/logic_interfaces.h"
+#include "definitions/views_interfaces.h"
 
