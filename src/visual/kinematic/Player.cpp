@@ -61,7 +61,7 @@ void Player::updateKinematicProperties(){
 }
 
 void Player::createFire(){
-    float fireRotation = this->rotation + (float)((rand() % (2*fireMaxAngleDeg)) - fireMaxAngleDeg);
+    const float fireRotation = this->rotation + (float)((rand() % (2*fireMaxAngleDeg)) - fireMaxAngleDeg);
     FireObject newFire(this, fireRotation, this->window, ORANGE, RED);
     addNewFire(newFire);
 }
@@ -88,7 +88,7 @@ void Player::updateFireKinematicProperties(){
 void Player::draw(){
     this->hearts.draw();
     if(this->hitTimer < playerUntouchableTime){
-        int n = (int)(this->hitTimer / (playerUntouchableTime / (2.0f*(float)playerNoBlinks)));
+        const int n = (int)(this->hitTimer / (playerUntouchableTime / (2.0f*(float)playerNoBlinks)));
         if(n % 2 == 0)  
             this->shape.setFillColor(TRANSPARENT);
         else            
@@ -125,17 +125,17 @@ void Player::rotate(direction_e direction){
 
 void Player::shapeFormation(){
     //factors
-    float body_len_factor = 7.0/8.0;
-    float body_width_factor = 2.0/3.0;
-    float engine_len_factor = 1.0/8.0;
-    float engine_width_factor_1 = 1.0/6.0;
-    float engine_width_factor_2 = 1.0/2.0;
+    const float body_len_factor = 7.0/8.0;
+    const float body_width_factor = 2.0/3.0;
+    const float engine_len_factor = 1.0/8.0;
+    const float engine_width_factor_1 = 1.0/6.0;
+    const float engine_width_factor_2 = 1.0/2.0;
     //real lengths
-    float body_len = body_len_factor * playerLen;
-    float body_width = body_width_factor * playerLen;
-    float engine_len = engine_len_factor * playerLen;
-    float engine_width_1 = engine_width_factor_1 * playerLen;
-    float engine_width_2 = engine_width_factor_2 * playerLen;
+    const float body_len = body_len_factor * playerLen;
+    const float body_width = body_width_factor * playerLen;
+    const float engine_len = engine_len_factor * playerLen;
+    const float engine_width_1 = engine_width_factor_1 * playerLen;
+    const float engine_width_2 = engine_width_factor_2 * playerLen;
     //creating player shape
     shape.setPointCount(7);
     shape.setPoint(0, sf::Vector2f(0, -body_len*2/3));    
@@ -169,8 +169,8 @@ bool Player::detectCollisions(std::vector<Asteroid>& asteroids){
     for(int i=0;i<asteroids.size();i++){
         //check if objects are close enough to each other
         const std::array<float, 2> asteroid_position = asteroids[i].getPosition();
-        float center_distance = std::pow(asteroid_position[0] - this->position[0], 2) + std::pow(asteroid_position[1] - this->position[1], 2);
-        float radius_sum = std::pow(asteroids[i].getBoundRadius() + this->boundR, 2);
+        const float center_distance = std::pow(asteroid_position[0] - this->position[0], 2) + std::pow(asteroid_position[1] - this->position[1], 2);
+        const float radius_sum = std::pow(asteroids[i].getBoundRadius() + this->boundR, 2);
         //if they are close enough, then check collision
         if(center_distance < radius_sum){
             // asteroids[i]->hit(this->damage);
@@ -185,8 +185,8 @@ bool Player::detectCollisions(std::vector<Asteroid>& asteroids){
 
 
 std::array<float, 2> Player::getEnginePosition(){
-    float xp = position[0] + sin(this->rotation);
-    float yp = position[1] + cos(this->rotation);
+    const float xp = position[0] + sin(this->rotation);
+    const float yp = position[1] + cos(this->rotation);
     return std::array<float, 2>{xp, yp};
 }
 

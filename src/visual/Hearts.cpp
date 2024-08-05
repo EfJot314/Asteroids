@@ -27,8 +27,8 @@ Hearts::Hearts(sf::RenderWindow* window, sf::Color color, int n, int x, int y){
 Hearts::~Hearts(){}
 
 void Hearts::shapeFormation(){
-    float width = this->n * heartSize + (this->n - 1) * heartsMargin;
-    float dx = -width / 2;
+    const float width = this->n * heartSize + (this->n - 1) * heartsMargin;
+    const float dx = -width / 2;
 
     for(int i=0;i<this->n;i++){
         int hx = this->x + dx + i * (heartSize + heartsMargin) + heartSize / 2;

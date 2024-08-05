@@ -16,7 +16,7 @@ Heart::Heart(sf::RenderWindow* window, sf::Color color, int x, int y){
 Heart::~Heart(){}
 
 void Heart::shapeFormation(){
-    float halfSize = heartSize / 2;
+    const float halfSize = heartSize / 2;
 
     shape.setPointCount(10);
     shape.setPoint(0, sf::Vector2f(0, 1.7f*heartSize));

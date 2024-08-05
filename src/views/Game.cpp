@@ -8,10 +8,8 @@
 Game::Game(){};
 
 Game::Game(int width, int height){
-    gameFlag = true;
     window_width = width;
     window_height = height;
-    FPS = 60;
 
     //create window
     window = new sf::RenderWindow(sf::VideoMode(window_width, window_height), "Asteroids", sf::Style::Titlebar | sf::Style::Close);
@@ -86,34 +84,31 @@ void Game::run(){
             asteroidCounter = 0;
         }
 
+        //get player
+        Player& player = ge.getPlayer();
+
         //rotating
         if(rotateRight){
-            Player& player = ge.getPlayer();
             player.rotate(right);
         }
         if(rotateLeft){
-            Player& player = ge.getPlayer();
             player.rotate(left);
         }
         //acceleration
         if(accelearate){
-            Player& player = ge.getPlayer();
             player.accelerate(playerAcceleration);
         }
         //shooting
         if(shoot && bulletCounter >= bulletDelay * FPS){
-            Player& player = ge.getPlayer();
             ge.addBullet(player.shoot());
             bulletCounter = 0;
         }
         //fire creation
         if(fireCounter >= fireDelay * FPS){
-            Player& player = ge.getPlayer();
             player.createFire();
             fireCounter = 0;
         }
         //fire update
-        Player& player = ge.getPlayer();
         player.updateFire(FPS);
         //timers update
         player.updateTimer(FPS);
@@ -174,6 +169,5 @@ void Game::run(){
     }
 
     window->close();
-
 
 };

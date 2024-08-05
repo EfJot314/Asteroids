@@ -32,7 +32,7 @@ Asteroid::~Asteroid(){};
 void Asteroid::shapeFormation(){
     boundR = 0;
     float alpha = 0;
-    float deltaAlpha = 2 * M_PI / (float)asteroidShapeN;
+    const float deltaAlpha = 2 * M_PI / (float)asteroidShapeN;
     shape.setPointCount(asteroidShapeN);
     for(int i=0;i<asteroidShapeN;i++){
         float r = asteroidRadius;
@@ -54,14 +54,14 @@ void Asteroid::shapeFormation(){
 
 void Asteroid::randomPlacement(){
     //window size
-    int width = window->getSize().x;
-    int height = window->getSize().y;
+    const int width = window->getSize().x;
+    const int height = window->getSize().y;
     //position on window
     //1 -> up
     //2 -> right
     //3 -> down
     //4 -> left
-    int side = rand() % 4;
+    const int side = rand() % 4;
     if(side == 0){
         this->position[0] = (rand() % width) * scaler;
         this->position[1] = -1 * (rand() % asteroidMargin) * scaler;

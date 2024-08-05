@@ -1,7 +1,7 @@
 
 class View{
     protected:
-        int FPS;
+        const int FPS = 60;
         sf::RenderWindow* window;
         virtual void drawAll() {};
     public:
@@ -15,7 +15,7 @@ class Game : public View{
         GameEngine ge;
         int window_width;
         int window_height;
-        bool gameFlag;
+        bool gameFlag = true;
         void drawAll() override;
     public:
         Game();
