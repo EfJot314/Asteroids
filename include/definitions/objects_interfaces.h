@@ -46,11 +46,11 @@ class KinematicObject : public VisualObject{
         void updatePositionOnWindow();
         void borderJump();
     public:
-        std::array<float, 2> getPosition();
-        float getBoundRadius();
-        int getDamage();
-        int getHp();
-        bool isDead();
+        std::array<float, 2> getPosition() const;
+        float getBoundRadius() const;
+        int getDamage() const;
+        int getHp() const;
+        bool isDead() const;
         virtual void updateKinematicProperties();
         void draw() override;
         void hit(int dmg);
@@ -98,8 +98,8 @@ class Player : public KinematicObject{
         void drawFire();
         void createFire();
         Bullet& shoot();
-        std::array<float, 2> getEnginePosition();
-        std::array<float, 2> getVelocity();
+        std::array<float, 2> getEnginePosition() const;
+        std::array<float, 2> getVelocity() const;
         void updateFire(int FPS);
         void updateTimer(int FPS);
 };

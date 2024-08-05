@@ -10,7 +10,7 @@ void KinematicObject::updatePositionOnWindow(){
 };
 
 
-std::array<float,2> KinematicObject::getPosition(){
+std::array<float,2> KinematicObject::getPosition() const{
     return std::array<float, 2>{position[0], position[1]};
 }
 
@@ -57,19 +57,19 @@ void KinematicObject::draw(){
 }
 
 
-float KinematicObject::getBoundRadius(){
+float KinematicObject::getBoundRadius() const{
     return boundR;
 }
 
-int KinematicObject::getDamage(){
+int KinematicObject::getDamage() const{
     return damage;
 }
 
-int KinematicObject::getHp(){
+int KinematicObject::getHp() const{
     return this->hp;
 }
 
-bool KinematicObject::isDead(){
+bool KinematicObject::isDead() const{
     return (this->hp <= 0);
 }
 

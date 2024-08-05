@@ -184,13 +184,13 @@ bool Player::detectCollisions(std::vector<Asteroid>& asteroids){
 }
 
 
-std::array<float, 2> Player::getEnginePosition(){
+std::array<float, 2> Player::getEnginePosition() const{
     const float xp = position[0] + sin(this->rotation);
     const float yp = position[1] + cos(this->rotation);
     return std::array<float, 2>{xp, yp};
 }
 
-std::array<float, 2> Player::getVelocity(){
+std::array<float, 2> Player::getVelocity() const{
     return std::array<float, 2>{velocity[0], velocity[1]};
 }
 
