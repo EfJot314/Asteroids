@@ -13,3 +13,4 @@ class FireObject;
 //views
 class View;
 class Game;
+class Menu;

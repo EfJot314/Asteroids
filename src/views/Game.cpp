@@ -26,12 +26,11 @@ Game::~Game(){};
 
 
 void Game::drawAll(){
-    sf::RectangleShape background(sf::Vector2f(window_width, window_height));
-    background.setFillColor(sf::Color::Black);
-
     window->clear();
 
     //draw background
+    sf::RectangleShape background(sf::Vector2f(window_width, window_height));
+    background.setFillColor(sf::Color::Black);
     window->draw(background);
 
     //draw all

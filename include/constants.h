@@ -1,5 +1,7 @@
 //colors
 #include "colors.h"
+//fonts
+#include "fonts.h"
 
 //real_distance = pixel_distance * scaler
 #define scaler 5.0f

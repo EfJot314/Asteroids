@@ -25,3 +25,19 @@ class Game : public View{
         ~Game();
         void run() override;
 };
+
+class Menu : public View{
+    private:
+        sf::Font font;
+        sf::Text title_text;
+        int window_width;
+        int window_height;
+        bool menuFlag = true;
+        void drawAll() override;
+        void clean_memory() override;
+    public:
+        Menu();
+        Menu(int width, int height);
+        ~Menu();
+        void run() override;
+};
