@@ -17,3 +17,4 @@ class Button;
 class View;
 class Game;
 class Menu;
+class GameOver;

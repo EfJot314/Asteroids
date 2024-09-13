@@ -36,6 +36,7 @@ class View{
     protected:
         const int FPS = 60;
         sf::RenderWindow *window;
+        sf::Vector2i mousePosition;
         virtual void drawAll() {};
         virtual void clean_memory() {};
     public:
@@ -63,7 +64,6 @@ class Menu : public View{
     private:
         int window_width;
         int window_height;
-        sf::Vector2i mousePosition;
 
         Label title_label;
         Button play_button;
@@ -75,6 +75,26 @@ class Menu : public View{
     public:
         Menu();
         Menu(int width, int height);
+        ~Menu();
+        int run() override;
+};
+
+class GameOver : public View{
+    private:
+        int window_width;
+        int window_height;
+
+        Label game_over_label;
+        Button play_button;
+        Button menu_button;
+        Button exit_button;
+
+        bool gameOverFlag = true;
+        void drawAll() override;
+        void clean_memory() override;
+    public:
+        GameOver();
+        GameOver(int width, int height);
         ~Menu();
         int run() override;
 };
