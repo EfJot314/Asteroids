@@ -10,6 +10,8 @@ class Bullet;
 class GameEngine;
 class Player;
 class FireObject;
+//views elements
+class Label;
 //views
 class View;
 class Game;

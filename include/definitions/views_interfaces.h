@@ -1,3 +1,29 @@
+class Label{
+    protected:
+        sf::Font font;
+        sf::Text text;
+        int getWidth() const;
+        int getHeight() const;
+    public:
+        Label();
+        Label(std::string font, std::string text);
+        Label(std::string font, std::string text, int size);
+        Label(std::string font, std::string text, int size, sf::Color color);
+        ~Label();
+        void setFont(std::string font);
+        sf::Font getFont() const;
+        void setText(std::string text);
+        std::string getText() const;
+        void setSize(int size);
+        int getSize() const;
+        void setColor(sf::Color color);
+        sf::Color getColor() const;
+        void setPosition(int x, int y);
+        std::array<int, 2> getPosition() const;
+        std::array<int, 2> getDimensions() const;
+        void draw(sf::RenderWindow *window) const;
+};
+
 
 class View{
     protected:
@@ -8,7 +34,6 @@ class View{
     public:
         virtual void run() {};
 };
-
 
 
 class Game : public View{
@@ -28,8 +53,7 @@ class Game : public View{
 
 class Menu : public View{
     private:
-        sf::Font font;
-        sf::Text title_text;
+        Label title_label;
         int window_width;
         int window_height;
         bool menuFlag = true;

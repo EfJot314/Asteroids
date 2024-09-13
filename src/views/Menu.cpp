@@ -14,17 +14,11 @@ Menu::Menu(int width, int height){
     //create window
     window = new sf::RenderWindow(sf::VideoMode(window_width, window_height), "Asteroids", sf::Style::Titlebar | sf::Style::Close);
 
-    //load font
-    if (!font.loadFromFile(starFontPath)){
-        std::cout << "Font '" << starFontPath << "' not found!" << std::endl;
-        return;
-    }
-
-    //create title text
-    title_text.setFont(font);
-    title_text.setString("Asteroids");
-    title_text.setCharacterSize(70);
-    title_text.setFillColor(sf::Color::Yellow);
+    //create title label
+    title_label.setFont(starFontPath);
+    title_label.setText("Asteroids");
+    title_label.setSize(70);
+    title_label.setColor(sf::Color::Yellow);
 
 };
 
@@ -40,8 +34,8 @@ void Menu::drawAll(){
     window->draw(background);
 
     //labels
-    title_text.setPosition(window_width/2 - title_text.getLocalBounds().width/2, window_height/20);
-    window->draw(title_text);
+    // title_label.setPosition(window_width/2, window_height/10);
+    title_label.draw(window);
 
     //display results on window
     window->display();

@@ -16,6 +16,7 @@ file(GLOB logic_src
 #views files
 file(GLOB views_src
     "./src/views/*.cpp"
+    "./src/views/elements/*.cpp"
 )
 
 #visual files
