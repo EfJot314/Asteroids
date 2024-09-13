@@ -23,8 +23,8 @@ Menu::Menu(int width, int height){
     //create title text
     title_text.setFont(font);
     title_text.setString("Asteroids");
-    title_text.setCharacterSize(60);
-    title_text.setFillColor(sf::Color::Red);
+    title_text.setCharacterSize(70);
+    title_text.setFillColor(sf::Color::Yellow);
 
 };
 
@@ -40,6 +40,7 @@ void Menu::drawAll(){
     window->draw(background);
 
     //labels
+    title_text.setPosition(window_width/2 - title_text.getLocalBounds().width/2, window_height/20);
     window->draw(title_text);
 
     //display results on window
