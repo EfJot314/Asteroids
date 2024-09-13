@@ -60,8 +60,11 @@ class Menu : public View{
         int window_width;
         int window_height;
         sf::Vector2i mousePosition;
+
         Label title_label;
         Button play_button;
+        Button exit_button;
+
         bool menuFlag = true;
         void drawAll() override;
         void clean_memory() override;

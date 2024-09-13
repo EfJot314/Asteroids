@@ -14,17 +14,24 @@ Menu::Menu(int width, int height){
     //create window
     window = new sf::RenderWindow(sf::VideoMode(window_width, window_height), "Asteroids", sf::Style::Titlebar | sf::Style::Close);
 
-    //create title label
+    //title label
     title_label.setFont(starFontPath);
     title_label.setString("Asteroids");
     title_label.setCharacterSize(70);
     title_label.setFillColor(sf::Color::Yellow);
 
-    //create play button
+    //play button
     play_button.setFont(starFontPath);
     play_button.setString("Play");
     play_button.setCharacterSize(50);
     play_button.setFillColor(sf::Color::Red);
+
+    //quit button
+    exit_button.setFont(starFontPath);
+    exit_button.setString("Exit");
+    exit_button.setCharacterSize(50);
+    exit_button.setFillColor(sf::Color::Red);
+
 
 };
 
@@ -45,6 +52,9 @@ void Menu::drawAll(){
 
     play_button.setPosition(window_width/2, window_height/2);
     window->draw(play_button);
+
+    exit_button.setPosition(window_width/2, window_height*3/4);
+    window->draw(exit_button);
 
     //display results on window
     window->display();
