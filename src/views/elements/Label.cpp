@@ -16,7 +16,7 @@ void Label::setFont(std::string font){
 }
 
 void Label::setPosition(int x, int y){
-    this->sf::Text::setPosition(x - getWidth()/2, y - getHeight()/2);
+    this->sf::Text::setPosition(x - getWidth()/2, y-getHeight()/2- this->getLocalBounds().top);
 }
 
 std::array<int, 2> Label::getPosition() const{

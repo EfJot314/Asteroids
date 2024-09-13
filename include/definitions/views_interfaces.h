@@ -22,6 +22,9 @@ class Button : public Label{
         Button();
         Button(int width, int height);
         ~Button();
+        void setString(const sf::String &string);
+        void setPosition(int x, int y);
+        void setDimensions();
         void setDimensions(int width, int height);
         std::array<int, 2> getDimensions() const;
         void setBackgrounds(sf::Color b1, sf::Color b2);

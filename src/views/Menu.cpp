@@ -25,12 +25,14 @@ Menu::Menu(int width, int height){
     play_button.setString("Play");
     play_button.setCharacterSize(50);
     play_button.setFillColor(sf::Color::Red);
+    play_button.setDimensions();
 
     //quit button
     exit_button.setFont(starFontPath);
     exit_button.setString("Exit");
     exit_button.setCharacterSize(50);
     exit_button.setFillColor(sf::Color::Red);
+    exit_button.setDimensions();
 
 
 };
@@ -65,7 +67,7 @@ void Menu::drawAll(){
 void Menu::run(){
     //mouse click variables
     bool play_click = false;
-    bool quit_click = false;
+    bool exit_click = false;
 
     //main loop
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
@@ -103,6 +105,9 @@ void Menu::run(){
                     if(play_button.checkOver(mousePosition.x, mousePosition.y)){
                         play_click = true;
                     }
+                    else if(exit_button.checkOver(mousePosition.x, mousePosition.y)){
+                        exit_click = true;
+                    }
                 }
             }
             else if (event.type == sf::Event::MouseButtonReleased){
@@ -110,8 +115,9 @@ void Menu::run(){
                     if(play_click && play_button.checkOver(mousePosition.x, mousePosition.y)){
                         //TODO
                     }
-                    else if(quit_click){
-                        //TODO
+                    else if(exit_click && exit_button.checkOver(mousePosition.x, mousePosition.y)){
+                        menuFlag = false;
+                        window->close();
                     }
                 }
             }
