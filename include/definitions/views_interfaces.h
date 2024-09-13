@@ -46,20 +46,6 @@ class View{
 };
 
 
-class Game : public View{
-    private:
-        GameEngine ge;
-        int window_width;
-        int window_height;
-        bool gameFlag = true;
-        void drawAll() override;
-    public:
-        Game();
-        Game(sf::RenderWindow *window);
-        ~Game();
-        int run() override;
-};
-
 class Menu : public View{
     private:
         int window_width;
@@ -80,6 +66,22 @@ class Menu : public View{
         int run() override;
 };
 
+
+class Game : public View{
+    private:
+        GameEngine ge;
+        int window_width;
+        int window_height;
+        bool gameFlag = true;
+        void drawAll() override;
+    public:
+        Game();
+        Game(sf::RenderWindow *window);
+        ~Game();
+        int run() override;
+};
+
+
 class GameOver : public View{
     private:
         int window_width;
@@ -98,3 +100,22 @@ class GameOver : public View{
         ~GameOver();
         int run() override;
 };
+
+class Pause : public View{
+    private:
+        int window_width;
+        int window_height;
+
+        Label pause_label;
+        Button restart_button;
+        Button menu_button;
+        Button exit_button;
+
+        bool gameOverFlag = true;
+        void drawAll() override;
+    public:
+        Pause();
+        Pause(sf::RenderWindow *window);
+        ~Pause();
+        int run() override;
+}

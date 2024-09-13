@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Asteroids",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Asteroids::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Asteroids-Debug-5fc6cee707feae6aec6d.json",
+					"name" : "Asteroids",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "LogicLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LogicLib-Debug-217a467b3bd59bdfe149.json",
+					"name" : "LogicLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ObjectsLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ObjectsLib-Debug-3a33ed2bda0824aafd3a.json",
+					"name" : "ObjectsLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ViewsLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ViewsLib-Debug-1184da01876230613c8c.json",
+					"name" : "ViewsLib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/filipjedrzejewski/cpp/Asteroids/build",
+		"source" : "/home/filipjedrzejewski/cpp/Asteroids"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
