@@ -1,15 +1,31 @@
 class Label : public sf::Text{
-    protected:
+    private:
         sf::Font font;
+    protected:
         int getWidth() const;
         int getHeight() const;
     public:
-        Label();
-        ~Label();
         void setFont(std::string font); 
         void setPosition(int x, int y);
         std::array<int, 2> getPosition() const;
         std::array<int, 2> getDimensions() const;
+};
+
+
+class Button : public Label{
+    private:
+        int width;
+        int height;
+        sf::Color background1;
+        sf::Color background2;
+    public:
+        Button();
+        Button(int width, int height);
+        ~Button();
+        void setDimensions(int width, int height);
+        std::array<int, 2> getDimensions() const;
+        void setBackgrounds(sf::Color b1, sf::Color b2);
+        bool checkOver(int mouseX, int mouseY);
 };
 
 

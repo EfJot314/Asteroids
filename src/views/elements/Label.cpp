@@ -1,10 +1,5 @@
 #include "interfaces.h"
 
-Label::Label() {};
-
-Label::~Label() {}
-
-
 int Label::getWidth() const{
     return this->getLocalBounds().width;
 }
