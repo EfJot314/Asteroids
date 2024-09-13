@@ -39,7 +39,9 @@ class View{
         virtual void drawAll() {};
         virtual void clean_memory() {};
     public:
-        virtual void run() {};
+        virtual int run() {
+            return 0;
+        };
 };
 
 
@@ -50,12 +52,11 @@ class Game : public View{
         int window_height;
         bool gameFlag = true;
         void drawAll() override;
-        void clean_memory() override;
     public:
         Game();
-        Game(int width, int height);
+        Game(sf::RenderWindow *window);
         ~Game();
-        void run() override;
+        int run() override;
 };
 
 class Menu : public View{
@@ -75,5 +76,5 @@ class Menu : public View{
         Menu();
         Menu(int width, int height);
         ~Menu();
-        void run() override;
+        int run() override;
 };

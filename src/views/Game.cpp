@@ -7,12 +7,12 @@
 
 Game::Game(){};
 
-Game::Game(int width, int height){
-    window_width = width;
-    window_height = height;
+Game::Game(sf::RenderWindow *window){
 
-    //create window
-    window = new sf::RenderWindow(sf::VideoMode(window_width, window_height), "Asteroids", sf::Style::Titlebar | sf::Style::Close);
+    this->window = window;
+
+    window_width = window->getSize().x;
+    window_height = window->getSize().y;
 
     //create game engine
     ge = GameEngine();
@@ -42,7 +42,7 @@ void Game::drawAll(){
 
 
 
-void Game::run(){
+int Game::run(){
 
     //player controll variables
     bool accelearate = false;
@@ -124,7 +124,7 @@ void Game::run(){
             //closing window
             if (event.type == sf::Event::Closed) {
                 gameFlag = false;
-                window->close();
+                return 1;
             }
             //player controll
             if (event.type == sf::Event::KeyPressed){
@@ -164,15 +164,8 @@ void Game::run(){
         std::this_thread::sleep_for(sleepDuration);
         frameStartTime = std::chrono::high_resolution_clock::now();
 
-
     }
 
-    window->close();
-
-    this->clean_memory();
+    return 0;
 };
 
-
-void Game::clean_memory(){
-    delete window;
-}

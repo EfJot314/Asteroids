@@ -64,7 +64,7 @@ void Menu::drawAll(){
 
 
 
-void Menu::run(){
+int Menu::run(){
     //mouse click variables
     bool play_click = false;
     bool exit_click = false;
@@ -113,7 +113,13 @@ void Menu::run(){
             else if (event.type == sf::Event::MouseButtonReleased){
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     if(play_click && play_button.checkOver(mousePosition.x, mousePosition.y)){
-                        //TODO
+                        //run game
+                        Game game(this->window);
+                        int state = game.run();
+                        //exit state
+                        if(state == 1){
+                            menuFlag = false;
+                        }
                     }
                     else if(exit_click && exit_button.checkOver(mousePosition.x, mousePosition.y)){
                         menuFlag = false;
@@ -135,6 +141,8 @@ void Menu::run(){
     window->close();
 
     this->clean_memory();
+
+    return 0;
 };
 
 

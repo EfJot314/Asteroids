@@ -7,11 +7,5 @@ int main()
     srand((unsigned) time(NULL));
 
     Menu menu(800, 600);
-    menu.run();
-
-    //start game
-    // Game game1(800, 600);
-    // game1.run();
-  
-    return 0;
+    return menu.run();
 }
