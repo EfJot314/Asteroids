@@ -127,31 +127,39 @@ int Game::run(){
                 return 1;
             }
             //player controll
-            if (event.type == sf::Event::KeyPressed){
+            else if (event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::W){
                     accelearate = true;
                 }
-                if(event.key.code == sf::Keyboard::D){
+                else if(event.key.code == sf::Keyboard::D){
                     rotateRight = true;
                 }
-                if(event.key.code == sf::Keyboard::A){
+                else if(event.key.code == sf::Keyboard::A){
                     rotateLeft = true;
                 }
-                if(event.key.code == sf::Keyboard::Space){
+                else if(event.key.code == sf::Keyboard::Space){
                     shoot = true;
                 }
+                else if(event.key.code == sf::Keyboard::Escape){
+                    Pause pauseMenu(this->window);
+                    int status = pauseMenu.run();
+                    if(status != 2){
+                        gameFlag = false;
+                        return status;
+                    }
+                }
             }
-            if (event.type == sf::Event::KeyReleased){
+            else if (event.type == sf::Event::KeyReleased){
                 if(event.key.code == sf::Keyboard::W){
                     accelearate = false;
                 }
-                if(event.key.code == sf::Keyboard::D){
+                else if(event.key.code == sf::Keyboard::D){
                     rotateRight = false;
                 }
-                if(event.key.code == sf::Keyboard::A){
+                else if(event.key.code == sf::Keyboard::A){
                     rotateLeft = false;
                 }
-                if(event.key.code == sf::Keyboard::Space){
+                else if(event.key.code == sf::Keyboard::Space){
                     shoot = false;
                 }
             }

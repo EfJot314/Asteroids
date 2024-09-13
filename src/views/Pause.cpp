@@ -5,38 +5,38 @@
 
 
 
-GameOver::GameOver(){};
+Pause::Pause(){};
 
-GameOver::GameOver(sf::RenderWindow *window){
+Pause::Pause(sf::RenderWindow *window){
 
     this->window = window;
 
     window_width = window->getSize().x;
     window_height = window->getSize().y;
 
-    //game over label
-    game_over_label.setFont(starFontPath);
-    game_over_label.setString("Game over");
-    game_over_label.setCharacterSize(70);
-    game_over_label.setFillColor(sf::Color::Yellow);
+    //pause label
+    pause_label.setFont(starFontPath);
+    pause_label.setString("pause");
+    pause_label.setCharacterSize(70);
+    pause_label.setFillColor(sf::Color::Yellow);
 
-    //play button
-    play_button.setFont(starFontPath);
-    play_button.setString("Play");
-    play_button.setCharacterSize(50);
-    play_button.setFillColor(sf::Color::Red);
-    play_button.setDimensions();
+    //resume button
+    resume_button.setFont(starFontPath);
+    resume_button.setString("resume");
+    resume_button.setCharacterSize(50);
+    resume_button.setFillColor(sf::Color::Red);
+    resume_button.setDimensions();
 
     //menu button
     menu_button.setFont(starFontPath);
-    menu_button.setString("Main menu");
+    menu_button.setString("main menu");
     menu_button.setCharacterSize(50);
     menu_button.setFillColor(sf::Color::Red);
     menu_button.setDimensions();
 
     //exit button
     exit_button.setFont(starFontPath);
-    exit_button.setString("Exit");
+    exit_button.setString("exit");
     exit_button.setCharacterSize(50);
     exit_button.setFillColor(sf::Color::Red);
     exit_button.setDimensions();
@@ -44,10 +44,10 @@ GameOver::GameOver(sf::RenderWindow *window){
 
 };
 
-GameOver::~GameOver(){};
+Pause::~Pause(){};
 
 
-void GameOver::drawAll(){
+void Pause::drawAll(){
     window->clear();
 
     //draw background
@@ -56,11 +56,11 @@ void GameOver::drawAll(){
     window->draw(background);
 
     //labels and buttons
-    game_over_label.setPosition(window_width/2, window_height/10);
-    window->draw(game_over_label);
+    pause_label.setPosition(window_width/2, window_height/10);
+    window->draw(pause_label);
 
-    play_button.setPosition(window_width/2, window_height*2/5);
-    window->draw(play_button);
+    resume_button.setPosition(window_width/2, window_height*2/5);
+    window->draw(resume_button);
 
     menu_button.setPosition(window_width/2, window_height*3/5);
     window->draw(menu_button);
@@ -74,9 +74,9 @@ void GameOver::drawAll(){
 
 
 
-int GameOver::run(){
+int Pause::run(){
     //mouse click variables
-    bool play_click = false;
+    bool resume_click = false;
     bool menu_click = false;
     bool exit_click = false;
 
@@ -113,8 +113,8 @@ int GameOver::run(){
             //mouse
             else if (event.type == sf::Event::MouseButtonPressed){
                 if (event.mouseButton.button == sf::Mouse::Left) {
-                    if(play_button.checkOver(mousePosition.x, mousePosition.y)){
-                        play_click = true;
+                    if(resume_button.checkOver(mousePosition.x, mousePosition.y)){
+                        resume_click = true;
                     }
                     else if(menu_button.checkOver(mousePosition.x, mousePosition.y)){
                         menu_click = true;
@@ -126,7 +126,7 @@ int GameOver::run(){
             }
             else if (event.type == sf::Event::MouseButtonReleased){
                 if (event.mouseButton.button == sf::Mouse::Left) {
-                    if(play_click && play_button.checkOver(mousePosition.x, mousePosition.y)){
+                    if(resume_click && resume_button.checkOver(mousePosition.x, mousePosition.y)){
                         return 2;
                     }
                     else if(menu_click && menu_button.checkOver(mousePosition.x, mousePosition.y)){

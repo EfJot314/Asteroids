@@ -107,7 +107,7 @@ class Pause : public View{
         int window_height;
 
         Label pause_label;
-        Button restart_button;
+        Button resume_button;
         Button menu_button;
         Button exit_button;
 
@@ -118,4 +118,4 @@ class Pause : public View{
         Pause(sf::RenderWindow *window);
         ~Pause();
         int run() override;
-}
+};
