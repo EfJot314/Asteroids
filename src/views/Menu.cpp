@@ -27,7 +27,7 @@ Menu::Menu(int width, int height){
     play_button.setFillColor(sf::Color::Red);
     play_button.setDimensions();
 
-    //quit button
+    //exit button
     exit_button.setFont(starFontPath);
     exit_button.setString("Exit");
     exit_button.setCharacterSize(50);
@@ -62,7 +62,25 @@ void Menu::drawAll(){
     window->display();
 };
 
-
+void Menu::run_game(){
+    while(true){
+        Game game(this->window);
+        int state = game.run();
+        //to menu state
+        if(state == 0){
+            break;
+        }
+        //exit state
+        if(state == 1){
+            menuFlag = false;
+            break;
+        }
+        //restart state
+        if(state == 2){
+            continue;
+        }
+    }
+}
 
 int Menu::run(){
     //mouse click variables
@@ -113,13 +131,7 @@ int Menu::run(){
             else if (event.type == sf::Event::MouseButtonReleased){
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     if(play_click && play_button.checkOver(mousePosition.x, mousePosition.y)){
-                        //run game
-                        Game game(this->window);
-                        int state = game.run();
-                        //exit state
-                        if(state == 1){
-                            menuFlag = false;
-                        }
+                        this->run_game();
                     }
                     else if(exit_click && exit_button.checkOver(mousePosition.x, mousePosition.y)){
                         menuFlag = false;

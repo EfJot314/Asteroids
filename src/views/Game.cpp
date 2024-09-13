@@ -166,6 +166,8 @@ int Game::run(){
 
     }
 
-    return 0;
+    //return value from game over menu
+    GameOver gameOverMenu(this->window);
+    return gameOverMenu.run();
 };
 

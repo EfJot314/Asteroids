@@ -15,6 +15,6 @@ class Label;
 class Button;
 //views
 class View;
+class GameOver;
 class Game;
 class Menu;
-class GameOver;

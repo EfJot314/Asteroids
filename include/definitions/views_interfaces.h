@@ -71,6 +71,7 @@ class Menu : public View{
 
         bool menuFlag = true;
         void drawAll() override;
+        void run_game();
         void clean_memory() override;
     public:
         Menu();
@@ -91,10 +92,9 @@ class GameOver : public View{
 
         bool gameOverFlag = true;
         void drawAll() override;
-        void clean_memory() override;
     public:
         GameOver();
-        GameOver(int width, int height);
-        ~Menu();
+        GameOver(sf::RenderWindow *window);
+        ~GameOver();
         int run() override;
 };

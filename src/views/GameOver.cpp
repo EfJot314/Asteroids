@@ -7,18 +7,18 @@
 
 GameOver::GameOver(){};
 
-GameOver::GameOver(int width, int height){
-    window_width = width;
-    window_height = height;
+GameOver::GameOver(sf::RenderWindow *window){
 
-    //create window
-    window = new sf::RenderWindow(sf::VideoMode(window_width, window_height), "Asteroids", sf::Style::Titlebar | sf::Style::Close);
+    this->window = window;
 
-    //title label
-    title_label.setFont(starFontPath);
-    title_label.setString("Asteroids");
-    title_label.setCharacterSize(70);
-    title_label.setFillColor(sf::Color::Yellow);
+    window_width = window->getSize().x;
+    window_height = window->getSize().y;
+
+    //game over label
+    game_over_label.setFont(starFontPath);
+    game_over_label.setString("Game Over");
+    game_over_label.setCharacterSize(70);
+    game_over_label.setFillColor(sf::Color::Yellow);
 
     //play button
     play_button.setFont(starFontPath);
@@ -27,7 +27,14 @@ GameOver::GameOver(int width, int height){
     play_button.setFillColor(sf::Color::Red);
     play_button.setDimensions();
 
-    //quit button
+    //menu button
+    menu_button.setFont(starFontPath);
+    menu_button.setString("Main menu");
+    menu_button.setCharacterSize(50);
+    menu_button.setFillColor(sf::Color::Red);
+    menu_button.setDimensions();
+
+    //exit button
     exit_button.setFont(starFontPath);
     exit_button.setString("Exit");
     exit_button.setCharacterSize(50);
@@ -49,13 +56,16 @@ void GameOver::drawAll(){
     window->draw(background);
 
     //labels and buttons
-    title_label.setPosition(window_width/2, window_height/10);
-    window->draw(title_label);
+    game_over_label.setPosition(window_width/2, window_height/10);
+    window->draw(game_over_label);
 
-    play_button.setPosition(window_width/2, window_height/2);
+    play_button.setPosition(window_width/2, window_height*2/5);
     window->draw(play_button);
 
-    exit_button.setPosition(window_width/2, window_height*3/4);
+    menu_button.setPosition(window_width/2, window_height*3/5);
+    window->draw(menu_button);
+
+    exit_button.setPosition(window_width/2, window_height*4/5);
     window->draw(exit_button);
 
     //display results on window
@@ -67,6 +77,7 @@ void GameOver::drawAll(){
 int GameOver::run(){
     //mouse click variables
     bool play_click = false;
+    bool menu_click = false;
     bool exit_click = false;
 
     //main loop
@@ -105,6 +116,9 @@ int GameOver::run(){
                     if(play_button.checkOver(mousePosition.x, mousePosition.y)){
                         play_click = true;
                     }
+                    else if(menu_button.checkOver(mousePosition.x, mousePosition.y)){
+                        menu_click = true;
+                    }
                     else if(exit_button.checkOver(mousePosition.x, mousePosition.y)){
                         exit_click = true;
                     }
@@ -113,17 +127,14 @@ int GameOver::run(){
             else if (event.type == sf::Event::MouseButtonReleased){
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     if(play_click && play_button.checkOver(mousePosition.x, mousePosition.y)){
-                        //run game
-                        Game game(this->window);
-                        int state = game.run();
-                        //exit state
-                        if(state == 1){
-                            gameOverFlag = false;
-                        }
+                        return 2;
+                    }
+                    else if(menu_click && menu_button.checkOver(mousePosition.x, mousePosition.y)){
+                        return 0;
                     }
                     else if(exit_click && exit_button.checkOver(mousePosition.x, mousePosition.y)){
                         gameOverFlag = false;
-                        window->close();
+                        return 1;
                     }
                 }
             }
@@ -144,8 +155,3 @@ int GameOver::run(){
 
     return 0;
 };
-
-
-void Menu::clean_memory(){
-    delete window;
-}
