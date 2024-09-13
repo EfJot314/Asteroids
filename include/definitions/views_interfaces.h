@@ -58,6 +58,7 @@ class Game : public View{
 class Menu : public View{
     private:
         Label title_label;
+        Button play_button;
         int window_width;
         int window_height;
         bool menuFlag = true;

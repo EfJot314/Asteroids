@@ -20,6 +20,12 @@ Menu::Menu(int width, int height){
     title_label.setCharacterSize(70);
     title_label.setFillColor(sf::Color::Yellow);
 
+    //create play button
+    play_button.setFont(starFontPath);
+    play_button.setString("Play");
+    play_button.setCharacterSize(50);
+    play_button.setFillColor(sf::Color::Red);
+
 };
 
 Menu::~Menu(){};
@@ -33,9 +39,12 @@ void Menu::drawAll(){
     background.setFillColor(sf::Color::Black);
     window->draw(background);
 
-    //labels
+    //labels and buttons
     title_label.setPosition(window_width/2, window_height/10);
     window->draw(title_label);
+
+    play_button.setPosition(window_width/2, window_height/2);
+    window->draw(play_button);
 
     //display results on window
     window->display();
