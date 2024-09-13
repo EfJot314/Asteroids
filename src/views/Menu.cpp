@@ -53,17 +53,25 @@ void Menu::drawAll(){
 
 
 void Menu::run(){
+    //mouse click variables
+    bool play_click = false;
+    bool quit_click = false;
+
+    //main loop
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
     while(menuFlag){
 
         //update widow size variables
         window_width = window->getSize().x;
         window_height = window->getSize().y;
+        
+        //mouse position
+        mousePosition = sf::Mouse::getPosition(*window);
 
         //drawing all
         drawAll();
-        
-        
+                
+
         //handle events  
         sf::Event event;
         while (window->pollEvent(event)) {
@@ -72,15 +80,29 @@ void Menu::run(){
                 menuFlag = false;
                 window->close();
             }
-            //player controll
-            if (event.type == sf::Event::KeyPressed){
-                if(event.key.code == sf::Keyboard::W){
-                    
+            //keyboard
+            else if (event.type == sf::Event::KeyPressed){
+                if(event.key.code == sf::Keyboard::Escape){
+                    menuFlag = false;
+                    window->close();
                 }
             }
-            if (event.type == sf::Event::KeyReleased){
-                if(event.key.code == sf::Keyboard::W){
-                    
+            //mouse
+            else if (event.type == sf::Event::MouseButtonPressed){
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    if(play_button.checkOver(mousePosition.x, mousePosition.y)){
+                        play_click = true;
+                    }
+                }
+            }
+            else if (event.type == sf::Event::MouseButtonReleased){
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    if(play_click && play_button.checkOver(mousePosition.x, mousePosition.y)){
+                        //TODO
+                    }
+                    else if(quit_click){
+                        //TODO
+                    }
                 }
             }
         }

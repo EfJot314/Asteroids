@@ -32,7 +32,7 @@ class Button : public Label{
 class View{
     protected:
         const int FPS = 60;
-        sf::RenderWindow* window;
+        sf::RenderWindow *window;
         virtual void drawAll() {};
         virtual void clean_memory() {};
     public:
@@ -57,10 +57,11 @@ class Game : public View{
 
 class Menu : public View{
     private:
-        Label title_label;
-        Button play_button;
         int window_width;
         int window_height;
+        sf::Vector2i mousePosition;
+        Label title_label;
+        Button play_button;
         bool menuFlag = true;
         void drawAll() override;
         void clean_memory() override;
