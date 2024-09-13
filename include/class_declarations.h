@@ -12,6 +12,7 @@ class Player;
 class FireObject;
 //views elements
 class Label;
+class Button;
 //views
 class View;
 class Game;
