@@ -111,7 +111,7 @@ class Pause : public View{
         Button menu_button;
         Button exit_button;
 
-        bool gameOverFlag = true;
+        bool pauseFlag = true;
         void drawAll() override;
     public:
         Pause();

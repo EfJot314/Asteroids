@@ -82,7 +82,7 @@ int Pause::run(){
 
     //main loop
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
-    while(gameOverFlag){
+    while(pauseFlag){
 
         //update widow size variables
         window_width = window->getSize().x;
@@ -100,14 +100,14 @@ int Pause::run(){
         while (window->pollEvent(event)) {
             //closing window
             if (event.type == sf::Event::Closed) {
-                gameOverFlag = false;
+                pauseFlag = false;
                 window->close();
             }
             //keyboard
             else if (event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::Escape){
-                    gameOverFlag = false;
-                    window->close();
+                    pauseFlag = false;
+                    return 2;
                 }
             }
             //mouse
@@ -133,7 +133,7 @@ int Pause::run(){
                         return 0;
                     }
                     else if(exit_click && exit_button.checkOver(mousePosition.x, mousePosition.y)){
-                        gameOverFlag = false;
+                        pauseFlag = false;
                         return 1;
                     }
                 }

@@ -107,7 +107,7 @@ int GameOver::run(){
             else if (event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::Escape){
                     gameOverFlag = false;
-                    window->close();
+                    return 0;
                 }
             }
             //mouse
