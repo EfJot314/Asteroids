@@ -1,5 +1,6 @@
 # Directories
 .vscode/
+build/
 CMakeFiles/
 
 # Generated files
