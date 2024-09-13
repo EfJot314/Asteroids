@@ -16,9 +16,9 @@ Menu::Menu(int width, int height){
 
     //create title label
     title_label.setFont(starFontPath);
-    title_label.setText("Asteroids");
-    title_label.setSize(70);
-    title_label.setColor(sf::Color::Yellow);
+    title_label.setString("Asteroids");
+    title_label.setCharacterSize(70);
+    title_label.setFillColor(sf::Color::Yellow);
 
 };
 
@@ -34,8 +34,8 @@ void Menu::drawAll(){
     window->draw(background);
 
     //labels
-    // title_label.setPosition(window_width/2, window_height/10);
-    title_label.draw(window);
+    title_label.setPosition(window_width/2, window_height/10);
+    window->draw(title_label);
 
     //display results on window
     window->display();
