@@ -16,7 +16,7 @@ GameOver::GameOver(sf::RenderWindow *window){
 
     //game over label
     game_over_label.setFont(starFontPath);
-    game_over_label.setString("Game Over");
+    game_over_label.setString("Game over");
     game_over_label.setCharacterSize(70);
     game_over_label.setFillColor(sf::Color::Yellow);
 
