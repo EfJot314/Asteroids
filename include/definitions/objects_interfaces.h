@@ -78,8 +78,9 @@ class Asteroid : public KinematicObject{
 
 class Player : public KinematicObject{
     private:
-        float hitTimer = playerUntouchableTime+1.0f;
+        int score = 0;
         Hearts hearts;
+        float hitTimer = playerUntouchableTime+1.0f;
         float acceleration[2];
         float rotation = 0;
         std::vector<FireObject> fire;
@@ -104,6 +105,7 @@ class Player : public KinematicObject{
         std::array<float, 2> getVelocity() const;
         void updateFire(int FPS);
         void updateTimer(int FPS);
+        int getScore() const;
 };
 
 
