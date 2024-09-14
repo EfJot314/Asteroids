@@ -54,7 +54,7 @@ class KinematicObject : public VisualObject{
         bool isDead() const;
         virtual void updateKinematicProperties();
         void draw() override;
-        void hit(int dmg);
+        bool hit(int dmg);
         int getPoints() const;
 };
 
@@ -105,6 +105,7 @@ class Player : public KinematicObject{
         std::array<float, 2> getVelocity() const;
         void updateFire(int FPS);
         void updateTimer(int FPS);
+        void addToScore(int points);
         int getScore() const;
 };
 

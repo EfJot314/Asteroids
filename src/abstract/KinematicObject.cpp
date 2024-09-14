@@ -73,11 +73,12 @@ bool KinematicObject::isDead() const{
     return (this->hp <= 0);
 }
 
-void KinematicObject::hit(int dmg){
+bool KinematicObject::hit(int dmg){
     this->hp -= dmg;
     if(this->hp < 0){
         this->hp = 0;
     }
+    return isDead();
 }
 
 int KinematicObject::getPoints() const{

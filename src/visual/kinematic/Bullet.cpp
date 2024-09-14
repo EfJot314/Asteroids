@@ -55,7 +55,10 @@ bool Bullet::detectCollisions(std::vector<Asteroid>& asteroids){
         const float radius_sum = asteroids[i].getBoundRadius() + this->boundR;
         //if they are close enough, then check collision
         if(center_distance < radius_sum){
-            asteroids[i].hit(this->damage);
+            //hit and increment score
+            if(asteroids[i].hit(this->damage)){
+                this->player->addToScore(asteroids[i].getPoints());
+            }
             this->hit(1);
             collided = true;
         }

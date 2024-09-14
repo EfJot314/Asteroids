@@ -198,7 +198,11 @@ void Player::updateTimer(int FPS){
     hitTimer += 1.0f / (float)FPS;
 }
 
+void Player::addToScore(int points){
+    score += points;
+}
+
 int Player::getScore() const{
-    return this->score;
+    return score;
 }
 
