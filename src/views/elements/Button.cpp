@@ -51,7 +51,7 @@ void Button::setBackgrounds(const sf::Color b1, const sf::Color b2){
 }
 
 void Button::hover(int mouseX, int mouseY){
-    setDimensions();
+    // setDimensions();
     if(checkOver(mouseX, mouseY)){
         this->background.setFillColor(this->background_color2);
     }
