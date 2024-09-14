@@ -3,6 +3,7 @@
 //fonts
 #include "fonts.h"
 
+
 //real_distance = pixel_distance * scaler
 #define scaler 5.0f
 //time between two frames
@@ -14,7 +15,7 @@
 //number of blinks, when player is untouchable
 #define playerNoBlinks 6
 //acceleration of a player
-#define playerAcceleration 0.30f
+#define playerAcceleration 0.50f
 //rotation speed of a player
 #define playerRotationSpeed 4.0f
 //length of a player
@@ -44,7 +45,7 @@
 //time between shoots (in seconds)
 #define bulletDelay 0.2f
 //max bullet distance
-#define bulletMaxDistance 1600.0f
+#define bulletMaxDistance 1900.0f
 //max fire angle
 #define fireMaxAngleDeg 20
 //fire size
