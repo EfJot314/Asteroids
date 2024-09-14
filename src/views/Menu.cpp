@@ -53,9 +53,11 @@ void Menu::drawAll(){
     title_label.setPosition(window_width/2, window_height/10);
     window->draw(title_label);
 
+    play_button.hover(mousePosition.x, mousePosition.y);
     play_button.setPosition(window_width/2, window_height/2);
     window->draw(play_button);
 
+    exit_button.hover(mousePosition.x, mousePosition.y);
     exit_button.setPosition(window_width/2, window_height*3/4);
     window->draw(exit_button);
 
