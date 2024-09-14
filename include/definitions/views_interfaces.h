@@ -72,6 +72,9 @@ class Game : public View{
         GameEngine ge;
         int window_width;
         int window_height;
+
+        Label score_label;
+
         bool gameFlag = true;
         void drawAll() override;
     public:

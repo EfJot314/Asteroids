@@ -14,6 +14,12 @@ Game::Game(sf::RenderWindow *window){
     window_width = window->getSize().x;
     window_height = window->getSize().y;
 
+    //score label
+    score_label.setFont(starFontPath);
+    score_label.setString("Score: 240");
+    score_label.setCharacterSize(20);
+    score_label.setFillColor(sf::Color::Yellow);
+
     //create game engine
     ge = GameEngine();
 
@@ -35,6 +41,12 @@ void Game::drawAll(){
 
     //draw all
     ge.drawAll();
+
+    //score label
+    int score = ge.getPlayer().getScore();
+    score_label.setString("Score: " + std::to_string(score));
+    score_label.setPosition(15 + score_label.getDimensions()[0]/2, window_height - 15 - score_label.getDimensions()[1]/2);
+    window->draw(score_label);
 
     //display results on window
     window->display();
