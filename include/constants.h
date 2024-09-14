@@ -16,6 +16,8 @@
 #define playerNoBlinks 6
 //acceleration of a player
 #define playerAcceleration 0.50f
+//max player speed
+#define playerMaxSpeed 50.0f
 //rotation speed of a player
 #define playerRotationSpeed 4.0f
 //length of a player
@@ -23,7 +25,7 @@
 //margin for generating asteroids
 #define asteroidMargin 200
 //min asteroid velocity
-#define asteroidVelocityMin 5.0f
+#define asteroidVelocityMin 10.0f
 //max asteroid velocity
 #define asteroidVelocityMax 30.0f
 //number of points in asteroid shape

@@ -48,9 +48,17 @@ void Player::accelerate(float acceleration){
 }
 
 void Player::updateKinematicProperties(){
-    //update position
-    velocity[0] += acceleration[0] * deltaTime;
-    velocity[1] += acceleration[1] * deltaTime;
+    float vx = velocity[0];
+    float vy = velocity[1];
+
+    vx += acceleration[0] * deltaTime;
+    vy += acceleration[1] * deltaTime;
+
+    //check max speed
+    if(vx*vx + vy*vy <= playerMaxSpeed*playerMaxSpeed){
+        velocity[0] = vx;
+        velocity[1] = vy;
+    }
 
     KinematicObject::updateKinematicProperties();
 
