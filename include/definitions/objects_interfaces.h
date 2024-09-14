@@ -39,6 +39,7 @@ class Hearts : public VisualObject{
 class KinematicObject : public VisualObject{
     protected:
         int hp = 1;
+        int points = 10;
         int damage = 1;
         float position[2];
         float velocity[2];
@@ -54,6 +55,7 @@ class KinematicObject : public VisualObject{
         virtual void updateKinematicProperties();
         void draw() override;
         void hit(int dmg);
+        int getPoints() const;
 };
 
 

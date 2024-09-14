@@ -79,3 +79,7 @@ void KinematicObject::hit(int dmg){
         this->hp = 0;
     }
 }
+
+int KinematicObject::getPoints() const{
+    return this->points;
+}
