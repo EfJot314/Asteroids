@@ -6,6 +6,9 @@
 #include <cstdlib>
 #include <cmath>
 
+//status codes
+#include "codes.h"
+
 //constants
 #include "constants.h"
 

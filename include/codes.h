@@ -1,0 +1,3 @@
+#define MENU_STATUS_CODE 0
+#define EXIT_STATUS_CODE 1
+#define PLAY_STATUS_CODE 2
