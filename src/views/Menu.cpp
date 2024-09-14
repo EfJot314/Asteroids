@@ -18,15 +18,15 @@ Menu::Menu(int width, int height){
     title_label.setFont(starFontPath);
     title_label.setString("Asteroids");
     title_label.setCharacterSize(70);
-    title_label.setFillColor(sf::Color::Yellow);
+    title_label.setFillColor(YELLOW);
     title_label.setPosition(window_width/2, window_height/10);
 
     //play button
     play_button.setFont(starFontPath);
     play_button.setString("Play");
     play_button.setCharacterSize(50);
-    play_button.setFillColor(sf::Color::Red);
-    play_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    play_button.setFillColor(RED);
+    play_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     play_button.setPosition(window_width/2, window_height/2);
     play_button.setDimensions();
 
@@ -34,8 +34,8 @@ Menu::Menu(int width, int height){
     exit_button.setFont(starFontPath);
     exit_button.setString("Exit");
     exit_button.setCharacterSize(50);
-    exit_button.setFillColor(sf::Color::Red);
-    exit_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    exit_button.setFillColor(RED);
+    exit_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     exit_button.setPosition(window_width/2, window_height*3/4);
     exit_button.setDimensions();
 

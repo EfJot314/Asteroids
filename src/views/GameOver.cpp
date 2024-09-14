@@ -18,15 +18,15 @@ GameOver::GameOver(sf::RenderWindow *window){
     game_over_label.setFont(starFontPath);
     game_over_label.setString("Game over");
     game_over_label.setCharacterSize(70);
-    game_over_label.setFillColor(sf::Color::Yellow);
+    game_over_label.setFillColor(YELLOW);
     game_over_label.setPosition(window_width/2, window_height/10);
 
     //play button
     play_button.setFont(starFontPath);
     play_button.setString("Play");
     play_button.setCharacterSize(50);
-    play_button.setFillColor(sf::Color::Red);
-    play_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    play_button.setFillColor(RED);
+    play_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     play_button.setPosition(window_width/2, window_height*2/5);
     play_button.setDimensions();
 
@@ -34,8 +34,8 @@ GameOver::GameOver(sf::RenderWindow *window){
     menu_button.setFont(starFontPath);
     menu_button.setString("Main menu");
     menu_button.setCharacterSize(50);
-    menu_button.setFillColor(sf::Color::Red);
-    menu_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    menu_button.setFillColor(RED);
+    menu_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     menu_button.setPosition(window_width/2, window_height*3/5);
     menu_button.setDimensions();
 
@@ -43,8 +43,8 @@ GameOver::GameOver(sf::RenderWindow *window){
     exit_button.setFont(starFontPath);
     exit_button.setString("Exit");
     exit_button.setCharacterSize(50);
-    exit_button.setFillColor(sf::Color::Red);
-    exit_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    exit_button.setFillColor(RED);
+    exit_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     exit_button.setPosition(window_width/2, window_height*4/5);
     exit_button.setDimensions();
 

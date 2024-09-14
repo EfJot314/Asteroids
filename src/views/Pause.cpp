@@ -18,15 +18,15 @@ Pause::Pause(sf::RenderWindow *window){
     pause_label.setFont(starFontPath);
     pause_label.setString("pause");
     pause_label.setCharacterSize(70);
-    pause_label.setFillColor(sf::Color::Yellow);
+    pause_label.setFillColor(YELLOW);
     pause_label.setPosition(window_width/2, window_height/10);
 
     //resume button
     resume_button.setFont(starFontPath);
     resume_button.setString("resume");
     resume_button.setCharacterSize(50);
-    resume_button.setFillColor(sf::Color::Red);
-    resume_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    resume_button.setFillColor(RED);
+    resume_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     resume_button.setPosition(window_width/2, window_height*2/5);
     resume_button.setDimensions();
 
@@ -34,8 +34,8 @@ Pause::Pause(sf::RenderWindow *window){
     menu_button.setFont(starFontPath);
     menu_button.setString("main menu");
     menu_button.setCharacterSize(50);
-    menu_button.setFillColor(sf::Color::Red);
-    menu_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    menu_button.setFillColor(RED);
+    menu_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     menu_button.setPosition(window_width/2, window_height*3/5);
     menu_button.setDimensions();
 
@@ -43,8 +43,8 @@ Pause::Pause(sf::RenderWindow *window){
     exit_button.setFont(starFontPath);
     exit_button.setString("exit");
     exit_button.setCharacterSize(50);
-    exit_button.setFillColor(sf::Color::Red);
-    exit_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    exit_button.setFillColor(RED);
+    exit_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     exit_button.setPosition(window_width/2, window_height*4/5);
     exit_button.setDimensions();
 

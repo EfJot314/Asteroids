@@ -64,4 +64,8 @@
 #define heartLineThickness 2.0f
 //default margin around heart(s)
 #define heartsMargin 25.0f
+//button background colors
+#define buttonDefaultBaseColor TRANSPARENT
+#define buttonDefaultHoverColor GRAY
+
 

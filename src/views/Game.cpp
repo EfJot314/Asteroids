@@ -18,7 +18,7 @@ Game::Game(sf::RenderWindow *window){
     score_label.setFont(starFontPath);
     score_label.setString("Score: 240");
     score_label.setCharacterSize(20);
-    score_label.setFillColor(sf::Color::Yellow);
+    score_label.setFillColor(YELLOW);
 
     //create game engine
     ge = GameEngine();
