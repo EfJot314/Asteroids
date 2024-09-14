@@ -28,7 +28,7 @@ Menu::Menu(int width, int height){
     play_button.setFillColor(RED);
     play_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     play_button.setPosition(window_width/2, window_height/2);
-    play_button.setDimensions();
+    play_button.setDimensions(window_width/2, 50);
 
     //exit button
     exit_button.setFont(starFontPath);
@@ -37,7 +37,7 @@ Menu::Menu(int width, int height){
     exit_button.setFillColor(RED);
     exit_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     exit_button.setPosition(window_width/2, window_height*3/4);
-    exit_button.setDimensions();
+    exit_button.setDimensions(window_width/2, 50);
 
 };
 
