@@ -60,6 +60,7 @@ void Player::updateKinematicProperties(){
         velocity[1] = vy;
     }
 
+    //update position
     KinematicObject::updateKinematicProperties();
 
     //reset acceleration

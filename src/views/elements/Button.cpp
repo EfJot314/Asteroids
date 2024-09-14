@@ -17,26 +17,56 @@ void Button::setPosition(int x, int y){
     this->Label::setPosition(x, y);
 }
 
+void Button::prepareBackgroundRectangle(){
+    this->background.setFillColor(sf::Color::Transparent);
+
+    this->background.setSize(sf::Vector2f(this->width, this->height));
+
+    float x = this->getPosition()[0] - this->Label::getDimensions()[0]/2;
+    float y = this->getPosition()[1] - this->Label::getDimensions()[1]/2;
+
+    this->background.setPosition(x, y);
+}
+
 void Button::setDimensions(){
     this->width = getWidth();
     this->height = getHeight();
+
+    this->prepareBackgroundRectangle();
 }
 
 void Button::setDimensions(int width, int height){
     this->width = width;
     this->height = height;
+
+    this->prepareBackgroundRectangle();
 }
 
 std::array<int, 2> Button::getDimensions() const{
     return std::array<int, 2>{this->width, this->height};
 }
 
-void Button::setBackgrounds(sf::Color b1, sf::Color b2){
-    this->background1 = b1;
-    this->background2 = b2;
+void Button::setBackgrounds(const sf::Color b1, const sf::Color b2){
+    this->background_color1 = b1;
+    this->background_color2 = b2;
 }
 
-bool Button::checkOver(int mouseX, int mouseY){
+void Button::hover(int mouseX, int mouseY){
+    if(checkOver(mouseX, mouseY)){
+        this->background.setFillColor(this->background_color2);
+    }
+    else{
+        this->background.setFillColor(this->background_color1);
+    }
+}
+
+void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    target.draw(background, states);
+    Label label = *dynamic_cast<const Label*>(this);
+    target.draw(label, states);
+};
+
+bool Button::checkOver(int mouseX, int mouseY) const{
     int xp = getPosition()[0] - width/2;
     int yp = getPosition()[1] - height/2 + this->getLocalBounds().top;
     if(mouseX <= xp || mouseX >= xp + width)  return false;

@@ -16,8 +16,11 @@ class Button : public Label{
     private:
         int width;
         int height;
-        sf::Color background1;
-        sf::Color background2;
+        sf::RectangleShape background;
+        sf::Color background_color1;
+        sf::Color background_color2;
+        void prepareBackgroundRectangle();
+        void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     public:
         Button();
         Button(int width, int height);
@@ -27,8 +30,9 @@ class Button : public Label{
         void setDimensions();
         void setDimensions(int width, int height);
         std::array<int, 2> getDimensions() const;
-        void setBackgrounds(sf::Color b1, sf::Color b2);
-        bool checkOver(int mouseX, int mouseY);
+        void setBackgrounds(const sf::Color b1, const sf::Color b2);
+        void hover(int mouseX, int mouseY);
+        bool checkOver(int mouseX, int mouseY) const;
 };
 
 

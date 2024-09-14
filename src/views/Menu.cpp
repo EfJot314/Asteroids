@@ -26,6 +26,7 @@ Menu::Menu(int width, int height){
     play_button.setCharacterSize(50);
     play_button.setFillColor(sf::Color::Red);
     play_button.setDimensions();
+    play_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
 
     //exit button
     exit_button.setFont(starFontPath);
