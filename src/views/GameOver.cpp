@@ -106,8 +106,7 @@ int GameOver::run(){
             //keyboard
             else if (event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::Escape){
-                    gameOverFlag = false;
-                    return 0;
+                    return MENU_STATUS_CODE;
                 }
             }
             //mouse
@@ -127,14 +126,13 @@ int GameOver::run(){
             else if (event.type == sf::Event::MouseButtonReleased){
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     if(play_click && play_button.checkOver(mousePosition.x, mousePosition.y)){
-                        return 2;
+                        return PLAY_STATUS_CODE;
                     }
                     else if(menu_click && menu_button.checkOver(mousePosition.x, mousePosition.y)){
-                        return 0;
+                        return MENU_STATUS_CODE;
                     }
                     else if(exit_click && exit_button.checkOver(mousePosition.x, mousePosition.y)){
-                        gameOverFlag = false;
-                        return 1;
+                        return EXIT_STATUS_CODE;
                     }
                 }
             }
@@ -149,5 +147,5 @@ int GameOver::run(){
 
     }
 
-    return 0;
+    return MENU_STATUS_CODE;
 };

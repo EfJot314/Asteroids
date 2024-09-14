@@ -123,8 +123,7 @@ int Game::run(){
         while (window->pollEvent(event)) {
             //closing window
             if (event.type == sf::Event::Closed) {
-                gameFlag = false;
-                return 1;
+                return EXIT_STATUS_CODE;
             }
             //player controll
             else if (event.type == sf::Event::KeyPressed){
@@ -143,8 +142,7 @@ int Game::run(){
                 else if(event.key.code == sf::Keyboard::Escape){
                     Pause pauseMenu(this->window);
                     int status = pauseMenu.run();
-                    if(status != 2){
-                        gameFlag = false;
+                    if(status != PLAY_STATUS_CODE){
                         return status;
                     }
                 }

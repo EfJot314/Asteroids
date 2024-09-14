@@ -67,16 +67,16 @@ void Menu::run_game(){
         Game game(this->window);
         int state = game.run();
         //to menu state
-        if(state == 0){
+        if(state == MENU_STATUS_CODE){
             break;
         }
         //exit state
-        if(state == 1){
+        if(state == EXIT_STATUS_CODE){
             menuFlag = false;
             break;
         }
         //restart state
-        if(state == 2){
+        if(state == PLAY_STATUS_CODE){
             continue;
         }
     }
