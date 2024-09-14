@@ -39,7 +39,6 @@ Menu::Menu(int width, int height){
     exit_button.setPosition(window_width/2, window_height*3/4);
     exit_button.setDimensions();
 
-
 };
 
 Menu::~Menu(){};

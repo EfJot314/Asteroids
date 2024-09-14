@@ -19,12 +19,15 @@ Pause::Pause(sf::RenderWindow *window){
     pause_label.setString("pause");
     pause_label.setCharacterSize(70);
     pause_label.setFillColor(sf::Color::Yellow);
+    pause_label.setPosition(window_width/2, window_height/10);
 
     //resume button
     resume_button.setFont(starFontPath);
     resume_button.setString("resume");
     resume_button.setCharacterSize(50);
     resume_button.setFillColor(sf::Color::Red);
+    resume_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    resume_button.setPosition(window_width/2, window_height*2/5);
     resume_button.setDimensions();
 
     //menu button
@@ -32,6 +35,8 @@ Pause::Pause(sf::RenderWindow *window){
     menu_button.setString("main menu");
     menu_button.setCharacterSize(50);
     menu_button.setFillColor(sf::Color::Red);
+    menu_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    menu_button.setPosition(window_width/2, window_height*3/5);
     menu_button.setDimensions();
 
     //exit button
@@ -39,6 +44,8 @@ Pause::Pause(sf::RenderWindow *window){
     exit_button.setString("exit");
     exit_button.setCharacterSize(50);
     exit_button.setFillColor(sf::Color::Red);
+    exit_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    exit_button.setPosition(window_width/2, window_height*4/5);
     exit_button.setDimensions();
 
 
@@ -56,16 +63,15 @@ void Pause::drawAll(){
     window->draw(background);
 
     //labels and buttons
-    pause_label.setPosition(window_width/2, window_height/10);
     window->draw(pause_label);
 
-    resume_button.setPosition(window_width/2, window_height*2/5);
+    resume_button.hover(mousePosition.x, mousePosition.y);
     window->draw(resume_button);
 
-    menu_button.setPosition(window_width/2, window_height*3/5);
+    menu_button.hover(mousePosition.x, mousePosition.y);
     window->draw(menu_button);
 
-    exit_button.setPosition(window_width/2, window_height*4/5);
+    exit_button.hover(mousePosition.x, mousePosition.y);
     window->draw(exit_button);
 
     //display results on window
