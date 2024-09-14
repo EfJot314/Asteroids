@@ -19,12 +19,15 @@ GameOver::GameOver(sf::RenderWindow *window){
     game_over_label.setString("Game over");
     game_over_label.setCharacterSize(70);
     game_over_label.setFillColor(sf::Color::Yellow);
+    game_over_label.setPosition(window_width/2, window_height/10);
 
     //play button
     play_button.setFont(starFontPath);
     play_button.setString("Play");
     play_button.setCharacterSize(50);
     play_button.setFillColor(sf::Color::Red);
+    play_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    play_button.setPosition(window_width/2, window_height*2/5);
     play_button.setDimensions();
 
     //menu button
@@ -32,6 +35,8 @@ GameOver::GameOver(sf::RenderWindow *window){
     menu_button.setString("Main menu");
     menu_button.setCharacterSize(50);
     menu_button.setFillColor(sf::Color::Red);
+    menu_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    menu_button.setPosition(window_width/2, window_height*3/5);
     menu_button.setDimensions();
 
     //exit button
@@ -39,6 +44,8 @@ GameOver::GameOver(sf::RenderWindow *window){
     exit_button.setString("Exit");
     exit_button.setCharacterSize(50);
     exit_button.setFillColor(sf::Color::Red);
+    exit_button.setBackgrounds(sf::Color::Blue, sf::Color::Green);
+    exit_button.setPosition(window_width/2, window_height*4/5);
     exit_button.setDimensions();
 
 
@@ -56,16 +63,15 @@ void GameOver::drawAll(){
     window->draw(background);
 
     //labels and buttons
-    game_over_label.setPosition(window_width/2, window_height/10);
     window->draw(game_over_label);
 
-    play_button.setPosition(window_width/2, window_height*2/5);
+    play_button.hover(mousePosition.x, mousePosition.y);
     window->draw(play_button);
 
-    menu_button.setPosition(window_width/2, window_height*3/5);
+    menu_button.hover(mousePosition.x, mousePosition.y);
     window->draw(menu_button);
 
-    exit_button.setPosition(window_width/2, window_height*4/5);
+    exit_button.hover(mousePosition.x, mousePosition.y);
     window->draw(exit_button);
 
     //display results on window
