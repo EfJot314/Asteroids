@@ -28,7 +28,7 @@ Pause::Pause(sf::RenderWindow *window){
     resume_button.setFillColor(RED);
     resume_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     resume_button.setPosition(window_width/2, window_height*2/5);
-    resume_button.setDimensions(window_width/2, 50);
+    resume_button.setDimensions(window_width*buttonDefaultWidthRatio, buttonDefaultHeightPx);
 
     //menu button
     menu_button.setFont(starFontPath);
@@ -37,7 +37,7 @@ Pause::Pause(sf::RenderWindow *window){
     menu_button.setFillColor(RED);
     menu_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     menu_button.setPosition(window_width/2, window_height*3/5);
-    menu_button.setDimensions(window_width/2, 50);
+    menu_button.setDimensions(window_width*buttonDefaultWidthRatio, buttonDefaultHeightPx);
 
     //exit button
     exit_button.setFont(starFontPath);
@@ -46,7 +46,7 @@ Pause::Pause(sf::RenderWindow *window){
     exit_button.setFillColor(RED);
     exit_button.setBackgrounds(buttonDefaultBaseColor, buttonDefaultHoverColor);
     exit_button.setPosition(window_width/2, window_height*4/5);
-    exit_button.setDimensions(window_width/2, 50);
+    exit_button.setDimensions(window_width*buttonDefaultWidthRatio, buttonDefaultHeightPx);
 
 
 };

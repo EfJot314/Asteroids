@@ -6,4 +6,5 @@
 #define BLUE sf::Color::Blue
 #define YELLOW sf::Color::Yellow
 #define GRAY sf::Color(128, 128, 128)
+#define DARK_GRAY sf::Color(20, 20, 20)
 #define ORANGE sf::Color(255, 140, 0)

@@ -66,6 +66,7 @@
 #define heartsMargin 25.0f
 //button background colors
 #define buttonDefaultBaseColor TRANSPARENT
-#define buttonDefaultHoverColor GRAY
-
-
+#define buttonDefaultHoverColor DARK_GRAY
+//button dimensions
+#define buttonDefaultWidthRatio 0.5f
+#define buttonDefaultHeightPx 60
