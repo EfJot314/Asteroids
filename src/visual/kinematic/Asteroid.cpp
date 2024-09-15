@@ -29,13 +29,13 @@ Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::
 
 Asteroid::~Asteroid(){};
 
-void Asteroid::shapeFormation(){
+void Asteroid::asteroidShapeFormation(int n, float radius){
     boundR = 0;
     float alpha = 0;
-    const float deltaAlpha = 2 * M_PI / (float)asteroidShapeN;
-    shape.setPointCount(asteroidShapeN);
-    for(int i=0;i<asteroidShapeN;i++){
-        float r = asteroidRadius;
+    const float deltaAlpha = 2 * M_PI / (float)n;
+    shape.setPointCount(n);
+    for(int i=0;i<n;i++){
+        float r = radius;
         float deltaRFactor = (float)(rand() % 1000) / 1000.0f * 2 * asteroidMaxFactor - asteroidMaxFactor; 
         r += r * deltaRFactor;
         shape.setPoint(i, sf::Vector2f(r * cos(alpha), r * sin(alpha)));

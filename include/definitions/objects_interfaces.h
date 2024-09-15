@@ -61,11 +61,14 @@ class KinematicObject : public VisualObject{
 
 
 class Asteroid : public KinematicObject{
-    private:
+    protected:
         float rotation = 0;
         float rotationSpeed;
         void randomPlacement();
-        void shapeFormation() override;
+        void asteroidShapeFormation(int n, float r);
+        virtual void shapeFormation() override {
+            this->asteroidShapeFormation(asteroidShapeN, asteroidRadius);
+        };
     public:
         Asteroid();
         Asteroid(sf::RenderWindow* window, const sf::Color color);
@@ -73,6 +76,18 @@ class Asteroid : public KinematicObject{
         ~Asteroid();
         void draw() override;
 };
+
+class BigAsteroid : public Asteroid{
+    private:
+        void shapeFormation() override{
+            this->asteroidShapeFormation(asteroidShapeN, asteroidRadius);
+        };
+    public:
+        BigAsteroid();
+        BigAsteroid(sf::RenderWindow* window, const sf::Color color) : Asteroid(window, color) {};
+};
+
+
 
 
 

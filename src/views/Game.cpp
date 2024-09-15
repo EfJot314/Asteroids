@@ -90,7 +90,7 @@ int Game::run(){
 
         //generate new asteroid every 3 sec
         if(asteroidCounter >= 3.0f * FPS){
-            Asteroid asteroid(window, BLUE);
+            BigAsteroid asteroid(window, BLUE);
             ge.addAsteroid(asteroid);
             asteroidCounter = 0;
         }
