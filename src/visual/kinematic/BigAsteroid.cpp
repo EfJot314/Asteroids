@@ -15,5 +15,5 @@ BigAsteroid::BigAsteroid(sf::RenderWindow* window, const sf::Color color){
 }
 
 void BigAsteroid::shapeFormation(){
-    this->Asteroid::asteroidShapeFormation(10, 130.0f);
+    this->Asteroid::asteroidShapeFormation(asteroidShapeN, asteroidRadius);
 }

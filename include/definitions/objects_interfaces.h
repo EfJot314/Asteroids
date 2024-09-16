@@ -86,16 +86,11 @@ class BigAsteroid : public Asteroid{
 
 class SmallAsteroid : public Asteroid{
     private:
-        void shapeFormation(){
-            this->asteroidShapeFormation(asteroidShapeN, asteroidRadius*3.0f/4.0f);
-        };
+        void shapeFormation() override;
     public:
         SmallAsteroid();
-        SmallAsteroid(sf::RenderWindow* window, const sf::Color color) : Asteroid(window, color) {};
+        SmallAsteroid(sf::RenderWindow* window, const sf::Color color);
 };
-
-
-
 
 
 class Player : public KinematicObject{
