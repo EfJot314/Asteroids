@@ -17,3 +17,12 @@ BigAsteroid::BigAsteroid(sf::RenderWindow* window, const sf::Color color){
 void BigAsteroid::shapeFormation(){
     this->Asteroid::asteroidShapeFormation(asteroidShapeN, asteroidRadius);
 }
+
+std::vector<Asteroid> BigAsteroid::explode(){
+    std::vector<Asteroid> toReturn = {};
+    for(int i=0;i<3;i++){
+        SmallAsteroid a(window, BLUE);
+        toReturn.push_back(a);
+    }
+    return toReturn;
+}

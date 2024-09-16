@@ -13,6 +13,18 @@ bool isDead(KinematicObject& o){
     return o.isDead();
 }
 
+void GameEngine::asteroidExplosions(){
+    std::vector<Asteroid> newAsteroids = {};
+    for(int i=0;i<this->asteroids.size();i++){
+        BigAsteroid* a = dynamic_cast<BigAsteroid*>(&asteroids[i]);
+        if(a != nullptr){
+            std::vector<Asteroid> explosionAsteroids = a->explode();
+            newAsteroids.insert(newAsteroids.end(), explosionAsteroids.begin(), explosionAsteroids.end());
+        }
+    }
+    this->asteroids.insert(this->asteroids.end(), newAsteroids.begin(), newAsteroids.end());
+}
+
 void GameEngine::checkAndRemoveAsteroids(){
     this->asteroids.erase(std::remove_if(this->asteroids.begin(), this->asteroids.end(), isDead), this->asteroids.end());
 };

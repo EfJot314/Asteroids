@@ -4,6 +4,7 @@ class GameEngine{
         Player player;
         std::vector<Asteroid> asteroids;
         std::vector<Bullet> bullets;
+        void asteroidExplosions();
         void checkAndRemoveAsteroids();
         void checkAndRemoveBullets();
     public:

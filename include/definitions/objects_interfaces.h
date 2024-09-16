@@ -81,6 +81,7 @@ class BigAsteroid : public Asteroid{
     public:
         BigAsteroid();
         BigAsteroid(sf::RenderWindow* window, const sf::Color color);
+        std::vector<Asteroid> explode();
 };
 
 
