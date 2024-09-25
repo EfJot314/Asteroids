@@ -104,7 +104,11 @@ void Asteroid::draw(){
 
     //drawing on the window
     window->draw(shape);
+}
 
+std::vector<Asteroid*> Asteroid::explode(){
+    std::cout << "HH" << std::endl;
+    return {};
 }
 
 

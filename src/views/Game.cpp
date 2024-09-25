@@ -64,9 +64,9 @@ int Game::run(){
 
 
     //main loop
-    int asteroidCounter = 0;
-    int bulletCounter = 0;
-    int fireCounter = 0;
+    int asteroidTimeCounter = 0;
+    int bulletTimeCounter = 0;
+    int fireTimeCounter = 0;
     std::chrono::high_resolution_clock::time_point frameStartTime = std::chrono::high_resolution_clock::now();
     while(gameFlag){
 
@@ -84,15 +84,15 @@ int Game::run(){
         ge.checkCollisions();
 
         //increment counters
-        asteroidCounter++;
-        bulletCounter++;
-        fireCounter++;
+        asteroidTimeCounter++;
+        bulletTimeCounter++;
+        fireTimeCounter++;
 
         //generate new asteroid every 3 sec
-        if(asteroidCounter >= 3.0f * FPS){
-            BigAsteroid asteroid(window, BLUE);
-            ge.addAsteroid(asteroid);
-            asteroidCounter = 0;
+        if(asteroidTimeCounter >= 3.0f * FPS){
+            BigAsteroid* a = new BigAsteroid(window, BLUE);
+            ge.addAsteroid(a);
+            asteroidTimeCounter = 0;
         }
 
         //get player
@@ -110,14 +110,14 @@ int Game::run(){
             player.accelerate(playerAcceleration);
         }
         //shooting
-        if(shoot && bulletCounter >= bulletDelay * FPS){
+        if(shoot && bulletTimeCounter >= bulletDelay * FPS){
             ge.addBullet(player.shoot());
-            bulletCounter = 0;
+            bulletTimeCounter = 0;
         }
         //fire creation
-        if(fireCounter >= fireDelay * FPS){
+        if(fireTimeCounter >= fireDelay * FPS){
             player.createFire();
-            fireCounter = 0;
+            fireTimeCounter = 0;
         }
         //fire update
         player.updateFire(FPS);

@@ -164,26 +164,26 @@ void Player::shapeFormation(){
 }
 
 
-Bullet& Player::shoot(){
+Bullet* Player::shoot(){
     Bullet* bullet = new Bullet(this, this->rotation, this->window, this->color);
-    return *bullet;
+    return bullet;
 }
 
 
-bool Player::detectCollisions(std::vector<Asteroid>& asteroids){
+bool Player::detectCollisions(std::vector<Asteroid*>& asteroids){
     //check untouchability
     if(hitTimer < playerUntouchableTime)    return false;
     //check collisions
     bool collided = false;
     for(int i=0;i<asteroids.size();i++){
         //check if objects are close enough to each other
-        const std::array<float, 2> asteroid_position = asteroids[i].getPosition();
+        const std::array<float, 2> asteroid_position = asteroids[i]->getPosition();
         const float center_distance = std::pow(asteroid_position[0] - this->position[0], 2) + std::pow(asteroid_position[1] - this->position[1], 2);
-        const float radius_sum = std::pow(asteroids[i].getBoundRadius() + this->boundR, 2);
+        const float radius_sum = std::pow(asteroids[i]->getBoundRadius() + this->boundR, 2);
         //if they are close enough, then check collision
         if(center_distance < radius_sum){
             // asteroids[i]->hit(this->damage);
-            this->hit(asteroids[i].getDamage());
+            this->hit(asteroids[i]->getDamage());
             hitTimer = 0;
             this->hearts.setHealth(this->hp);
             collided = true;

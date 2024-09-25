@@ -71,6 +71,7 @@ class Asteroid : public KinematicObject{
         Asteroid(float positon[], float velocity[], float rotationSpeed, sf::RenderWindow* window, const sf::Color color);
         ~Asteroid();
         void draw() override;
+        virtual std::vector<Asteroid*> explode();
 };
 
 
@@ -78,7 +79,7 @@ class BigAsteroid : public Asteroid{
     public:
         BigAsteroid();
         BigAsteroid(sf::RenderWindow* window, const sf::Color color);
-        std::vector<Asteroid> explode();
+        std::vector<Asteroid*> explode() override;
 };
 
 
@@ -88,6 +89,7 @@ class SmallAsteroid : public Asteroid{
     public:
         SmallAsteroid();
         SmallAsteroid(sf::RenderWindow* window, const sf::Color color);
+        std::vector<Asteroid*> explode() override;
 };
 
 
@@ -107,7 +109,7 @@ class Player : public KinematicObject{
         Player(sf::RenderWindow* window, const sf::Color color);
         Player(float positon[], float velocity[], sf::RenderWindow* window, const sf::Color color);
         ~Player();
-        bool detectCollisions(std::vector<Asteroid>& asteroids);
+        bool detectCollisions(std::vector<Asteroid*>& asteroids);
         void accelerate(float acceleration);
         void rotate(direction_e direction);
         void updateKinematicProperties() override;
@@ -115,7 +117,7 @@ class Player : public KinematicObject{
         void draw() override;
         void drawFire();
         void createFire();
-        Bullet& shoot();
+        Bullet* shoot();
         std::array<float, 2> getEnginePosition() const;
         std::array<float, 2> getVelocity() const;
         void updateFire(int FPS);
@@ -136,7 +138,7 @@ class Bullet : public KinematicObject{
         Bullet(Player* player, float rotation, sf::RenderWindow* window, const sf::Color color);
         ~Bullet();
         void updateKinematicProperties() override;
-        bool detectCollisions(std::vector<Asteroid>& asteroids);
+        bool detectCollisions(std::vector<Asteroid*>& asteroids);
 };
 
 

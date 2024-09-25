@@ -46,18 +46,18 @@ void Bullet::updateKinematicProperties(){
 }
 
 
-bool Bullet::detectCollisions(std::vector<Asteroid>& asteroids){
+bool Bullet::detectCollisions(std::vector<Asteroid*>& asteroids){
     bool collided = false;
     for(int i=0;i<asteroids.size();i++){
         //check if objects are close enough to each other
-        const std::array<float, 2> asteroid_position = asteroids[i].getPosition();
+        const std::array<float, 2> asteroid_position = asteroids[i]->getPosition();
         const float center_distance = std::sqrt(std::pow(asteroid_position[0] - this->position[0], 2) + std::pow(asteroid_position[1] - this->position[1], 2));
-        const float radius_sum = asteroids[i].getBoundRadius() + this->boundR;
+        const float radius_sum = asteroids[i]->getBoundRadius() + this->boundR;
         //if they are close enough, then check collision
         if(center_distance < radius_sum){
             //hit and increment score
-            if(asteroids[i].hit(this->damage)){
-                this->player->addToScore(asteroids[i].getPoints());
+            if(asteroids[i]->hit(this->damage)){
+                this->player->addToScore(asteroids[i]->getPoints());
             }
             this->hit(1);
             collided = true;

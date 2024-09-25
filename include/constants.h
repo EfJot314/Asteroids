@@ -36,6 +36,8 @@
 #define asteroidMaxFactor 0.3f
 //max asteroid rotation speed
 #define asteroidMaxRotationSpeed 15
+//number of small asteroids created by explosions
+#define asteroidExplosionNumer 3
 //asteroid line thickness
 #define asteroidLineThickness 5.0f
 //bullet velocity

@@ -2,8 +2,8 @@
 class GameEngine{
     private:
         Player player;
-        std::vector<Asteroid> asteroids;
-        std::vector<Bullet> bullets;
+        std::vector<Asteroid*> asteroids;
+        std::vector<Bullet*> bullets;
         void asteroidExplosions();
         void checkAndRemoveAsteroids();
         void checkAndRemoveBullets();
@@ -16,6 +16,6 @@ class GameEngine{
         void moveAll();
         void checkCollisions();
         void drawAll();
-        void addAsteroid(Asteroid& asteroid);
-        void addBullet(Bullet& bullet);
+        void addAsteroid(Asteroid *asteroid);
+        void addBullet(Bullet *bullet);
 };
