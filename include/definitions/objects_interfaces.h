@@ -62,13 +62,15 @@ class Asteroid : public KinematicObject{
     protected:
         float rotation = 0;
         float rotationSpeed;
+        void randomPosition();
+        void randomMovement();
         void randomPlacement();
         void asteroidShapeFormation(int n, float r);
         virtual void shapeFormation() override;
     public:
         Asteroid();
         Asteroid(sf::RenderWindow* window, const sf::Color color);
-        Asteroid(float positon[], float velocity[], float rotationSpeed, sf::RenderWindow* window, const sf::Color color);
+        Asteroid(Asteroid* father, sf::RenderWindow* window, const sf::Color color);
         ~Asteroid();
         void draw() override;
         virtual std::vector<Asteroid*> explode();
@@ -79,6 +81,7 @@ class BigAsteroid : public Asteroid{
     public:
         BigAsteroid();
         BigAsteroid(sf::RenderWindow* window, const sf::Color color);
+        BigAsteroid(Asteroid* father, sf::RenderWindow* window, const sf::Color color);
         std::vector<Asteroid*> explode() override;
 };
 
@@ -89,6 +92,7 @@ class SmallAsteroid : public Asteroid{
     public:
         SmallAsteroid();
         SmallAsteroid(sf::RenderWindow* window, const sf::Color color);
+        SmallAsteroid(Asteroid* father, sf::RenderWindow* window, const sf::Color color);
         std::vector<Asteroid*> explode() override;
 };
 
