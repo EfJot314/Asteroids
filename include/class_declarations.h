@@ -6,6 +6,8 @@ class Hearts;
 //kinematic
 class KinematicObject;
 class Asteroid;
+class BigAsteroid;
+class SmallAsteroid;
 class Bullet;
 class GameEngine;
 class Player;

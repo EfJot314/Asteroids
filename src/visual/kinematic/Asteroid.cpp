@@ -29,6 +29,10 @@ Asteroid::Asteroid(float position[], float velocity[], float rotationSpeed, sf::
 
 Asteroid::~Asteroid(){};
 
+void Asteroid::shapeFormation(){
+    this->asteroidShapeFormation(asteroidShapeN, asteroidRadius);
+}
+
 void Asteroid::asteroidShapeFormation(int n, float radius){
     boundR = 0;
     float alpha = 0;
