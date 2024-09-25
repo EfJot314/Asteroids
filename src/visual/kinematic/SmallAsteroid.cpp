@@ -29,7 +29,7 @@ SmallAsteroid::SmallAsteroid(const Asteroid* const father, sf::RenderWindow* win
 }
 
 void SmallAsteroid::shapeFormation(){
-    this->Asteroid::asteroidShapeFormation(asteroidShapeN, asteroidRadius * 1.0f/2.0f);
+    this->Asteroid::asteroidShapeFormation(asteroidShapeN, asteroidRadius * asteroidSmallRadius);
 }
 
 std::vector<Asteroid*> SmallAsteroid::explode() const{

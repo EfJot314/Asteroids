@@ -32,6 +32,8 @@
 #define asteroidShapeN 10
 //asteroid basic radius
 #define asteroidRadius 130
+//small asteroid radius multiplayer
+#define asteroidSmallRadius 0.5f
 //max asteroid shape delta
 #define asteroidMaxFactor 0.3f
 //max asteroid rotation speed
