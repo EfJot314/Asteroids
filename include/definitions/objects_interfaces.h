@@ -48,6 +48,7 @@ class KinematicObject : public VisualObject{
         void borderJump();
     public:
         std::array<float, 2> getPosition() const;
+        std::array<float, 2> getVelocity() const;
         float getBoundRadius() const;
         int getDamage() const;
         int getHp() const;
@@ -63,7 +64,7 @@ class Asteroid : public KinematicObject{
         float rotation = 0;
         float rotationSpeed;
         void randomPosition();
-        void randomMovement();
+        void randomMovement(std::array<float, 2> velocity);
         void randomPlacement();
         void asteroidShapeFormation(int n, float r);
         virtual void shapeFormation() override;

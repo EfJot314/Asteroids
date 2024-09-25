@@ -11,7 +11,11 @@ void KinematicObject::updatePositionOnWindow(){
 
 
 std::array<float,2> KinematicObject::getPosition() const{
-    return std::array<float, 2>{position[0], position[1]};
+    return {position[0], position[1]};
+}
+
+std::array<float,2> KinematicObject::getVelocity() const{
+    return {velocity[0], velocity[1]};
 }
 
 void KinematicObject::borderJump(){

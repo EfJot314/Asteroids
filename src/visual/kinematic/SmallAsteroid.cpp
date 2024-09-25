@@ -23,7 +23,7 @@ SmallAsteroid::SmallAsteroid(Asteroid* father, sf::RenderWindow* window, const s
     position[0] = father->getPosition()[0];
     position[1] = father->getPosition()[1];
 
-    this->randomMovement();
+    this->randomMovement(father->getVelocity());
 
     shapeFormation();
 }

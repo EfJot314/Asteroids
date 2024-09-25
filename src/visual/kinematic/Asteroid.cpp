@@ -22,7 +22,7 @@ Asteroid::Asteroid(Asteroid* father, sf::RenderWindow* window, const sf::Color c
     position[0] = father->getPosition()[0];
     position[1] = father->getPosition()[1];
 
-    this->randomMovement();
+    this->randomMovement(father->getVelocity());
 
     shapeFormation();
 }
@@ -84,19 +84,19 @@ void Asteroid::randomPosition(){
     }
 }
 
-void Asteroid::randomMovement(){
+void Asteroid::randomMovement(std::array<float, 2> velocity){
     //velocity
     float v = (rand() % (int)(asteroidVelocityMax - asteroidVelocityMin)) + asteroidVelocityMin;
     float angle = (float)(rand() % 1000) / 1000.0f * 2 * M_PI;
-    this->velocity[0] = v * cos(angle);
-    this->velocity[1] = v * sin(angle);
+    this->velocity[0] = v * cos(angle) + velocity[0];
+    this->velocity[1] = v * sin(angle) + velocity[1];
     //rotation
     this->rotationSpeed = (rand() % asteroidMaxRotationSpeed);
 }
 
 void Asteroid::randomPlacement(){
     this->randomPosition();
-    this->randomMovement();
+    this->randomMovement({0, 0});
 }
 
 void Asteroid::draw(){
