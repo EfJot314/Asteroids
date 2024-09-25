@@ -16,15 +16,14 @@ bool isDead(KinematicObject *o){
 void GameEngine::asteroidExplosions(){
     std::vector<Asteroid*> newAsteroids = {};
     for(int i=0;i<this->asteroids.size();i++){
-        BigAsteroid* a = dynamic_cast<BigAsteroid*>(asteroids[i]);
-        std::cout << a << std::endl;
-        if(a){
-            std::cout << "XD" << std::endl;
-            std::vector<Asteroid*> explosionAsteroids = a->explode();
-            newAsteroids.insert(newAsteroids.end(), explosionAsteroids.begin(), explosionAsteroids.end());
+        if(asteroids[i]->isDead()){
+            BigAsteroid* a = dynamic_cast<BigAsteroid*>(asteroids[i]);
+            if(a){
+                std::vector<Asteroid*> explosionAsteroids = a->explode();
+                newAsteroids.insert(newAsteroids.end(), explosionAsteroids.begin(), explosionAsteroids.end());
+            }
         }
     }
-    std::cout << newAsteroids.size() << std::endl;
     asteroids.insert(asteroids.end(), newAsteroids.begin(), newAsteroids.end());
 }
 
@@ -85,7 +84,6 @@ void GameEngine::addBullet(Bullet *bullet){
 }
 
 void GameEngine::checkCollisions(){
-    asteroidExplosions();
     //player collisions
     if(this->player.detectCollisions(this->asteroids)){
         // std::cout<<"Player collision"<<std::endl;
@@ -95,6 +93,7 @@ void GameEngine::checkCollisions(){
     for(int i=0;i<this->bullets.size();i++){
         if(bullets[i]->detectCollisions(this->asteroids)){
             // std::cout<<"Bullet collision"<<std::endl;
+            asteroidExplosions();
             checkAndRemoveAsteroids();
             checkAndRemoveBullets();
         }

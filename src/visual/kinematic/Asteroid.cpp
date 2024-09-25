@@ -107,7 +107,6 @@ void Asteroid::draw(){
 }
 
 std::vector<Asteroid*> Asteroid::explode(){
-    std::cout << "HH" << std::endl;
     return {};
 }
 

@@ -15,7 +15,6 @@ BigAsteroid::BigAsteroid(sf::RenderWindow* window, const sf::Color color){
 }
 
 std::vector<Asteroid*> BigAsteroid::explode(){
-    std::cout << "HH" << std::endl;
     std::vector<Asteroid*> toReturn = {};
     for(int i=0;i<asteroidExplosionNumer;i++){
         SmallAsteroid* a = new SmallAsteroid(window, BLUE);
