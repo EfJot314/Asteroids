@@ -13,7 +13,7 @@ Asteroid::Asteroid(sf::RenderWindow* window, const sf::Color color){
     shapeFormation();
 };
 
-Asteroid::Asteroid(Asteroid* father, sf::RenderWindow* window, const sf::Color color){
+Asteroid::Asteroid(const Asteroid* const father, sf::RenderWindow* window, const sf::Color color){
     this->window = window;
     this->color = color;
 
@@ -114,7 +114,7 @@ void Asteroid::draw(){
     window->draw(shape);
 }
 
-std::vector<Asteroid*> Asteroid::explode(){
+std::vector<Asteroid*> Asteroid::explode() const{
     return {};
 }
 
