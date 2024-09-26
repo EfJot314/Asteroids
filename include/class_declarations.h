@@ -1,4 +1,7 @@
 //CLASS DECLARATIONS
+//logic
+class GameEngine;
+class CollisionBody;
 //visual
 class VisualObject;
 class Heart;

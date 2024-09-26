@@ -19,3 +19,21 @@ class GameEngine{
         void addAsteroid(Asteroid *asteroid);
         void addBullet(Bullet *bullet);
 };
+
+class CollisionBody{
+    private:
+        float rotation = 0.0f;
+        std::array<float, 2> position;
+        std::vector<std::array<float, 2>> points;
+    public:
+        CollisionBody();
+        CollisionBody(std::array<float, 2> position, std::vector<std::array<float, 2>> points);
+        ~CollisionBody();
+        void setPosition(std::array<float, 2> position);
+        void setPoints(std::vector<std::array<float, 2>> points);
+        void addPoint(std::array<float, 2> point);
+        void rotate(float rotation);
+        std::array<float, 2>& getPosition() const;
+        int getNoPoints() const;
+        std::vector<std::array<float, 2>>& getPoints() const;
+};
