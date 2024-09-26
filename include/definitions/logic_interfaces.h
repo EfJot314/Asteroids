@@ -22,9 +22,12 @@ class GameEngine{
 
 class CollisionBody{
     private:
+        float boundRadius = 0.0f;
         float rotation = 0.0f;
         std::array<float, 2> position;
         std::vector<std::array<float, 2>> points;
+        float findBoundRadius() const;
+        void updatePoints();
     public:
         CollisionBody();
         CollisionBody(std::array<float, 2>& position, std::vector<std::array<float, 2>>& points);
@@ -35,5 +38,7 @@ class CollisionBody{
         void rotate(float rotation);
         std::array<float, 2> getPosition() const;
         int getNoPoints() const;
+        float getBoundRadius() const;
         std::vector<std::array<float, 2>> getPoints() const;
+        bool checkCollision(CollisionBody* other) const;
 };
