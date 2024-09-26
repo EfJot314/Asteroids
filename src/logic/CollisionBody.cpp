@@ -72,8 +72,8 @@ void CollisionBody::updatePoints(){
         xp = r * cosapb;
         yp = r * sinapb;
 
-        points[i][0] = xp;
-        points[i][1] = yp;
+        this->points[i][0] = xp;
+        this->points[i][1] = yp;
     }
     this->rotation = 0.0f;
 }
@@ -82,7 +82,13 @@ std::vector<std::array<float, 2>> CollisionBody::getPoints() const{
     return this->points;
 }
 
-// TODO
 bool CollisionBody::checkCollision(CollisionBody* other) const{
-    return true;
+    float radiusSum = this->getBoundRadius() + other->getBoundRadius();
+    std::array<float, 2> otherPosition = other->getPosition();
+    float distanceSq = (position[0]-otherPosition[0])*(position[0]-otherPosition[0]) + (position[1]-otherPosition[1])*(position[1]-otherPosition[1]);
+    if(distanceSq < radiusSum*radiusSum){
+        //TODO - actually really basic
+        return true;
+    }
+    return false;
 }
