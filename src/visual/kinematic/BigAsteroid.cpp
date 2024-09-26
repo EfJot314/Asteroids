@@ -30,7 +30,8 @@ BigAsteroid::BigAsteroid(const Asteroid* const father, sf::RenderWindow* window,
 
 std::vector<Asteroid*> BigAsteroid::explode() const{
     std::vector<Asteroid*> toReturn = {};
-    for(int i=0;i<asteroidExplosionNumer;i++){
+    int n = asteroidMinExplosionNumer + rand() % (asteroidMaxExplosionNumer - asteroidMinExplosionNumer + 1);
+    for(int i=0;i<n;i++){
         SmallAsteroid* a = new SmallAsteroid(this, window, BLUE);
         toReturn.push_back(a);
     }
