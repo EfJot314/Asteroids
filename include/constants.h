@@ -15,7 +15,7 @@
 //number of blinks, when player is untouchable
 #define playerNoBlinks 6
 //acceleration of a player
-#define playerAcceleration 0.50f
+#define playerAcceleration 0.60f
 //max player speed
 #define playerMaxSpeed 50.0f
 //rotation speed of a player

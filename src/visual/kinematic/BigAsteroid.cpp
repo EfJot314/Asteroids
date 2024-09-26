@@ -9,6 +9,7 @@ BigAsteroid::BigAsteroid(sf::RenderWindow* window, const sf::Color color){
     this->color = color;
 
     this->hp = 3;
+    this->points = 20;
 
     randomPlacement();
     shapeFormation();
@@ -19,6 +20,7 @@ BigAsteroid::BigAsteroid(const Asteroid* const father, sf::RenderWindow* window,
     this->color = color;
 
     this->hp = 3;
+    this->points = 20;
 
     position[0] = father->getPosition()[0];
     position[1] = father->getPosition()[1];
