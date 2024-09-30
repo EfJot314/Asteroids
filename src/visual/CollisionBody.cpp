@@ -10,7 +10,7 @@ CollisionBody::CollisionBody(std::array<float, 2>& position, std::vector<std::ar
 
 CollisionBody::~CollisionBody() {};
 
-void CollisionBody::setPosition(std::array<float, 2>& position){
+void CollisionBody::setPosition(std::array<float, 2> position){
     this->position = position;
     this->boundRadius = this->findBoundRadius();
 }
@@ -20,7 +20,7 @@ void CollisionBody::setPoints(std::vector<std::array<float, 2>>& points){
     this->boundRadius = this->findBoundRadius();
 }
 
-void CollisionBody::addPoint(std::array<float, 2>& point){
+void CollisionBody::addPoint(std::array<float, 2> point){
     this->points.push_back(point);
     this->boundRadius = this->findBoundRadius();
 }

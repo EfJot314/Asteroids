@@ -1,12 +1,12 @@
 //CLASS DECLARATIONS
 //logic
 class GameEngine;
-class CollisionBody;
 //visual
 class VisualObject;
 class Heart;
 class Hearts;
 //kinematic
+class CollisionBody;
 class KinematicObject;
 class Asteroid;
 class BigAsteroid;

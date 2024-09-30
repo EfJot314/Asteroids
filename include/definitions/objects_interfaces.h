@@ -1,4 +1,3 @@
-
 class VisualObject{
     protected:
         int x;
@@ -36,13 +35,37 @@ class Hearts : public VisualObject{
         void setHealth(int hp);
 };
 
+class CollisionBody{
+    private:
+        float boundRadius = 0.0f;
+        float rotation = 0.0f;
+        std::array<float, 2> position;
+        std::vector<std::array<float, 2>> points;
+        float findBoundRadius() const;
+        void updatePoints();
+        bool checkIntersection(const std::array<std::array<float,2>, 2>& AB, const std::array<std::array<float,2>, 2>& CD) const;
+    public:
+        CollisionBody();
+        CollisionBody(std::array<float, 2>& position, std::vector<std::array<float, 2>>& points);
+        ~CollisionBody();
+        void setPosition(std::array<float, 2> position);
+        void setPoints(std::vector<std::array<float, 2>>& points);
+        void addPoint(std::array<float, 2> point);
+        void rotate(float rotation);
+        std::array<float, 2> getPosition() const;
+        int getNoPoints() const;
+        float getBoundRadius() const;
+        std::vector<std::array<float, 2>> getPoints() const;
+        bool checkCollision(CollisionBody* other) const;
+};
+
 class KinematicObject : public VisualObject{
     protected:
         int hp = 1;
         int points = 10;
         int damage = 1;
-        float position[2];
-        float velocity[2];
+        std::array<float, 2> position;
+        std::array<float, 2> velocity;
         float boundR = 0;
         void updatePositionOnWindow();
         void borderJump();
@@ -61,6 +84,7 @@ class KinematicObject : public VisualObject{
 
 class Asteroid : public KinematicObject{
     protected:
+        CollisionBody* body;
         float rotation = 0;
         float rotationSpeed;
         void randomPosition();

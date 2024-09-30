@@ -34,6 +34,10 @@ void Asteroid::shapeFormation(){
 }
 
 void Asteroid::asteroidShapeFormation(int n, float radius){
+    //create collision body of the Asteroid
+    this->body = new CollisionBody();
+    this->body->setPosition({position[0], position[1]});
+
     boundR = 0;
     float alpha = 0;
     const float deltaAlpha = 2 * M_PI / (float)n;
@@ -42,7 +46,13 @@ void Asteroid::asteroidShapeFormation(int n, float radius){
         float r = radius;
         float deltaRFactor = (float)(rand() % 1000) / 1000.0f * 2 * asteroidMaxFactor - asteroidMaxFactor; 
         r += r * deltaRFactor;
-        shape.setPoint(i, sf::Vector2f(r * cos(alpha), r * sin(alpha)));
+
+        float xp = r * cos(alpha);
+        float yp = r * sin(alpha);
+
+        shape.setPoint(i, sf::Vector2f(xp, yp));
+        this->body->addPoint({xp, yp});
+
         alpha += deltaAlpha;
 
         //check bound radius
