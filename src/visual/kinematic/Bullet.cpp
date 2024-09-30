@@ -23,19 +23,18 @@ Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, const s
 Bullet::~Bullet(){};
 
 void Bullet::shapeFormation(){
-    this->body = new CollisionBody();
-    this->body->setPosition(position);
+    this->body.setPosition(position);
 
     this->shape.setPointCount(4);
     float width = bulletSize * bulletWidthFactor;
     this->shape.setPoint(0, sf::Vector2f(width/2, -bulletSize/2));
-    this->body->addPoint({width/2, -bulletSize/2});
+    this->body.addPoint({width/2, -bulletSize/2});
     this->shape.setPoint(1, sf::Vector2f(width/2, bulletSize/2));
-    this->body->addPoint({width/2, bulletSize/2});
+    this->body.addPoint({width/2, bulletSize/2});
     this->shape.setPoint(2, sf::Vector2f(-width/2, bulletSize/2));
-    this->body->addPoint({-width/2, bulletSize/2});
+    this->body.addPoint({-width/2, bulletSize/2});
     this->shape.setPoint(3, sf::Vector2f(-width/2, -bulletSize/2));
-    this->body->addPoint({-width/2, -bulletSize/2});
+    this->body.addPoint({-width/2, -bulletSize/2});
 
     this->shape.scale(1/scaler, 1/scaler);
     this->shape.setFillColor(this->color);
@@ -54,7 +53,7 @@ void Bullet::updateKinematicProperties(){
 bool Bullet::detectCollisions(std::vector<Asteroid*>& asteroids){
     bool collided = false;
     for(int i=0;i<asteroids.size();i++){
-        if(this->body->checkCollision(asteroids[i]->getBody())){
+        if(this->body.checkCollision(asteroids[i]->getBody())){
             //hit and increment score
             if(asteroids[i]->hit(this->damage)){
                 this->player->addToScore(asteroids[i]->getPoints());

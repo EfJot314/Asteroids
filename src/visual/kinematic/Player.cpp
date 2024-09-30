@@ -138,8 +138,7 @@ void Player::rotate(direction_e direction){
 
 void Player::shapeFormation(){
     //collision body
-    this->body = new CollisionBody();
-    this->body->setPosition(position);
+    this->body.setPosition(position);
 
     //factors
     const float body_len_factor = 7.0/8.0;
@@ -156,19 +155,19 @@ void Player::shapeFormation(){
     //creating player shape
     shape.setPointCount(7);
     shape.setPoint(0, sf::Vector2f(0, -body_len*2/3));
-    body->addPoint({0, -body_len*2/3});
+    body.addPoint({0, -body_len*2/3});
     shape.setPoint(1, sf::Vector2f(body_width/2, body_len*1/3));
-    body->addPoint({body_width/2, body_len*1/3});
+    body.addPoint({body_width/2, body_len*1/3});
     shape.setPoint(2, sf::Vector2f(engine_width_1/2, body_len*1/3));
-    body->addPoint({engine_width_1/2, body_len*1/3});
+    body.addPoint({engine_width_1/2, body_len*1/3});
     shape.setPoint(3, sf::Vector2f(engine_width_2/2, body_len*1/3 + engine_len));
-    body->addPoint({engine_width_2/2, body_len*1/3 + engine_len});
+    body.addPoint({engine_width_2/2, body_len*1/3 + engine_len});
     shape.setPoint(4, sf::Vector2f(-engine_width_2/2, body_len*1/3 + engine_len));
-    body->addPoint({-engine_width_2/2, body_len*1/3 + engine_len});
+    body.addPoint({-engine_width_2/2, body_len*1/3 + engine_len});
     shape.setPoint(5, sf::Vector2f(-engine_width_1/2, body_len*1/3));
-    body->addPoint({-engine_width_1/2, body_len*1/3});
+    body.addPoint({-engine_width_1/2, body_len*1/3});
     shape.setPoint(6, sf::Vector2f(-body_width/2, body_len*1/3));
-    body->addPoint({-body_width/2, body_len*1/3});
+    body.addPoint({-body_width/2, body_len*1/3});
 
     //shape properties
     shape.setFillColor(color);
@@ -188,7 +187,7 @@ bool Player::detectCollisions(std::vector<Asteroid*>& asteroids){
     //check collisions
     bool collided = false;
     for(int i=0;i<asteroids.size();i++){
-        if(this->body->checkCollision(asteroids[i]->getBody())){
+        if(this->body.checkCollision(asteroids[i]->getBody())){
             // asteroids[i]->hit(this->damage);
             this->hit(asteroids[i]->getDamage());
             hitTimer = 0;

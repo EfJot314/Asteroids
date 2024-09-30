@@ -42,7 +42,6 @@ class CollisionBody{
         std::array<float, 2> position;
         std::vector<std::array<float, 2>> points;
         float findBoundRadius() const;
-        void updatePoints();
         bool checkIntersection(const std::array<std::array<float,2>, 2>& AB, const std::array<std::array<float,2>, 2>& CD) const;
     public:
         CollisionBody();
@@ -52,16 +51,17 @@ class CollisionBody{
         void setPoints(std::vector<std::array<float, 2>>& points);
         void addPoint(std::array<float, 2> point);
         void rotate(float rotation);
+        void updatePoints();
         std::array<float, 2> getPosition() const;
         int getNoPoints() const;
         float getBoundRadius() const;
         std::vector<std::array<float, 2>> getPoints() const;
-        bool checkCollision(const CollisionBody* const other) const;
+        bool checkCollision(CollisionBody other);
 };
 
 class KinematicObject : public VisualObject{
     protected:
-        CollisionBody* body;
+        CollisionBody body;
         int hp = 1;
         int points = 10;
         int damage = 1;
@@ -72,7 +72,7 @@ class KinematicObject : public VisualObject{
     public:
         std::array<float, 2> getPosition() const;
         std::array<float, 2> getVelocity() const;
-        CollisionBody* getBody() const;
+        CollisionBody getBody() const;
         int getDamage() const;
         int getHp() const;
         bool isDead() const;

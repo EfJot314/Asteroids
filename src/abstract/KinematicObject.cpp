@@ -47,6 +47,8 @@ void KinematicObject::updateKinematicProperties(){
     borderJump();
     //shape properties
     shape.setPosition((int)(x), (int)(y));
+    //collision body position update
+    body.setPosition(position);
 }
 
 
@@ -59,7 +61,7 @@ void KinematicObject::draw(){
 }
 
 
-CollisionBody* KinematicObject::getBody() const{
+CollisionBody KinematicObject::getBody() const{
     return body;
 }
 

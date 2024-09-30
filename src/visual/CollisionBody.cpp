@@ -40,7 +40,7 @@ int CollisionBody::getNoPoints() const{
 float CollisionBody::findBoundRadius() const{
     float brSq = 0.0f;
     for(int i=0;i<this->getNoPoints();i++){
-        float rSq = (points[i][0]-position[0])*(points[i][0]-position[0]) + (points[i][1]-position[1])*(points[i][1]-position[1]);
+        float rSq = (points[i][0])*(points[i][0]) + (points[i][1])*(points[i][1]);
         if(rSq > brSq){
             brSq = rSq;
         }
@@ -87,11 +87,12 @@ bool CollisionBody::checkIntersection(const std::array<std::array<float,2>, 2>& 
     return true;
 }
 
-bool CollisionBody::checkCollision(const CollisionBody* const other) const{
-    if(other == nullptr)    return false;
+bool CollisionBody::checkCollision(CollisionBody other){
+    this->updatePoints();
+    other.updatePoints();
 
-    float radiusSum = this->getBoundRadius() + other->getBoundRadius();
-    std::array<float, 2> otherPosition = other->getPosition();
+    float radiusSum = this->getBoundRadius() + other.getBoundRadius();
+    std::array<float, 2> otherPosition = other.getPosition();
     float distanceSq = (position[0]-otherPosition[0])*(position[0]-otherPosition[0]) + (position[1]-otherPosition[1])*(position[1]-otherPosition[1]);
     if(distanceSq < radiusSum*radiusSum){
         //TODO - actually really basic

@@ -34,9 +34,7 @@ void Asteroid::shapeFormation(){
 }
 
 void Asteroid::asteroidShapeFormation(int n, float radius){
-    //create collision body of the Asteroid
-    this->body = new CollisionBody();
-    this->body->setPosition(position);
+    body.setPosition(position);
 
     float alpha = 0;
     const float deltaAlpha = 2 * M_PI / (float)n;
@@ -50,7 +48,7 @@ void Asteroid::asteroidShapeFormation(int n, float radius){
         float yp = r * sin(alpha);
 
         shape.setPoint(i, sf::Vector2f(xp, yp));
-        this->body->addPoint({xp, yp});
+        body.addPoint({xp, yp});
 
         alpha += deltaAlpha;
     }
@@ -108,7 +106,7 @@ void Asteroid::updateKinematicProperties(){
     //rotation
     float roatation = rotationSpeed * deltaTime;
     shape.rotate(rotation);
-    body->rotate(rotation);
+    body.rotate(rotation);
 }
 
 std::vector<Asteroid*> Asteroid::explode() const{
