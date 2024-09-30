@@ -82,6 +82,11 @@ std::vector<std::array<float, 2>> CollisionBody::getPoints() const{
     return this->points;
 }
 
+bool CollisionBody::checkIntersection(const std::array<std::array<float,2>, 2>& AB, const std::array<std::array<float,2>, 2>& CD) const{
+    //TODO
+    return true;
+}
+
 bool CollisionBody::checkCollision(CollisionBody* other) const{
     float radiusSum = this->getBoundRadius() + other->getBoundRadius();
     std::array<float, 2> otherPosition = other->getPosition();

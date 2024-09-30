@@ -28,6 +28,7 @@ class CollisionBody{
         std::vector<std::array<float, 2>> points;
         float findBoundRadius() const;
         void updatePoints();
+        bool checkIntersection(const std::array<std::array<float,2>, 2>& AB, const std::array<std::array<float,2>, 2>& CD) const;
     public:
         CollisionBody();
         CollisionBody(std::array<float, 2>& position, std::vector<std::array<float, 2>>& points);
