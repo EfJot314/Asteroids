@@ -43,19 +43,17 @@ void KinematicObject::updateKinematicProperties(){
     //update position
     position[0] += velocity[0] * deltaTime;
     position[1] += velocity[1] * deltaTime;
+    //eventually border jump
+    borderJump();
+    //shape properties
+    shape.setPosition((int)(x), (int)(y));
 }
 
 
 void KinematicObject::draw(){
     //update position of player on window
     updatePositionOnWindow();
-
-    //eventually border jump
-    borderJump();
-
-    //shape properties
-    shape.setPosition((int)(x), (int)(y));
-
+    
     //drawing on the window
     VisualObject::draw();
 }

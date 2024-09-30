@@ -53,8 +53,6 @@ void GameEngine::moveAll(){
 };
 
 void GameEngine::drawAll(){
-    //fire
-    player.drawFire();
     //player
     player.draw();
     //asteroids

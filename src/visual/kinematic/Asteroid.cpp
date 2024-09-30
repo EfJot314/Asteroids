@@ -109,19 +109,12 @@ void Asteroid::randomPlacement(){
     this->randomMovement({0, 0});
 }
 
-void Asteroid::draw(){
-    //update position of player on window
-    updatePositionOnWindow();
-
-    //eventually border jump
-    borderJump();
-
-    //shape properties
-    shape.setPosition((int)(x), (int)(y));
-    shape.rotate(rotationSpeed * deltaTime);
-
-    //drawing on the window
-    window->draw(shape);
+void Asteroid::updateKinematicProperties(){
+    KinematicObject::updateKinematicProperties();
+    //rotation
+    float roatation = rotationSpeed * deltaTime;
+    shape.rotate(rotation);
+    body->rotate(rotation);
 }
 
 std::vector<Asteroid*> Asteroid::explode() const{

@@ -97,7 +97,7 @@ class Asteroid : public KinematicObject{
         Asteroid(sf::RenderWindow* window, const sf::Color color);
         Asteroid(const Asteroid* const father, sf::RenderWindow* window, const sf::Color color);
         ~Asteroid();
-        void draw() override;
+        void updateKinematicProperties() override;
         virtual std::vector<Asteroid*> explode() const;
 };
 
@@ -133,6 +133,7 @@ class Player : public KinematicObject{
         void shapeFormation() override;
         void addNewFire(FireObject& fireObject);
         void checkAndRemoveFire();
+        void drawFire();
     public:
         Player();
         Player(sf::RenderWindow* window, const sf::Color color);
@@ -144,7 +145,6 @@ class Player : public KinematicObject{
         void updateKinematicProperties() override;
         void updateFireKinematicProperties();
         void draw() override;
-        void drawFire();
         void createFire();
         Bullet* shoot();
         std::array<float, 2> getEnginePosition() const;

@@ -95,6 +95,7 @@ void Player::updateFireKinematicProperties(){
 }
 
 void Player::draw(){
+    //draw player hearts
     this->hearts.draw();
     if(this->hitTimer < playerUntouchableTime){
         const int n = (int)(this->hitTimer / (playerUntouchableTime / (2.0f*(float)playerNoBlinks)));
@@ -106,6 +107,9 @@ void Player::draw(){
     else{
         this->shape.setFillColor(this->color);
     }
+    //draw fire
+    this->drawFire();
+    //draw player
     KinematicObject::draw();
 }
 
