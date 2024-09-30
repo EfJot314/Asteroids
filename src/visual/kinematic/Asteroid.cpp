@@ -36,9 +36,8 @@ void Asteroid::shapeFormation(){
 void Asteroid::asteroidShapeFormation(int n, float radius){
     //create collision body of the Asteroid
     this->body = new CollisionBody();
-    this->body->setPosition({position[0], position[1]});
+    this->body->setPosition(position);
 
-    boundR = 0;
     float alpha = 0;
     const float deltaAlpha = 2 * M_PI / (float)n;
     shape.setPointCount(n);
@@ -54,11 +53,6 @@ void Asteroid::asteroidShapeFormation(int n, float radius){
         this->body->addPoint({xp, yp});
 
         alpha += deltaAlpha;
-
-        //check bound radius
-        if(r > boundR){
-            boundR = r;
-        }
     }
     shape.setFillColor(sf::Color::Transparent);
     shape.setOutlineThickness(asteroidLineThickness);

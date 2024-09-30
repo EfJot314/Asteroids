@@ -23,17 +23,22 @@ Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, const s
 Bullet::~Bullet(){};
 
 void Bullet::shapeFormation(){
+    this->body = new CollisionBody();
+    this->body->setPosition(position);
+
     this->shape.setPointCount(4);
     float width = bulletSize * bulletWidthFactor;
     this->shape.setPoint(0, sf::Vector2f(width/2, -bulletSize/2));
+    this->body->addPoint({width/2, -bulletSize/2});
     this->shape.setPoint(1, sf::Vector2f(width/2, bulletSize/2));
+    this->body->addPoint({width/2, bulletSize/2});
     this->shape.setPoint(2, sf::Vector2f(-width/2, bulletSize/2));
+    this->body->addPoint({-width/2, bulletSize/2});
     this->shape.setPoint(3, sf::Vector2f(-width/2, -bulletSize/2));
+    this->body->addPoint({-width/2, -bulletSize/2});
+
     this->shape.scale(1/scaler, 1/scaler);
     this->shape.setFillColor(this->color);
-
-    //set bound radius
-    this->boundR = width/2;
 }
 
 void Bullet::updateKinematicProperties(){
@@ -49,12 +54,7 @@ void Bullet::updateKinematicProperties(){
 bool Bullet::detectCollisions(std::vector<Asteroid*>& asteroids){
     bool collided = false;
     for(int i=0;i<asteroids.size();i++){
-        //check if objects are close enough to each other
-        const std::array<float, 2> asteroid_position = asteroids[i]->getPosition();
-        const float center_distance = std::sqrt(std::pow(asteroid_position[0] - this->position[0], 2) + std::pow(asteroid_position[1] - this->position[1], 2));
-        const float radius_sum = asteroids[i]->getBoundRadius() + this->boundR;
-        //if they are close enough, then check collision
-        if(center_distance < radius_sum){
+        if(this->body->checkCollision(asteroids[i]->getBody())){
             //hit and increment score
             if(asteroids[i]->hit(this->damage)){
                 this->player->addToScore(asteroids[i]->getPoints());

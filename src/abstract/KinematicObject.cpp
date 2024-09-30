@@ -53,14 +53,14 @@ void KinematicObject::updateKinematicProperties(){
 void KinematicObject::draw(){
     //update position of player on window
     updatePositionOnWindow();
-    
+
     //drawing on the window
     VisualObject::draw();
 }
 
 
-float KinematicObject::getBoundRadius() const{
-    return boundR;
+CollisionBody* KinematicObject::getBody() const{
+    return body;
 }
 
 int KinematicObject::getDamage() const{

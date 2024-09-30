@@ -56,23 +56,23 @@ class CollisionBody{
         int getNoPoints() const;
         float getBoundRadius() const;
         std::vector<std::array<float, 2>> getPoints() const;
-        bool checkCollision(CollisionBody* other) const;
+        bool checkCollision(const CollisionBody* const other) const;
 };
 
 class KinematicObject : public VisualObject{
     protected:
+        CollisionBody* body;
         int hp = 1;
         int points = 10;
         int damage = 1;
         std::array<float, 2> position;
         std::array<float, 2> velocity;
-        float boundR = 0;
         void updatePositionOnWindow();
         void borderJump();
     public:
         std::array<float, 2> getPosition() const;
         std::array<float, 2> getVelocity() const;
-        float getBoundRadius() const;
+        CollisionBody* getBody() const;
         int getDamage() const;
         int getHp() const;
         bool isDead() const;
@@ -84,7 +84,6 @@ class KinematicObject : public VisualObject{
 
 class Asteroid : public KinematicObject{
     protected:
-        CollisionBody* body;
         float rotation = 0;
         float rotationSpeed;
         void randomPosition();

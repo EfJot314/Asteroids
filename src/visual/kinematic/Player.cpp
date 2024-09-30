@@ -137,6 +137,10 @@ void Player::rotate(direction_e direction){
 }
 
 void Player::shapeFormation(){
+    //collision body
+    this->body = new CollisionBody();
+    this->body->setPosition(position);
+
     //factors
     const float body_len_factor = 7.0/8.0;
     const float body_width_factor = 2.0/3.0;
@@ -151,20 +155,24 @@ void Player::shapeFormation(){
     const float engine_width_2 = engine_width_factor_2 * playerLen;
     //creating player shape
     shape.setPointCount(7);
-    shape.setPoint(0, sf::Vector2f(0, -body_len*2/3));    
+    shape.setPoint(0, sf::Vector2f(0, -body_len*2/3));
+    body->addPoint({0, -body_len*2/3});
     shape.setPoint(1, sf::Vector2f(body_width/2, body_len*1/3));
+    body->addPoint({body_width/2, body_len*1/3});
     shape.setPoint(2, sf::Vector2f(engine_width_1/2, body_len*1/3));
+    body->addPoint({engine_width_1/2, body_len*1/3});
     shape.setPoint(3, sf::Vector2f(engine_width_2/2, body_len*1/3 + engine_len));
+    body->addPoint({engine_width_2/2, body_len*1/3 + engine_len});
     shape.setPoint(4, sf::Vector2f(-engine_width_2/2, body_len*1/3 + engine_len));
+    body->addPoint({-engine_width_2/2, body_len*1/3 + engine_len});
     shape.setPoint(5, sf::Vector2f(-engine_width_1/2, body_len*1/3));
+    body->addPoint({-engine_width_1/2, body_len*1/3});
     shape.setPoint(6, sf::Vector2f(-body_width/2, body_len*1/3));
+    body->addPoint({-body_width/2, body_len*1/3});
 
     //shape properties
     shape.setFillColor(color);
     shape.scale(1/scaler, 1/scaler);
-
-    //bound radius
-    boundR = sqrt(playerLen*playerLen + body_width*body_width) / 2;
 }
 
 
@@ -180,12 +188,7 @@ bool Player::detectCollisions(std::vector<Asteroid*>& asteroids){
     //check collisions
     bool collided = false;
     for(int i=0;i<asteroids.size();i++){
-        //check if objects are close enough to each other
-        const std::array<float, 2> asteroid_position = asteroids[i]->getPosition();
-        const float center_distance = std::pow(asteroid_position[0] - this->position[0], 2) + std::pow(asteroid_position[1] - this->position[1], 2);
-        const float radius_sum = std::pow(asteroids[i]->getBoundRadius() + this->boundR, 2);
-        //if they are close enough, then check collision
-        if(center_distance < radius_sum){
+        if(this->body->checkCollision(asteroids[i]->getBody())){
             // asteroids[i]->hit(this->damage);
             this->hit(asteroids[i]->getDamage());
             hitTimer = 0;

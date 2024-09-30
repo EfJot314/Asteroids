@@ -87,7 +87,9 @@ bool CollisionBody::checkIntersection(const std::array<std::array<float,2>, 2>& 
     return true;
 }
 
-bool CollisionBody::checkCollision(CollisionBody* other) const{
+bool CollisionBody::checkCollision(const CollisionBody* const other) const{
+    if(other == nullptr)    return false;
+
     float radiusSum = this->getBoundRadius() + other->getBoundRadius();
     std::array<float, 2> otherPosition = other->getPosition();
     float distanceSq = (position[0]-otherPosition[0])*(position[0]-otherPosition[0]) + (position[1]-otherPosition[1])*(position[1]-otherPosition[1]);
