@@ -20,8 +20,7 @@ SmallAsteroid::SmallAsteroid(const Asteroid* const father, sf::RenderWindow* win
 
     this->hp = 3;
 
-    position[0] = father->getPosition()[0];
-    position[1] = father->getPosition()[1];
+    position = father->getPosition();
 
     this->randomMovement(father->getVelocity());
 

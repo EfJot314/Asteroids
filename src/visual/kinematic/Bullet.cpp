@@ -9,11 +9,10 @@ Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, const s
 
     this->player = player;
 
-    this->position[0] = player->getPosition()[0];
-    this->position[1] = player->getPosition()[1];
+    this->position = player->getPosition();
     
-    this->velocity[0] = bulletVelocity * sin(rotation * M_PI / 180.0f);
-    this->velocity[1] = -1 * bulletVelocity * cos(rotation * M_PI / 180.0f);
+    this->velocity.x = bulletVelocity * sin(rotation * M_PI / 180.0f);
+    this->velocity.y = -1 * bulletVelocity * cos(rotation * M_PI / 180.0f);
 
     shapeFormation();
 
@@ -42,7 +41,7 @@ void Bullet::shapeFormation(){
 
 void Bullet::updateKinematicProperties(){
     KinematicObject::updateKinematicProperties();
-    this->distance += std::sqrt(std::pow(this->velocity[0] * deltaTime , 2) + std::pow(this->velocity[1] * deltaTime , 2));
+    this->distance += std::sqrt(std::pow(this->velocity.x * deltaTime , 2) + std::pow(this->velocity.y * deltaTime , 2));
     //destroy bullet after max distance
     if(this->distance > bulletMaxDistance){
         this->hp = 0;
