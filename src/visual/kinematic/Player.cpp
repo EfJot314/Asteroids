@@ -11,17 +11,17 @@ Player::Player(sf::RenderWindow* window, const sf::Color color){
 
     this->hearts = Hearts(this->window, RED, this->hp);
 
-    this->position[0] = window->getSize().x/2 * scaler;
-    this->position[1] = window->getSize().y/2 * scaler;
-    this->velocity[0] = 0;
-    this->velocity[1] = 0;
-    this->acceleration[0] = 0;
-    this->acceleration[1] = 0;
+    this->position.x = window->getSize().x/2 * scaler;
+    this->position.y = window->getSize().y/2 * scaler;
+    this->velocity.x = 0;
+    this->velocity.y = 0;
+    this->acceleration.x = 0;
+    this->acceleration.y = 0;
 
     shapeFormation();
 };
 
-Player::Player(float position[], float velocity[], sf::RenderWindow* window, const sf::Color color){
+Player::Player(Vector2D position, Vector2D velocity, sf::RenderWindow* window, const sf::Color color){
     this->window = window;
     this->color = color;
 
@@ -29,12 +29,10 @@ Player::Player(float position[], float velocity[], sf::RenderWindow* window, con
 
     this->hearts = Hearts(this->window, RED, this->hp);
 
-    this->position[0] = position[0];
-    this->position[1] = position[1];
-    this->velocity[0] = velocity[0];
-    this->velocity[1] = velocity[1];
-    this->acceleration[0] = 0;
-    this->acceleration[1] = 0;
+    this->position = position;
+    this->velocity = velocity;
+    this->acceleration.x = 0;
+    this->acceleration.y = 0;
 
     shapeFormation();
 };
@@ -43,29 +41,29 @@ Player::~Player(){};
 
 
 void Player::accelerate(float acceleration){
-    this->acceleration[0] = acceleration * sin(rotation * M_PI/ 180.0);
-    this->acceleration[1] = -1 * acceleration * cos(rotation * M_PI/ 180.0);
+    this->acceleration.x = acceleration * sin(rotation * M_PI/ 180.0);
+    this->acceleration.y = -1 * acceleration * cos(rotation * M_PI/ 180.0);
 }
 
 void Player::updateKinematicProperties(){
-    float vx = velocity[0];
-    float vy = velocity[1];
+    float vx = velocity.x;
+    float vy = velocity.y;
 
-    vx += acceleration[0] * deltaTime;
-    vy += acceleration[1] * deltaTime;
+    vx += acceleration.x * deltaTime;
+    vy += acceleration.y * deltaTime;
 
     //check max speed
     if(vx*vx + vy*vy <= playerMaxSpeed*playerMaxSpeed){
-        velocity[0] = vx;
-        velocity[1] = vy;
+        velocity.x = vx;
+        velocity.y = vy;
     }
 
     //update position
     KinematicObject::updateKinematicProperties();
 
     //reset acceleration
-    this->acceleration[0] = 0;
-    this->acceleration[1] = 0;
+    this->acceleration.x = 0;
+    this->acceleration.y = 0;
 
 }
 
@@ -199,14 +197,15 @@ bool Player::detectCollisions(std::vector<Asteroid*>& asteroids){
 }
 
 
-std::array<float, 2> Player::getEnginePosition() const{
-    const float xp = position[0] + sin(this->rotation);
-    const float yp = position[1] + cos(this->rotation);
-    return std::array<float, 2>{xp, yp};
+Vector2D Player::getEnginePosition() const{
+    Vector2D enginePosition;
+    enginePosition.x = position.x + sin(this->rotation);
+    enginePosition.y = position.y + cos(this->rotation);
+    return enginePosition;
 }
 
-std::array<float, 2> Player::getVelocity() const{
-    return std::array<float, 2>{velocity[0], velocity[1]};
+Vector2D Player::getVelocity() const{
+    return velocity;
 }
 
 void Player::updateTimer(int FPS){

@@ -127,7 +127,7 @@ class Player : public KinematicObject{
         int score = 0;
         Hearts hearts;
         float hitTimer = playerUntouchableTime+1.0f;
-        float acceleration[2];
+        Vector2D acceleration;
         float rotation = 0;
         std::vector<FireObject> fire;
         void shapeFormation() override;
@@ -137,7 +137,7 @@ class Player : public KinematicObject{
     public:
         Player();
         Player(sf::RenderWindow* window, const sf::Color color);
-        Player(float positon[], float velocity[], sf::RenderWindow* window, const sf::Color color);
+        Player(Vector2D positon, Vector2D velocity, sf::RenderWindow* window, const sf::Color color);
         ~Player();
         bool detectCollisions(std::vector<Asteroid*>& asteroids);
         void accelerate(float acceleration);
@@ -147,8 +147,8 @@ class Player : public KinematicObject{
         void draw() override;
         void createFire();
         Bullet* shoot();
-        std::array<float, 2> getEnginePosition() const;
-        std::array<float, 2> getVelocity() const;
+        Vector2D getEnginePosition() const;
+        Vector2D getVelocity() const;
         void updateFire(int FPS);
         void updateTimer(int FPS);
         void addToScore(int points);
