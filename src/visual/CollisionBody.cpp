@@ -104,13 +104,13 @@ bool CollisionBody::checkCollision(CollisionBody other){
     std::array<float, 2> otherPosition = other.getPosition();
     float distanceSq = (position[0]-otherPosition[0])*(position[0]-otherPosition[0]) + (position[1]-otherPosition[1])*(position[1]-otherPosition[1]);
     if(distanceSq < radiusSum*radiusSum){
+
         auto mySections = this->getSections();
         auto otherSections = this->getSections();
-        for(auto mySection : mySections){
-            for(auto otherSection : otherSections){
-                if(checkIntersection(mySection, otherSection)){
-                    return true;
-                }
+
+        for(const auto& mySection : mySections){
+            for(const auto& otherSection : otherSections){
+                if(checkIntersection(mySection, otherSection)) return true;
             }
         }
     }
