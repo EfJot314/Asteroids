@@ -6,18 +6,16 @@
 #include <cstdlib>
 #include <cmath>
 
-//status codes
-#include "codes.h"
+//status constant values
+#include "const_values/codes.h"
+#include "const_values/constants.h"
+#include "const_values/colors.h"
+#include "const_values/fonts.h"
 
-//constants
-#include "constants.h"
-
-//list of classes - declarations
-#include "class_declarations.h"
-
-//definitions of enums and structs
-#include "enums.h"
-#include "structures.h"
+//definitions of types
+#include "types/class_declarations.h"
+#include "types/structures.h"
+#include "types/enums.h"
 
 //definitions of classes
 #include "definitions/objects_interfaces.h"
