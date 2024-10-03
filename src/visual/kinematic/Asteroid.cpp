@@ -19,8 +19,8 @@ Asteroid::Asteroid(const Asteroid* const father, sf::RenderWindow* window, const
 
     this->hp = 3;
 
-    position[0] = father->getPosition()[0];
-    position[1] = father->getPosition()[1];
+    position.x = father->getPosition().x;
+    position.y = father->getPosition().y;
 
     this->randomMovement(father->getVelocity());
 
@@ -69,29 +69,29 @@ void Asteroid::randomPosition(){
     //4 -> left
     const int side = rand() % 4;
     if(side == 0){
-        this->position[0] = (rand() % width) * scaler;
-        this->position[1] = -1 * (rand() % asteroidMargin) * scaler;
+        this->position.x = (rand() % width) * scaler;
+        this->position.y = -1 * (rand() % asteroidMargin) * scaler;
     }
     else if(side == 1){
-        this->position[0] = ((rand() % asteroidMargin) + width) * scaler;
-        this->position[1] = (rand() % height) * scaler;
+        this->position.x = ((rand() % asteroidMargin) + width) * scaler;
+        this->position.y = (rand() % height) * scaler;
     }
     else if(side == 2){
-        this->position[0] = (rand() % width) * scaler;
-        this->position[1] = ((rand() % asteroidMargin) + height) * scaler;
+        this->position.x = (rand() % width) * scaler;
+        this->position.y = ((rand() % asteroidMargin) + height) * scaler;
     }
     else if(side == 3){
-        this->position[0] = -1 * (rand() % asteroidMargin) * scaler;
-        this->position[1] = (rand() % height) * scaler;
+        this->position.x = -1 * (rand() % asteroidMargin) * scaler;
+        this->position.y = (rand() % height) * scaler;
     }
 }
 
-void Asteroid::randomMovement(std::array<float, 2> velocity){
+void Asteroid::randomMovement(Vector2D velocity){
     //velocity
     float v = (rand() % (int)(asteroidVelocityMax - asteroidVelocityMin)) + asteroidVelocityMin;
     float angle = (float)(rand() % 1000) / 1000.0f * 2 * M_PI;
-    this->velocity[0] = v * cos(angle) + velocity[0];
-    this->velocity[1] = v * sin(angle) + velocity[1];
+    this->velocity.x = v * cos(angle) + velocity.x;
+    this->velocity.y = v * sin(angle) + velocity.y;
     //rotation
     this->rotationSpeed = (rand() % asteroidMaxRotationSpeed);
 }

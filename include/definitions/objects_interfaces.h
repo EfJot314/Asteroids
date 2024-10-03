@@ -88,7 +88,7 @@ class Asteroid : public KinematicObject{
         float rotation = 0;
         float rotationSpeed;
         void randomPosition();
-        void randomMovement(std::array<float, 2> velocity);
+        void randomMovement(Vector2D velocity);
         void randomPlacement();
         void asteroidShapeFormation(int n, float r);
         virtual void shapeFormation() override;
