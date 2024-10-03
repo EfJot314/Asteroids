@@ -66,13 +66,13 @@ class KinematicObject : public VisualObject{
         int hp = 1;
         int points = 10;
         int damage = 1;
-        std::array<float, 2> position;
-        std::array<float, 2> velocity;
+        Vector2D position;
+        Vector2D velocity;
         void updatePositionOnWindow();
         void borderJump();
     public:
-        std::array<float, 2> getPosition() const;
-        std::array<float, 2> getVelocity() const;
+        Vector2D getPosition() const;
+        Vector2D getVelocity() const;
         CollisionBody getBody() const;
         int getDamage() const;
         int getHp() const;

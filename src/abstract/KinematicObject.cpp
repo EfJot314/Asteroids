@@ -5,17 +5,17 @@ void KinematicObject::updatePositionOnWindow(){
     //in the future here will be setting x,y connected with actual width, height and zoom of the window
     int width = window->getSize().x;
     int height = window->getSize().y;
-    x = (int)position[0]/scaler;
-    y = (int)position[1]/scaler;
+    x = (int)position.x/scaler;
+    y = (int)position.y/scaler;
 };
 
 
-std::array<float,2> KinematicObject::getPosition() const{
-    return {position[0], position[1]};
+Vector2D KinematicObject::getPosition() const{
+    return position;
 }
 
-std::array<float,2> KinematicObject::getVelocity() const{
-    return {velocity[0], velocity[1]};
+Vector2D KinematicObject::getVelocity() const{
+    return velocity;
 }
 
 void KinematicObject::borderJump(){
@@ -23,26 +23,26 @@ void KinematicObject::borderJump(){
     int width = window->getSize().x;
     int height = window->getSize().y;
     //OX
-    if(x < 0 && velocity[0] < 0){
-        position[0] = width * scaler;
+    if(x < 0 && velocity.x < 0){
+        position.x = width * scaler;
     }
-    else if(x > width && velocity[0] > 0){
-        position[0] = 0;
+    else if(x > width && velocity.x > 0){
+        position.x = 0;
     }
     //OY
-    if(y < 0 && velocity[1] < 0){
-        position[1] = height * scaler;
+    if(y < 0 && velocity.y < 0){
+        position.y = height * scaler;
     }
-    else if(y > height && velocity[1] > 0){
-        position[1] = 0;
+    else if(y > height && velocity.y > 0){
+        position.y = 0;
     }
 }
 
 
 void KinematicObject::updateKinematicProperties(){
     //update position
-    position[0] += velocity[0] * deltaTime;
-    position[1] += velocity[1] * deltaTime;
+    position.x += velocity.x * deltaTime;
+    position.y += velocity.y * deltaTime;
     //eventually border jump
     borderJump();
     //shape properties
