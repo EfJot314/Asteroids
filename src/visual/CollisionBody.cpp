@@ -82,6 +82,15 @@ std::vector<std::array<float, 2>> CollisionBody::getPoints() const{
     return this->points;
 }
 
+std::vector<std::array<std::array<float, 2>, 2>> CollisionBody::getSections() const{
+    std::vector<std::array<std::array<float, 2>, 2>> sections = {};
+    int n = this->getNoPoints();
+    for(int i=0;i<n;i++){
+        sections.push_back({points[i], points[(i+1) % n]});
+    }
+    return sections;
+}
+
 bool CollisionBody::checkIntersection(const std::array<std::array<float,2>, 2>& AB, const std::array<std::array<float,2>, 2>& CD) const{
     //TODO
     return true;
@@ -95,8 +104,15 @@ bool CollisionBody::checkCollision(CollisionBody other){
     std::array<float, 2> otherPosition = other.getPosition();
     float distanceSq = (position[0]-otherPosition[0])*(position[0]-otherPosition[0]) + (position[1]-otherPosition[1])*(position[1]-otherPosition[1]);
     if(distanceSq < radiusSum*radiusSum){
-        //TODO - actually really basic
-        return true;
+        auto mySections = this->getSections();
+        auto otherSections = this->getSections();
+        for(auto mySection : mySections){
+            for(auto otherSection : otherSections){
+                if(checkIntersection(mySection, otherSection)){
+                    return true;
+                }
+            }
+        }
     }
     return false;
 }
