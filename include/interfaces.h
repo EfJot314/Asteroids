@@ -15,8 +15,9 @@
 //list of classes - declarations
 #include "class_declarations.h"
 
-//definitions of enums
+//definitions of enums and structs
 #include "enums.h"
+#include "structures.h"
 
 //definitions of classes
 #include "definitions/objects_interfaces.h"
