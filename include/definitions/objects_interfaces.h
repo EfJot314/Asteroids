@@ -39,24 +39,24 @@ class CollisionBody{
     private:
         float boundRadius = 0.0f;
         float rotation = 0.0f;
-        std::array<float, 2> position;
-        std::vector<std::array<float, 2>> points;
+        Vector2D position;
+        std::vector<Vector2D> points;
         float findBoundRadius() const;
-        bool checkIntersection(const std::array<std::array<float,2>, 2>& AB, const std::array<std::array<float,2>, 2>& CD) const;
+        bool checkIntersection(const std::array<Vector2D, 2>& AB, const std::array<Vector2D, 2>& CD) const;
     public:
         CollisionBody();
-        CollisionBody(std::array<float, 2>& position, std::vector<std::array<float, 2>>& points);
+        CollisionBody(Vector2D& position, std::vector<Vector2D>& points);
         ~CollisionBody();
-        void setPosition(std::array<float, 2> position);
-        void setPoints(std::vector<std::array<float, 2>>& points);
-        void addPoint(std::array<float, 2> point);
+        void setPosition(Vector2D position);
+        void setPoints(std::vector<Vector2D>& points);
+        void addPoint(Vector2D point);
         void rotate(float rotation);
         void updatePoints();
-        std::array<float, 2> getPosition() const;
+        Vector2D getPosition() const;
         int getNoPoints() const;
         float getBoundRadius() const;
-        std::vector<std::array<float, 2>> getPoints() const;
-        std::vector<std::array<std::array<float, 2>, 2>> getSections() const;
+        std::vector<Vector2D> getPoints() const;
+        std::vector<std::array<Vector2D, 2>> getSections() const;
         bool checkCollision(CollisionBody other);
 };
 
