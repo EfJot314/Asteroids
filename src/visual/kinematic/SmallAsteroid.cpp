@@ -12,6 +12,8 @@ SmallAsteroid::SmallAsteroid(sf::RenderWindow* window, const sf::Color color){
 
     randomPlacement();
     shapeFormation();
+
+    updatePositionOnWindow();
 }
 
 SmallAsteroid::SmallAsteroid(const Asteroid* const father, sf::RenderWindow* window, const sf::Color color){
@@ -25,6 +27,8 @@ SmallAsteroid::SmallAsteroid(const Asteroid* const father, sf::RenderWindow* win
     this->randomMovement(father->getVelocity());
 
     shapeFormation();
+
+    updatePositionOnWindow();
 }
 
 void SmallAsteroid::shapeFormation(){

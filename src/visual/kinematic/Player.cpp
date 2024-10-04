@@ -95,6 +95,7 @@ void Player::updateFireKinematicProperties(){
 void Player::draw(){
     //draw player hearts
     this->hearts.draw();
+    //untouchable
     if(this->hitTimer < playerUntouchableTime){
         const int n = (int)(this->hitTimer / (playerUntouchableTime / (2.0f*(float)playerNoBlinks)));
         if(n % 2 == 0)  

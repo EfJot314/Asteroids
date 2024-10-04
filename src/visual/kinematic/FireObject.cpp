@@ -20,6 +20,8 @@ FireObject::FireObject(Player* player, float rotation, sf::RenderWindow* window,
     shapeFormation();
 
     this->shape.rotate(rotation);
+
+    updatePositionOnWindow();
 };
 
 FireObject::~FireObject(){};
