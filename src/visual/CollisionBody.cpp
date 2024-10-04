@@ -53,8 +53,11 @@ float CollisionBody::getBoundRadius() const{
 }
 
 void CollisionBody::updatePoints(){
-    float x = position.x;
-    float y = position.y;
+    // return;
+    // float x = position.x;
+    // float y = position.y;
+    float x = 0.0f;
+    float y = 0.0f;
     float radiansRotation = this->rotation * M_PI / 180.0f;
     for(int i=0;i<this->getNoPoints();i++){
         float xp = points[i].x;
@@ -82,11 +85,22 @@ std::vector<Vector2D> CollisionBody::getPoints() const{
     return this->points;
 }
 
-std::vector<std::array<Vector2D, 2>> CollisionBody::getSections() const{
+std::vector<std::array<Vector2D, 2>> CollisionBody::getSectionsRel() const{
     std::vector<std::array<Vector2D, 2>> sections = {};
     int n = this->getNoPoints();
     for(int i=0;i<n;i++){
         sections.push_back({points[i], points[(i+1) % n]});
+    }
+    return sections;
+}
+
+std::vector<std::array<Vector2D, 2>> CollisionBody::getSectionsGlob() const{
+    auto sections = this->getSectionsRel();
+    for(int i=0;i<this->getNoPoints();i++){
+        sections[i][0].x += position.x;
+        sections[i][0].y += position.y;
+        sections[i][1].x += position.x;
+        sections[i][1].y += position.y;
     }
     return sections;
 }
@@ -109,11 +123,8 @@ bool CollisionBody::checkIntersection(const std::array<Vector2D, 2>& AB, const s
     float zva = v.x*a.y - v.y*a.x;
     float zvb = v.x*b.y - v.y*b.x;
 
-    
-
     //return boolean value
     if(zva * zvb < 0){
-        std::cout << zva << " " << zvb << std::endl;
         return true;
     }
     return false;
@@ -128,8 +139,8 @@ bool CollisionBody::checkCollision(CollisionBody other){
     float distanceSq = (position.x-otherPosition.x)*(position.x-otherPosition.x) + (position.y-otherPosition.y)*(position.y-otherPosition.y);
     if(distanceSq < radiusSum*radiusSum){
 
-        auto mySections = this->getSections();
-        auto otherSections = this->getSections();
+        auto mySections = this->getSectionsGlob();
+        auto otherSections = other.getSectionsGlob();
 
         for(const auto& mySection : mySections){
             for(const auto& otherSection : otherSections){

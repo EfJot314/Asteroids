@@ -56,7 +56,8 @@ class CollisionBody{
         int getNoPoints() const;
         float getBoundRadius() const;
         std::vector<Vector2D> getPoints() const;
-        std::vector<std::array<Vector2D, 2>> getSections() const;
+        std::vector<std::array<Vector2D, 2>> getSectionsRel() const;
+        std::vector<std::array<Vector2D, 2>> getSectionsGlob() const;
         bool checkCollision(CollisionBody other);
 };
 

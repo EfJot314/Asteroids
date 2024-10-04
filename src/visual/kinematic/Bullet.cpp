@@ -30,7 +30,10 @@ void Bullet::shapeFormation(){
     this->shape.setPoint(2, sf::Vector2f(-width/2, bulletSize/2));
     this->shape.setPoint(3, sf::Vector2f(-width/2, -bulletSize/2));
 
-    //create bullet body
+    this->shape.scale(1/scaler, 1/scaler);
+    this->shape.setFillColor(this->color);
+
+    //create a bullet body
     Vector2D p1;
     p1.x = 0.0f;
     p1.y = -bulletSize/2.0f;
@@ -40,9 +43,6 @@ void Bullet::shapeFormation(){
     this->body.setPosition(position);
     this->body.addPoint(p1);
     this->body.addPoint(p2);
-
-    this->shape.scale(1/scaler, 1/scaler);
-    this->shape.setFillColor(this->color);
 }
 
 void Bullet::updateKinematicProperties(){
