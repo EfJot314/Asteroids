@@ -17,23 +17,29 @@ Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, const s
     shapeFormation();
 
     this->shape.rotate(rotation);
+    this->body.rotate(rotation);
 };
 
 Bullet::~Bullet(){};
 
 void Bullet::shapeFormation(){
-    this->body.setPosition(position);
-
     this->shape.setPointCount(4);
     float width = bulletSize * bulletWidthFactor;
     this->shape.setPoint(0, sf::Vector2f(width/2, -bulletSize/2));
-    this->body.addPoint({width/2, -bulletSize/2});
     this->shape.setPoint(1, sf::Vector2f(width/2, bulletSize/2));
-    this->body.addPoint({width/2, bulletSize/2});
     this->shape.setPoint(2, sf::Vector2f(-width/2, bulletSize/2));
-    this->body.addPoint({-width/2, bulletSize/2});
     this->shape.setPoint(3, sf::Vector2f(-width/2, -bulletSize/2));
-    this->body.addPoint({-width/2, -bulletSize/2});
+
+    //create bullet body
+    Vector2D p1;
+    p1.x = 0.0f;
+    p1.y = -bulletSize/2.0f;
+    Vector2D p2;
+    p2.x = 0.0f;
+    p2.y = bulletSize/2.0f;
+    this->body.setPosition(position);
+    this->body.addPoint(p1);
+    this->body.addPoint(p2);
 
     this->shape.scale(1/scaler, 1/scaler);
     this->shape.setFillColor(this->color);

@@ -92,8 +92,31 @@ std::vector<std::array<Vector2D, 2>> CollisionBody::getSections() const{
 }
 
 bool CollisionBody::checkIntersection(const std::array<Vector2D, 2>& AB, const std::array<Vector2D, 2>& CD) const{
-    //TODO
-    return true;
+    //vector v = AB
+    Vector2D v;
+    v.x = AB[1].x - AB[0].x;
+    v.y = AB[1].y - AB[0].y;
+    //vector a = AC
+    Vector2D a;
+    a.x = CD[0].x - AB[0].x;
+    a.y = CD[0].y - AB[0].y;
+    //vector b = AD
+    Vector2D b;
+    b.x = CD[1].x - AB[0].x;
+    b.y = CD[1].y - AB[0].y;
+
+    //results of vector multiplications
+    float zva = v.x*a.y - v.y*a.x;
+    float zvb = v.x*b.y - v.y*b.x;
+
+    
+
+    //return boolean value
+    if(zva * zvb < 0){
+        std::cout << zva << " " << zvb << std::endl;
+        return true;
+    }
+    return false;
 }
 
 bool CollisionBody::checkCollision(CollisionBody other){
