@@ -76,7 +76,7 @@ int Game::run(){
 
         //drawing all
         drawAll();
-
+        
         //moving all objects
         ge.moveAll();
 

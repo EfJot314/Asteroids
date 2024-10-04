@@ -53,7 +53,7 @@ void KinematicObject::updateKinematicProperties(){
 
 
 void KinematicObject::draw(){
-    //update position of player on window
+    //update position of object on window
     updatePositionOnWindow();
 
     //drawing on the window

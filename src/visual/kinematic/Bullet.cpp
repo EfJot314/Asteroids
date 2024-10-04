@@ -18,6 +18,8 @@ Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, const s
 
     this->shape.rotate(rotation);
     this->body.rotate(rotation);
+
+    updatePositionOnWindow();
 };
 
 Bullet::~Bullet(){};
