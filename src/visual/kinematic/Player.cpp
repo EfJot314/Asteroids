@@ -19,6 +19,9 @@ Player::Player(sf::RenderWindow* window, const sf::Color color){
     this->acceleration.y = 0;
 
     shapeFormation();
+
+    updatePositionOnWindow();
+    updateKinematicProperties();
 };
 
 Player::Player(Vector2D position, Vector2D velocity, sf::RenderWindow* window, const sf::Color color){
@@ -35,6 +38,9 @@ Player::Player(Vector2D position, Vector2D velocity, sf::RenderWindow* window, c
     this->acceleration.y = 0;
 
     shapeFormation();
+
+    updatePositionOnWindow();
+    updateKinematicProperties();
 };
 
 Player::~Player(){};

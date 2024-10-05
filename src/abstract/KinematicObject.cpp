@@ -2,7 +2,7 @@
 
 
 void KinematicObject::updatePositionOnWindow(){
-    //in the future here will be setting x,y connected with actual width, height and zoom of the window
+    //TODO -> in the future here will be setting x,y connected with actual width, height and zoom of the window
     int width = window->getSize().x;
     int height = window->getSize().y;
     x = (int)position.x/scaler;

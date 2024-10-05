@@ -15,6 +15,7 @@ BigAsteroid::BigAsteroid(sf::RenderWindow* window, const sf::Color color){
     shapeFormation();
 
     updatePositionOnWindow();
+    updateKinematicProperties();
 }
 
 BigAsteroid::BigAsteroid(const Asteroid* const father, sf::RenderWindow* window, const sf::Color color){
@@ -31,6 +32,7 @@ BigAsteroid::BigAsteroid(const Asteroid* const father, sf::RenderWindow* window,
     shapeFormation();
 
     updatePositionOnWindow();
+    updateKinematicProperties();
 }
 
 std::vector<Asteroid*> BigAsteroid::explode() const{

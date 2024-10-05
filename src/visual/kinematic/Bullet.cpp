@@ -20,6 +20,7 @@ Bullet::Bullet(Player* player, float rotation, sf::RenderWindow* window, const s
     this->body.rotate(rotation);
 
     updatePositionOnWindow();
+    updateKinematicProperties();
 };
 
 Bullet::~Bullet(){};

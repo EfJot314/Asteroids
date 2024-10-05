@@ -13,6 +13,7 @@ Asteroid::Asteroid(sf::RenderWindow* window, const sf::Color color){
     shapeFormation();
 
     updatePositionOnWindow();
+    updateKinematicProperties();
 };
 
 Asteroid::Asteroid(const Asteroid* const father, sf::RenderWindow* window, const sf::Color color){
@@ -29,6 +30,7 @@ Asteroid::Asteroid(const Asteroid* const father, sf::RenderWindow* window, const
     shapeFormation();
 
     updatePositionOnWindow();
+    updateKinematicProperties();
 }
 
 Asteroid::~Asteroid(){};
